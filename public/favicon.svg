@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Cuanto Cobrar Landing Page</title>
+  <desc id="desc">Icono de la calculadora para cobrar una landing page</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#145da0" />
+      <stop offset="100%" stop-color="#78c0e0" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)" />
+  <path
+    d="M18 23a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4V23Zm4 0v18h20V23H22Zm3 4h14v2H25v-2Zm0 5h11v2H25v-2Zm0 5h8v2h-8v-2Z"
+    fill="#f8fbff"
+  />
+  <path d="M46 18h-8v8" fill="none" stroke="#f8fbff" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M38 18l8 8" fill="none" stroke="#f8fbff" stroke-width="2.5" stroke-linecap="round" />
+</svg>
