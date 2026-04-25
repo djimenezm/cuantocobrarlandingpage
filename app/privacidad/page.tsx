@@ -42,7 +42,7 @@ export default function PrivacidadPage() {
           Si dejas tu email en el formulario del kit de landing page, ese dato se usara para darte
           acceso al recurso y para avisarte de futuras actualizaciones directamente relacionadas.
           El formulario se procesa mediante un proveedor externo de formularios que reenvia la
-          solicitud al buzon de contacto del proyecto.
+          solicitud a un buzon interno de gestion del ecosistema.
         </p>
       </section>
 

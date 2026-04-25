@@ -17,7 +17,7 @@ export default function LeadMagnetForm({
   const thankYouUrl = new URL('/gracias-kit-landing', siteUrl).toString();
   const resourceUrl = new URL('/kit-landing-page', siteUrl).toString();
   const downloadUrl = new URL('/recursos/kit-landing-page.txt', siteUrl).toString();
-  const formAction = `https://formsubmit.co/${siteConfig.contactEmail}`;
+  const formAction = `https://formsubmit.co/${siteConfig.leadCaptureEmail}`;
 
   return (
     <section className="lead-card" aria-labelledby={`lead-form-title-${source}`}>
