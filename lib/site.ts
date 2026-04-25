@@ -1,3 +1,5 @@
+const productionUrl = 'https://www.cuantocobrarlandingpage.es';
+
 export const siteConfig = {
   name: 'Cuanto Cobrar Landing Page',
   shortName: 'Landing Page',
@@ -13,7 +15,7 @@ export const siteConfig = {
     'presupuesto landing page',
     'precio pagina de aterrizaje freelance',
   ],
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3004',
+  url: process.env.NODE_ENV === 'development' ? 'http://localhost:3004' : productionUrl,
   ownerName: 'Equipo de Cuanto Cobrar Landing Page',
   contactEmail: 'hola@cuantocobrarlandingpage.es',
   leadCaptureEmail: 'hola@cuantopresupuestar.es',
