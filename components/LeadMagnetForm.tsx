@@ -38,7 +38,6 @@ export default function LeadMagnetForm({
           name="_autoresponse"
           value={`Gracias por pedir el kit de landing page. Puedes verlo aqui: ${resourceUrl} y descargar la version en texto aqui: ${downloadUrl}. Si publicamos mejoras importantes, te avisaremos en este mismo email.`}
         />
-        <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value={thankYouUrl} />
         <input type="hidden" name="origen" value={source} />
         <input type="hidden" name="interes" value="kit-landing-page" />
