@@ -446,6 +446,31 @@ select[aria-invalid='true'] {
   font-size: 0.95rem;
 }
 
+.redirect-page {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+}
+
+.redirect-card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.redirect-card p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.redirect-note {
+  font-size: 0.95rem;
+}
+
 .honey-field {
   display: none;
 }

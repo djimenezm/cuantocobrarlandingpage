@@ -191,13 +191,13 @@ export default function HomePage() {
               </div>
               <div className="guide-cta">
                 <a
-                  href="https://www.cuantopresupuestar.es/kit-presupuesto-freelance"
+                  href="/salida/kit-presupuesto"
                   className="primary-button"
                 >
                   Abrir el kit
                 </a>
                 <a
-                  href="https://www.cuantopresupuestar.es/recursos/kit-presupuesto-freelance.txt"
+                  href="/salida/kit-presupuesto-texto"
                   className="primary-button"
                 >
                   Descargar version en texto
