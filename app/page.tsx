@@ -182,6 +182,15 @@ export default function HomePage() {
             calcular presupuestos cerrados de proyectos mas amplios, tambien puedes usar{' '}
             <a href="https://www.cuantopresupuestar.es">Cuanto Presupuestar</a>.
           </p>
+          <p>
+            Y si despues del lanzamiento vas a vender soporte continuo, te puede encajar tambien{' '}
+            <a href="https://www.mantenimientowebmensual.es">Mantenimiento Web Mensual</a> para
+            transformar ese trabajo recurrente en una cuota defendible.
+          </p>
+          <p>
+            Si quieres moverte entre todas las calculadoras del ecosistema, las tienes reunidas en{' '}
+            <a href="https://www.paneldeherramientas.es">Panel de Herramientas</a>.
+          </p>
         </div>
       </section>
 
