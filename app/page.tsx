@@ -3,6 +3,7 @@ import CalculatorForm from '@/components/CalculatorForm';
 import FAQ, { faqItems } from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import LeadMagnetForm from '@/components/LeadMagnetForm';
 import { siteConfig } from '@/lib/site';
 
 export default function HomePage() {
@@ -170,6 +171,12 @@ export default function HomePage() {
               <p>Usa el total recomendado como base para una propuesta cerrada mas defendible.</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section className="section alt">
+        <div className="container">
+          <LeadMagnetForm source="home" />
         </div>
       </section>
 

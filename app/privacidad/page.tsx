@@ -38,6 +38,12 @@ export default function PrivacidadPage() {
           del navegador. Si escribes al correo de contacto, los datos que facilites se usaran
           unicamente para responder a tu consulta.
         </p>
+        <p>
+          Si dejas tu email en el formulario del kit de landing page, ese dato se usara para darte
+          acceso al recurso y para avisarte de futuras actualizaciones directamente relacionadas.
+          El formulario se procesa mediante un proveedor externo de formularios que reenvia la
+          solicitud al buzon de contacto del proyecto.
+        </p>
       </section>
 
       <section className="legal-section">
@@ -54,9 +60,10 @@ export default function PrivacidadPage() {
         <h2>Base y finalidad</h2>
         <p>
           La finalidad del tratamiento es prestar la herramienta, atender comunicaciones directas y
-          mantener la seguridad basica del servicio. Ademas, se realiza una medicion agregada del
-          uso para conocer el rendimiento general de la web. No se realiza un tratamiento comercial
-          de tus datos ni se crean perfiles publicitarios propios desde esta herramienta.
+          gestionar avisos solicitados por el usuario y mantener la seguridad basica del servicio.
+          Ademas, se realiza una medicion agregada del uso para conocer el rendimiento general de
+          la web. No se realiza un tratamiento comercial ajeno al recurso solicitado ni se crean
+          perfiles publicitarios propios desde esta herramienta.
         </p>
       </section>
 
