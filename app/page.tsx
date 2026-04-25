@@ -3,7 +3,6 @@ import CalculatorForm from '@/components/CalculatorForm';
 import FAQ, { faqItems } from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import LeadMagnetForm from '@/components/LeadMagnetForm';
 import { siteConfig } from '@/lib/site';
 
 export default function HomePage() {
@@ -176,7 +175,36 @@ export default function HomePage() {
 
       <section className="section alt">
         <div className="container">
-          <LeadMagnetForm source="home" />
+          <div className="lead-card">
+            <div className="lead-card-copy">
+              <span className="eyebrow">Recurso recomendado</span>
+              <h2>Si quieres una plantilla real para presupuestar mejor, usa este kit</h2>
+              <p>
+                En vez de duplicar captaciones aqui, te llevo al recurso que ya funciona y ya
+                entrega material real: el kit de presupuesto freelance de Cuanto Presupuestar.
+              </p>
+            </div>
+            <div className="lead-form">
+              <div className="disclaimer-box">
+                <strong>Que incluye:</strong> plantilla de presupuesto, estructura de propuesta
+                comercial y checklist para revisar una oferta antes de enviarla.
+              </div>
+              <div className="guide-cta">
+                <a
+                  href="https://www.cuantopresupuestar.es/kit-presupuesto-freelance"
+                  className="primary-button"
+                >
+                  Abrir el kit
+                </a>
+                <a
+                  href="https://www.cuantopresupuestar.es/recursos/kit-presupuesto-freelance.txt"
+                  className="primary-button"
+                >
+                  Descargar version en texto
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

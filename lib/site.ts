@@ -18,7 +18,6 @@ export const siteConfig = {
   url: process.env.NODE_ENV === 'development' ? 'http://localhost:3004' : productionUrl,
   ownerName: 'Equipo de Cuanto Cobrar Landing Page',
   contactEmail: 'hola@cuantocobrarlandingpage.es',
-  leadCaptureEmail: 'hola@cuantopresupuestar.es',
   country: 'Espana',
   themeColor: '#145da0',
   backgroundColor: '#f6f8fb',
