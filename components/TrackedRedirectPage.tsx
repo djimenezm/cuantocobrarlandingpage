@@ -35,7 +35,7 @@ export default function TrackedRedirectPage({
             <h1>{title}</h1>
             <p>{description}</p>
             <p className="redirect-note">
-              Te redirijo automaticamente en un instante. Si no ocurre, usa el enlace manual.
+              Te redirijo automáticamente en un instante. Si no ocurre, usa el enlace manual.
             </p>
             <a href={destination} className="primary-button">
               {buttonLabel}

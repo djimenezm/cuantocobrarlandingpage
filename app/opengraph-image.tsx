@@ -77,7 +77,7 @@ export default function OpenGraphImage() {
                   color: 'rgba(248,251,255,0.75)',
                 }}
               >
-                Calculadora para cobrar una landing page con mas criterio
+                Calculadora para cobrar una landing page con más criterio
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function OpenGraphImage() {
               }}
             >
               Secciones, integraciones, copy, revisiones, buffer, margen e IVA aparte en una sola
-              simulacion.
+              simulación.
             </div>
           </div>
 
@@ -148,8 +148,8 @@ export default function OpenGraphImage() {
           }}
         >
           {[
-            ['Base por hora', 'Tu suelo economico antes de bajar al proyecto'],
-            ['Precio minimo', 'Antes de margen y sin venderte corto'],
+            ['Base por hora', 'Tu suelo económico antes de bajar al proyecto'],
+            ['Precio mínimo', 'Antes de margen y sin venderte corto'],
             ['Precio final', 'Con buffer e IVA aparte si aplica'],
           ].map(([title, text]) => (
             <div

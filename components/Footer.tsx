@@ -19,7 +19,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="footer-links">
-          <Link href="/precio-landing-page-freelance">Guia de precios</Link>
+          <Link href="/precio-landing-page-freelance">Guía de precios</Link>
           <a href="https://www.cuantofacturar.es?utm_source=cuantocobrarlandingpage&utm_medium=ecosystem-footer&utm_campaign=cross_navigation">
             Facturar
           </a>

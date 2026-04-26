@@ -76,9 +76,9 @@ describe('CalculatorForm', () => {
     });
     expect(resultCardHeading).toBeInTheDocument();
     expect(within(resultCard!).getByText(/referencia base por hora/i)).toBeInTheDocument();
-    expect(within(resultCard!).getByText(/^precio minimo defendible$/i)).toBeInTheDocument();
+    expect(within(resultCard!).getByText(/^precio mínimo defendible$/i)).toBeInTheDocument();
     expect(within(resultCard!).getByText(/precio recomendado sin iva/i)).toBeInTheDocument();
-    expect(within(resultCard!).getByText(/colchon entre minimo y recomendado/i)).toBeInTheDocument();
+    expect(within(resultCard!).getByText(/colchón entre mínimo y recomendado/i)).toBeInTheDocument();
     expect(within(resultCard!).getAllByText(/total final con iva/i).length).toBeGreaterThan(0);
   });
 

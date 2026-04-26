@@ -5,13 +5,13 @@ export default function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand">
-          Cuanto Cobrar Landing Page
+          Cuánto Cobrar Landing Page
         </Link>
 
-        <nav className="nav" aria-label="Navegacion principal">
+        <nav className="nav" aria-label="Navegación principal">
           <Link href="/#calculadora">Calculadora</Link>
-          <Link href="/#como-funciona">Como funciona</Link>
-          <Link href="/precio-landing-page-freelance">Guia de precios</Link>
+          <Link href="/#como-funciona">Cómo funciona</Link>
+          <Link href="/precio-landing-page-freelance">Guía de precios</Link>
           <Link href="/#faq">FAQ</Link>
         </nav>
       </div>

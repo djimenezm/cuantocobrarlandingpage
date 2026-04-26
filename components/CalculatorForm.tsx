@@ -72,11 +72,11 @@ function getFieldError(field: FieldName, value: string) {
       case 'billableHoursPerMonth':
         return 'Indica tus horas facturables al mes.';
       case 'sections':
-        return 'Indica cuantas secciones tendra la landing.';
+        return 'Indica cuántas secciones tendrá la landing.';
       case 'integrationsCount':
-        return 'Indica cuantas integraciones incluye.';
+        return 'Indica cuántas integraciones incluye.';
       case 'revisionRounds':
-        return 'Indica las rondas de revision previstas.';
+        return 'Indica las rondas de revisión previstas.';
       case 'directProjectCosts':
         return 'Indica los costes directos del proyecto.';
       case 'contingencyBufferPercent':
@@ -94,13 +94,13 @@ function getFieldError(field: FieldName, value: string) {
       case 'sections':
       case 'integrationsCount':
       case 'revisionRounds':
-        return 'Introduce un numero valido.';
+        return 'Introduce un número válido.';
       case 'contingencyBufferPercent':
       case 'taxReservePercent':
       case 'profitMarginPercent':
-        return 'Introduce un porcentaje valido.';
+        return 'Introduce un porcentaje válido.';
       default:
-        return 'Introduce un importe valido.';
+        return 'Introduce un importe válido.';
     }
   }
 
@@ -113,7 +113,7 @@ function getFieldError(field: FieldName, value: string) {
   }
 
   if (field === 'billableHoursPerMonth' && !Number.isInteger(parsedValue)) {
-    return 'Las horas facturables deben ser un numero entero.';
+    return 'Las horas facturables deben ser un número entero.';
   }
 
   if (field === 'sections' && parsedValue <= 0) {
@@ -134,7 +134,7 @@ function getFieldError(field: FieldName, value: string) {
       field === 'profitMarginPercent') &&
     parsedValue > 100
   ) {
-    return 'El porcentaje debe ser como maximo 100.';
+    return 'El porcentaje debe ser como máximo 100.';
   }
 
   if (parsedValue < 0) {
@@ -266,7 +266,7 @@ export default function CalculatorForm() {
     <div className="calculator-card" id="calculadora">
       <h2>Calculadora</h2>
       <p className="card-intro" id="calculator-intro">
-        Convierte tu objetivo mensual en un precio de landing page mas defendible usando secciones,
+        Convierte tu objetivo mensual en un precio de landing page más defendible usando secciones,
         integraciones, revisiones, copy, buffer y una reserva fiscal orientativa.
       </p>
 
@@ -361,7 +361,7 @@ export default function CalculatorForm() {
         </label>
 
         <label>
-          <span>Numero de secciones</span>
+          <span>Número de secciones</span>
           <input
             type="number"
             min="1"
@@ -385,7 +385,7 @@ export default function CalculatorForm() {
         </label>
 
         <label>
-          <span>Numero de integraciones</span>
+          <span>Número de integraciones</span>
           <input
             type="number"
             min="0"
@@ -403,7 +403,7 @@ export default function CalculatorForm() {
             }
           />
           <small className="field-hint" id="integrations-hint">
-            Formularios, email marketing, calendario, pagos, CRM o cualquier conexion externa.
+            Formularios, email marketing, calendario, pagos, CRM o cualquier conexión externa.
           </small>
           {submitted && validationErrors.integrationsCount && (
             <small className="field-error" id="integrations-error" role="alert">
@@ -413,7 +413,7 @@ export default function CalculatorForm() {
         </label>
 
         <fieldset className="radio-group">
-          <legend>Incluye copywriting?</legend>
+          <legend>¿Incluye copywriting?</legend>
           <label>
             <input
               type="radio"
@@ -421,7 +421,7 @@ export default function CalculatorForm() {
               checked={includeCopywriting}
               onChange={() => setIncludeCopywriting(true)}
             />
-            Si, lo redacto yo
+            Sí, lo redacto yo
           </label>
           <label>
             <input
@@ -435,7 +435,7 @@ export default function CalculatorForm() {
         </fieldset>
 
         <label>
-          <span>Rondas de revision previstas</span>
+          <span>Rondas de revisión previstas</span>
           <input
             type="number"
             min="0"
@@ -476,8 +476,8 @@ export default function CalculatorForm() {
             }
           />
           <small className="field-hint" id="direct-project-costs-hint">
-            Ejemplos: compra de plantilla, fotografias, licencias, herramientas o colaboraciones
-            que no deberias absorber tu.
+            Ejemplos: compra de plantilla, fotografías, licencias, herramientas o colaboraciones
+            que no deberías absorber tú.
           </small>
           {submitted && validationErrors.directProjectCosts && (
             <small className="field-error" id="direct-project-costs-error" role="alert">
@@ -508,7 +508,7 @@ export default function CalculatorForm() {
             }
           />
           <small className="field-hint" id="contingency-buffer-hint">
-            Usalo para cubrir pequenos cambios, soporte, QA extra y desbordes normales del
+            Úsalo para cubrir pequeños cambios, soporte, QA extra y desbordes normales del
             proyecto.
           </small>
           {submitted && validationErrors.contingencyBufferPercent && (
@@ -538,7 +538,7 @@ export default function CalculatorForm() {
             }
           />
           <small className="field-hint" id="tax-reserve-hint">
-            No sustituye un calculo fiscal exacto: solo evita fijar el precio como si todo el
+            No sustituye un cálculo fiscal exacto: solo evita fijar el precio como si todo el
             ingreso fuera limpio.
           </small>
           {submitted && validationErrors.taxReservePercent && (
@@ -575,10 +575,10 @@ export default function CalculatorForm() {
         </label>
 
         <fieldset className="radio-group">
-          <legend>Anadir IVA al presupuesto?</legend>
+          <legend>¿Añadir IVA al presupuesto?</legend>
           <label>
             <input type="radio" name="iva" checked={hasIVA} onChange={() => setHasIVA(true)} />
-            Si
+            Sí
           </label>
           <label>
             <input type="radio" name="iva" checked={!hasIVA} onChange={() => setHasIVA(false)} />
@@ -597,8 +597,8 @@ export default function CalculatorForm() {
         )}
 
         <p className="form-note">
-          La herramienta es orientativa: sirve para transformar una intuicion difusa en un precio
-          mas defendible, no para cerrar un encaje fiscal exacto.
+          La herramienta es orientativa: sirve para transformar una intuición difusa en un precio
+          más defendible, no para cerrar un encaje fiscal exacto.
         </p>
       </form>
 

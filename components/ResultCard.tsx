@@ -70,10 +70,10 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
       <h3>Tu precio recomendado para esta landing page</h3>
 
       <p className="result-lead">
-        Con esta simulacion, una propuesta razonable quedaria en{' '}
+        Con esta simulación, una propuesta razonable quedaría en{' '}
         <strong>{formatCurrency(result.recommendedLandingPrice)}</strong> sin IVA. Tu suelo para no
-        quedarte corto con este alcance estaria alrededor de{' '}
-        <strong>{formatCurrency(result.minimumLandingPrice)}</strong>, asi que la diferencia entre
+        quedarte corto con este alcance estaría alrededor de{' '}
+        <strong>{formatCurrency(result.minimumLandingPrice)}</strong>, así que la diferencia entre
         ambas cifras es el aire real que te das para negociar sin comerte el margen.
       </p>
 
@@ -94,7 +94,7 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
         </div>
 
         <div className="result-item">
-          <span>Precio minimo defendible</span>
+          <span>Precio mínimo defendible</span>
           <strong>{formatCurrency(result.minimumLandingPrice)}</strong>
         </div>
 
@@ -104,7 +104,7 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
         </div>
 
         <div className="result-item">
-          <span>Colchon entre minimo y recomendado</span>
+          <span>Colchón entre mínimo y recomendado</span>
           <strong>{formatCurrency(pricingBuffer)}</strong>
         </div>
 
@@ -115,12 +115,12 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
       </div>
 
       <div className="result-next-step">
-        <strong>Lectura rapida para defender el precio</strong>
+        <strong>Lectura rápida para defender el precio</strong>
         <p>
           Si el cliente te aprieta, toma <strong>{formatCurrency(result.minimumLandingPrice)}</strong>{' '}
-          como referencia de suelo: por debajo de esa cifra empiezas a absorber tu el margen, los
-          imprevistos o parte del tiempo real del proyecto. La zona comoda para presentar propuesta
-          esta mas cerca de <strong>{formatCurrency(result.recommendedLandingPrice)}</strong>.
+          como referencia de suelo: por debajo de esa cifra empiezas a absorber tú el margen, los
+          imprevistos o parte del tiempo real del proyecto. La zona cómoda para presentar propuesta
+          está más cerca de <strong>{formatCurrency(result.recommendedLandingPrice)}</strong>.
         </p>
       </div>
 
@@ -154,7 +154,7 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
         Para sostener un objetivo mensual de <strong>{formatCurrency(result.targetMonthlyNet)}</strong>
         , con unos costes fijos de <strong>{formatCurrency(result.monthlyFixedCosts)}</strong> y{' '}
         <strong>{result.billableHoursPerMonth}</strong> horas facturables al mes, tu referencia
-        mensual se situa en <strong>{formatCurrency(result.monthlyRevenueTarget)}</strong> antes de
+        mensual se sitúa en <strong>{formatCurrency(result.monthlyRevenueTarget)}</strong> antes de
         repartirla entre proyectos.
       </p>
 
@@ -167,21 +167,21 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
       </p>
 
       <p className="result-summary">
-        Ademas, has dejado una reserva fiscal orientativa del{' '}
+        Además, has dejado una reserva fiscal orientativa del{' '}
         <strong>{result.taxReservePercent}%</strong> y un margen extra del{' '}
-        <strong>{result.profitMarginPercent}%</strong>. Eso situa el proyecto en una referencia
+        <strong>{result.profitMarginPercent}%</strong>. Eso sitúa el proyecto en una referencia
         efectiva de <strong>{formatCurrency(result.effectiveHourlyRate)}/h</strong> sobre las horas
-        ya amortiguadas por buffer, con un colchon adicional de{' '}
-        <strong>{formatCurrency(pricingBuffer)}</strong> frente al minimo.
+        ya amortiguadas por buffer, con un colchón adicional de{' '}
+        <strong>{formatCurrency(pricingBuffer)}</strong> frente al mínimo.
         {hasIVA ? (
           <>
             {' '}
-            Si repercutes IVA, tendrias que anadir aproximadamente{' '}
+            Si repercutes IVA, tendrías que añadir aproximadamente{' '}
             <strong>{formatCurrency(result.vatAmount)}</strong>, dejando la propuesta final en{' '}
             <strong>{formatCurrency(result.totalWithVAT)}</strong>.
           </>
         ) : (
-          <> En esta simulacion no se anade IVA al total.</>
+          <> En esta simulación no se añade IVA al total.</>
         )}
       </p>
 
@@ -190,7 +190,7 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
         <p>
           Usa la cifra recomendada como base para presentar un presupuesto cerrado. Si el cliente
           aprieta precio, intenta primero tocar alcance, revisiones o integraciones: bajar por
-          debajo del minimo defendible significa asumir tu parte del coste del proyecto.
+          debajo del mínimo defendible significa asumir tu parte del coste del proyecto.
         </p>
       </div>
     </section>

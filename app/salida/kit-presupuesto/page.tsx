@@ -18,7 +18,7 @@ export default function KitPresupuestoRedirectPage() {
     <TrackedRedirectPage
       destination={destination}
       title="Abriendo el kit recomendado"
-      description="Registro este clic dentro de la landing y te llevo al kit real de Cuanto Presupuestar."
+      description="Registro este clic dentro de la landing y te llevo al kit real de Cuánto Presupuestar."
       buttonLabel="Ir al kit ahora"
     />
   );
