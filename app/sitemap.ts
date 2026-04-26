@@ -6,6 +6,7 @@ const routes = [
   '/ejemplo-presupuesto-landing-page',
   '/landing-page-vs-pagina-web',
   '/precio-landing-page-freelance',
+  '/que-incluye-una-landing-page',
   '/aviso-legal',
   '/privacidad',
   '/cookies',
