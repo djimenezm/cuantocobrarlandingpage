@@ -219,6 +219,9 @@ export default function HomePage() {
             una guía específica para convertir esos factores en una propuesta más clara.
           </p>
           <div className="guide-cta">
+            <Link href="/ejemplo-presupuesto-landing-page" className="primary-button">
+              Ver ejemplo de presupuesto
+            </Link>
             <Link href="/precio-landing-page-freelance" className="primary-button">
               Leer guía de precios
             </Link>
