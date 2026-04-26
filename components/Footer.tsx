@@ -19,6 +19,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="footer-links">
+          <Link href="/precio-landing-page-freelance">Guia de precios</Link>
           <Link href="/aviso-legal">Aviso legal</Link>
           <Link href="/privacidad">Privacidad</Link>
           <Link href="/cookies">Cookies</Link>

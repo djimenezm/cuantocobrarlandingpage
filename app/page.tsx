@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import Link from 'next/link';
 import CalculatorForm from '@/components/CalculatorForm';
 import FAQ, { faqItems } from '@/components/FAQ';
 import Footer from '@/components/Footer';
@@ -204,6 +205,26 @@ export default function HomePage() {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container text-block">
+          <span className="eyebrow">Guia practica</span>
+          <h2>Antes de enviar una propuesta, revisa como defender el precio</h2>
+          <p>
+            La calculadora te da una cifra orientativa, pero una landing page tambien se defiende
+            explicando alcance, revisiones, copy, integraciones y soporte posterior. He preparado
+            una guia especifica para convertir esos factores en una propuesta mas clara.
+          </p>
+          <div className="guide-cta">
+            <Link href="/precio-landing-page-freelance" className="primary-button">
+              Leer guia de precios
+            </Link>
+            <Link href="/#calculadora" className="primary-button">
+              Volver a calcular
+            </Link>
           </div>
         </div>
       </section>
