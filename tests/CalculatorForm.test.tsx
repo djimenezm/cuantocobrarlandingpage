@@ -79,7 +79,29 @@ describe('CalculatorForm', () => {
     expect(within(resultCard!).getByText(/^precio minimo defendible$/i)).toBeInTheDocument();
     expect(within(resultCard!).getByText(/precio recomendado sin iva/i)).toBeInTheDocument();
     expect(within(resultCard!).getByText(/colchon entre minimo y recomendado/i)).toBeInTheDocument();
-    expect(within(resultCard!).getByText(/total final con iva/i)).toBeInTheDocument();
+    expect(within(resultCard!).getAllByText(/total final con iva/i).length).toBeGreaterThan(0);
+  });
+
+  it('copies a concise landing page summary', async () => {
+    const user = userEvent.setup();
+    const writeText = vi.fn().mockResolvedValue(undefined);
+
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText,
+      },
+    });
+
+    render(<CalculatorForm />);
+
+    await user.click(screen.getByRole('button', { name: /calcular precio de la landing/i }));
+    await user.click(screen.getByRole('button', { name: /copiar resumen/i }));
+
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Precio recomendado'));
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Alcance estimado'));
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Colchón de negociación'));
+    expect(screen.getByText('Resumen copiado.')).toBeInTheDocument();
   });
 
   it('normalizes decimal billable hours to a whole number on blur', async () => {
