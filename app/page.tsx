@@ -222,6 +222,9 @@ export default function HomePage() {
             <Link href="/ejemplo-presupuesto-landing-page" className="primary-button">
               Ver ejemplo de presupuesto
             </Link>
+            <Link href="/estructura-landing-page-que-convierte" className="primary-button">
+              Ver estructura
+            </Link>
             <Link href="/precio-landing-page-freelance" className="primary-button">
               Leer guía de precios
             </Link>

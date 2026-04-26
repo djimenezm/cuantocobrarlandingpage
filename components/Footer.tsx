@@ -20,6 +20,7 @@ export default function Footer() {
         </div>
         <div className="footer-links">
           <Link href="/ejemplo-presupuesto-landing-page">Ejemplo</Link>
+          <Link href="/estructura-landing-page-que-convierte">Estructura</Link>
           <Link href="/precio-landing-page-freelance">Guía de precios</Link>
           <Link href="/que-incluye-una-landing-page">Que incluye</Link>
           <Link href="/landing-page-vs-pagina-web">Landing vs web</Link>
