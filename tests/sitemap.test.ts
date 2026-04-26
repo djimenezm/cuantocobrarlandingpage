@@ -8,6 +8,7 @@ describe('sitemap', () => {
     urls.forEach((url) => expect(url.origin).toBe('https://www.cuantocobrarlandingpage.es'));
     expect(paths).toContain('/');
     expect(paths).toContain('/ejemplo-presupuesto-landing-page');
+    expect(paths).toContain('/landing-page-vs-pagina-web');
     expect(paths).toContain('/precio-landing-page-freelance');
     expect(paths).not.toContain('/salida/kit-presupuesto');
     expect(paths).not.toContain('/salida/kit-presupuesto-texto');

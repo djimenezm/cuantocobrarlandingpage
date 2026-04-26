@@ -13,6 +13,7 @@ export default function Header() {
           <Link href="/#como-funciona">Cómo funciona</Link>
           <Link href="/precio-landing-page-freelance">Guía de precios</Link>
           <Link href="/ejemplo-presupuesto-landing-page">Ejemplo</Link>
+          <Link href="/landing-page-vs-pagina-web">Landing vs web</Link>
           <Link href="/#faq">FAQ</Link>
         </nav>
       </div>

@@ -4,6 +4,7 @@ import { getSiteUrl } from '@/lib/site';
 const routes = [
   '/',
   '/ejemplo-presupuesto-landing-page',
+  '/landing-page-vs-pagina-web',
   '/precio-landing-page-freelance',
   '/aviso-legal',
   '/privacidad',

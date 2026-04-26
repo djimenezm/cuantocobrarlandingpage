@@ -225,6 +225,9 @@ export default function HomePage() {
             <Link href="/precio-landing-page-freelance" className="primary-button">
               Leer guía de precios
             </Link>
+            <Link href="/landing-page-vs-pagina-web" className="primary-button">
+              Comparar landing vs web
+            </Link>
             <Link href="/#calculadora" className="primary-button">
               Volver a calcular
             </Link>
