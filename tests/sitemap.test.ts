@@ -9,6 +9,7 @@ describe('sitemap', () => {
     expect(paths).toContain('/');
     expect(paths).toContain('/ejemplo-presupuesto-landing-page');
     expect(paths).toContain('/estructura-landing-page-que-convierte');
+    expect(paths).toContain('/landing-page-para-captar-leads');
     expect(paths).toContain('/landing-page-vs-pagina-web');
     expect(paths).toContain('/precio-landing-page-freelance');
     expect(paths).toContain('/que-incluye-una-landing-page');

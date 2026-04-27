@@ -225,6 +225,9 @@ export default function HomePage() {
             <Link href="/estructura-landing-page-que-convierte" className="primary-button">
               Ver estructura
             </Link>
+            <Link href="/landing-page-para-captar-leads" className="primary-button">
+              Captar leads
+            </Link>
             <Link href="/precio-landing-page-freelance" className="primary-button">
               Leer guía de precios
             </Link>
