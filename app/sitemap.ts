@@ -6,6 +6,7 @@ const routes = [
   '/ejemplo-presupuesto-landing-page',
   '/estructura-landing-page-que-convierte',
   '/landing-page-para-captar-leads',
+  '/landing-page-para-google-ads',
   '/landing-page-vs-pagina-web',
   '/precio-landing-page-freelance',
   '/que-incluye-una-landing-page',

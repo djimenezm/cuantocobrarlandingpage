@@ -228,6 +228,9 @@ export default function HomePage() {
             <Link href="/landing-page-para-captar-leads" className="primary-button">
               Captar leads
             </Link>
+            <Link href="/landing-page-para-google-ads" className="primary-button">
+              Google Ads
+            </Link>
             <Link href="/precio-landing-page-freelance" className="primary-button">
               Leer guía de precios
             </Link>
