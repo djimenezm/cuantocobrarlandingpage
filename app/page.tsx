@@ -64,9 +64,8 @@ export default function HomePage() {
             <span className="eyebrow">Cuánto Cobrar Landing Page</span>
             <h1>Calculadora para saber cuánto cobrar una landing page</h1>
             <p className="lead">
-              Convierte tu objetivo mensual en un precio de landing page más defendible. Calcula una
-              referencia base por hora y bájala al proyecto según secciones, integraciones,
-              copywriting, revisiones, costes directos, margen extra e IVA aparte.
+              Calcula un precio defendible para una landing page con secciones, revisiones, costes,
+              margen e IVA aparte.
             </p>
             <div className="hero-badges" aria-label="Ventajas principales">
               <span className="hero-badge">Sin registro</span>
