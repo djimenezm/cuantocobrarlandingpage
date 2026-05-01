@@ -5,6 +5,60 @@ import { getSiteUrl, siteConfig } from '@/lib/site';
 import './globals.css';
 
 const siteUrl = getSiteUrl();
+const trustedTypesPolicyScript = `
+(() => {
+  if (!window.trustedTypes) return;
+
+  const blockedHtmlPattern = /<script\\b|<iframe\\b|<object\\b|<embed\\b|\\son\\w+\\s*=|javascript:/i;
+
+  try {
+    window.trustedTypes.createPolicy('default', {
+      createHTML(value) {
+        const html = String(value);
+
+        if (blockedHtmlPattern.test(html)) {
+          throw new TypeError('Blocked unsafe HTML by Trusted Types policy');
+        }
+
+        return html;
+      },
+      createScriptURL(value) {
+        const url = new URL(String(value), window.location.origin);
+
+        if (
+          url.origin === window.location.origin ||
+          url.origin === 'https://va.vercel-scripts.com'
+        ) {
+          return url.href;
+        }
+
+        throw new TypeError('Blocked unsafe script URL by Trusted Types policy');
+      },
+      createScript(value) {
+        const script = String(value).trim();
+
+        if (script.startsWith('{') || script.startsWith('[')) {
+          const data = JSON.parse(script);
+          const items = Array.isArray(data) ? data : [data];
+          const isSchemaOrgJson = items.every((item) => (
+            item &&
+            typeof item === 'object' &&
+            item['@context'] === 'https://schema.org'
+          ));
+
+          if (isSchemaOrgJson) {
+            return script;
+          }
+        }
+
+        throw new TypeError('Inline scripts must use a nonce');
+      },
+    });
+  } catch (error) {
+    if (!String(error).includes('already exists')) throw error;
+  }
+})();
+`;
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -65,10 +119,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await headers();
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
     <html lang="es" data-scroll-behavior="smooth">
+      <head>
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: trustedTypesPolicyScript }} />
+      </head>
       <body>
         {children}
         <Analytics />

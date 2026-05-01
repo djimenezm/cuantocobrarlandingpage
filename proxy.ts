@@ -10,7 +10,7 @@ export function proxy(request: NextRequest) {
   const contentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''};
-    style-src 'self' 'nonce-${nonce}' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
     connect-src 'self';
@@ -18,6 +18,8 @@ export function proxy(request: NextRequest) {
     base-uri 'self';
     form-action 'self' https://formsubmit.co;
     frame-ancestors 'none';
+    trusted-types default nextjs nextjs#bundler;
+    require-trusted-types-for 'script';
     upgrade-insecure-requests;
   `
     .replace(/\s{2,}/g, ' ')

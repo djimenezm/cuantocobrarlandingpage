@@ -60,11 +60,12 @@ describe('performance config', () => {
     expect(nextConfig.experimental?.sri?.algorithm).toBe('sha256');
     expect(proxyFile).toContain('Content-Security-Policy');
     expect(proxyFile).toContain("script-src 'self' 'nonce-${nonce}' 'strict-dynamic'");
-    expect(proxyFile).toContain("style-src 'self' 'nonce-${nonce}' 'unsafe-inline'");
+    expect(proxyFile).toContain("style-src 'self' 'unsafe-inline'");
     expect(proxyFile).toContain("object-src 'none'");
     expect(proxyFile).toContain("frame-ancestors 'none'");
+    expect(proxyFile).toContain('trusted-types default nextjs nextjs#bundler');
     expect(layoutFile).toContain("export const dynamic = 'force-dynamic'");
-    expect(layoutFile).toContain("await headers();");
+    expect(layoutFile).toContain("(await headers()).get('x-nonce')");
   });
 
   it('sets a preload-ready HSTS policy', () => {
@@ -87,5 +88,16 @@ describe('performance config', () => {
     expect(proxyFile).toContain("frame-ancestors 'none'");
     expect(proxyFile).toContain('X-Frame-Options');
     expect(proxyFile).toContain("const xFrameOptions = 'DENY'");
+  });
+
+  it('requires Trusted Types for script sinks', () => {
+    const proxyFile = readFileSync(join(process.cwd(), 'proxy.ts'), 'utf8');
+    const layoutFile = readFileSync(join(process.cwd(), 'app/layout.tsx'), 'utf8');
+
+    expect(proxyFile).toContain("require-trusted-types-for 'script'");
+    expect(layoutFile).toContain("window.trustedTypes.createPolicy('default'");
+    expect(layoutFile).toContain('blockedHtmlPattern');
+    expect(layoutFile).toContain('Blocked unsafe script URL by Trusted Types policy');
+    expect(layoutFile).toContain("item['@context'] === 'https://schema.org'");
   });
 });
