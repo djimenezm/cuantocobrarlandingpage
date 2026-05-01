@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+const strictTransportSecurity = 'max-age=63072000; includeSubDomains; preload';
+
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
   const isDev = process.env.NODE_ENV === 'development';
@@ -30,6 +32,7 @@ export function proxy(request: NextRequest) {
   });
 
   response.headers.set('Content-Security-Policy', contentSecurityPolicy);
+  response.headers.set('Strict-Transport-Security', strictTransportSecurity);
   return response;
 }
 

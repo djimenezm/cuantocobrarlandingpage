@@ -66,4 +66,11 @@ describe('performance config', () => {
     expect(layoutFile).toContain("export const dynamic = 'force-dynamic'");
     expect(layoutFile).toContain("await headers();");
   });
+
+  it('sets a preload-ready HSTS policy', () => {
+    const proxyFile = readFileSync(join(process.cwd(), 'proxy.ts'), 'utf8');
+
+    expect(proxyFile).toContain('Strict-Transport-Security');
+    expect(proxyFile).toContain('max-age=63072000; includeSubDomains; preload');
+  });
 });
