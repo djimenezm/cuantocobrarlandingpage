@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const strictTransportSecurity = 'max-age=63072000; includeSubDomains; preload';
+const crossOriginOpenerPolicy = 'same-origin';
 
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
@@ -33,6 +34,7 @@ export function proxy(request: NextRequest) {
 
   response.headers.set('Content-Security-Policy', contentSecurityPolicy);
   response.headers.set('Strict-Transport-Security', strictTransportSecurity);
+  response.headers.set('Cross-Origin-Opener-Policy', crossOriginOpenerPolicy);
   return response;
 }
 

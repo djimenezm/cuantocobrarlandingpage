@@ -73,4 +73,11 @@ describe('performance config', () => {
     expect(proxyFile).toContain('Strict-Transport-Security');
     expect(proxyFile).toContain('max-age=63072000; includeSubDomains; preload');
   });
+
+  it('isolates the top-level document from cross-origin popups', () => {
+    const proxyFile = readFileSync(join(process.cwd(), 'proxy.ts'), 'utf8');
+
+    expect(proxyFile).toContain('Cross-Origin-Opener-Policy');
+    expect(proxyFile).toContain("const crossOriginOpenerPolicy = 'same-origin'");
+  });
 });
