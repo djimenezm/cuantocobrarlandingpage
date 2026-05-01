@@ -57,7 +57,7 @@ describe('performance config', () => {
     const proxyFile = readFileSync(join(process.cwd(), 'proxy.ts'), 'utf8');
     const layoutFile = readFileSync(join(process.cwd(), 'app/layout.tsx'), 'utf8');
 
-    expect(nextConfig.experimental?.sri?.algorithm).toBe('sha256');
+    expect(nextConfig.experimental?.sri).toBeUndefined();
     expect(proxyFile).toContain('Content-Security-Policy');
     expect(proxyFile).toContain("script-src 'self' 'nonce-${nonce}' 'strict-dynamic'");
     expect(proxyFile).toContain("style-src 'self' 'unsafe-inline'");
