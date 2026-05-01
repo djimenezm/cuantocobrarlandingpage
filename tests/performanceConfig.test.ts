@@ -59,7 +59,7 @@ describe('performance config', () => {
 
     expect(nextConfig.experimental?.sri).toBeUndefined();
     expect(proxyFile).toContain('Content-Security-Policy');
-    expect(proxyFile).toContain("script-src 'self' 'nonce-${nonce}' 'strict-dynamic'");
+    expect(proxyFile).toContain("script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https: 'unsafe-inline'");
     expect(proxyFile).toContain("style-src 'self' 'unsafe-inline'");
     expect(proxyFile).toContain("object-src 'none'");
     expect(proxyFile).toContain("frame-ancestors 'none'");
