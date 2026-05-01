@@ -38,4 +38,11 @@ describe('performance config', () => {
     expect(calculatorForm).not.toContain("import ResultCard from '@/components/ResultCard'");
     expect(calculatorForm).not.toContain("import { track } from '@vercel/analytics'");
   });
+
+  it('does not rely on color alone for footer links', () => {
+    const globalStyles = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
+
+    expect(globalStyles).toMatch(/\.site-footer a\s*{[^}]*text-decoration:\s*underline/s);
+    expect(globalStyles).toMatch(/\.site-footer a\s*{[^}]*font-weight:\s*700/s);
+  });
 });
