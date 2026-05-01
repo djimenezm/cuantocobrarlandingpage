@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     inlineCss: true,
+    sri: {
+      algorithm: 'sha256',
+    },
   },
 };
 

@@ -52,4 +52,18 @@ describe('performance config', () => {
     expect(globalStyles).toMatch(/\.result-card:focus\s*{[^}]*outline:\s*3px solid var\(--accent\)/s);
     expect(globalStyles).toMatch(/\.result-card:focus\s*{[^}]*outline-offset:\s*4px/s);
   });
+
+  it('ships a nonce-based CSP for production pages', () => {
+    const proxyFile = readFileSync(join(process.cwd(), 'proxy.ts'), 'utf8');
+    const layoutFile = readFileSync(join(process.cwd(), 'app/layout.tsx'), 'utf8');
+
+    expect(nextConfig.experimental?.sri?.algorithm).toBe('sha256');
+    expect(proxyFile).toContain('Content-Security-Policy');
+    expect(proxyFile).toContain("script-src 'self' 'nonce-${nonce}' 'strict-dynamic'");
+    expect(proxyFile).toContain("style-src 'self' 'nonce-${nonce}' 'unsafe-inline'");
+    expect(proxyFile).toContain("object-src 'none'");
+    expect(proxyFile).toContain("frame-ancestors 'none'");
+    expect(layoutFile).toContain("export const dynamic = 'force-dynamic'");
+    expect(layoutFile).toContain("await headers();");
+  });
 });

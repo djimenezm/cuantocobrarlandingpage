@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import { Analytics } from '@vercel/analytics/next';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 import './globals.css';
@@ -57,11 +58,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export const dynamic = 'force-dynamic';
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  await headers();
+
   return (
     <html lang="es" data-scroll-behavior="smooth">
       <body>
