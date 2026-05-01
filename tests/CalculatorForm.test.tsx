@@ -84,6 +84,25 @@ describe('CalculatorForm', () => {
     expect(within(resultCard!).getAllByText(/total final con iva/i).length).toBeGreaterThan(0);
   });
 
+  it('moves focus to the result card after a successful calculation', async () => {
+    const user = userEvent.setup();
+
+    render(<CalculatorForm />);
+
+    await user.click(screen.getByRole('button', { name: /calcular precio de la landing/i }));
+
+    const resultCardHeading = await screen.findByRole('heading', {
+      name: /tu precio recomendado para esta landing page/i,
+    });
+    const resultCard = resultCardHeading.closest('section');
+
+    expect(resultCard).not.toBeNull();
+    expect(resultCard).toHaveAttribute('tabindex', '-1');
+    await waitFor(() => {
+      expect(resultCard).toHaveFocus();
+    });
+  });
+
   it('copies a concise landing page summary', async () => {
     const user = userEvent.setup();
     const writeText = vi.fn().mockResolvedValue(undefined);

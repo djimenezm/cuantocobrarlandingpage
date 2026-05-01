@@ -45,4 +45,11 @@ describe('performance config', () => {
     expect(globalStyles).toMatch(/\.site-footer a\s*{[^}]*text-decoration:\s*underline/s);
     expect(globalStyles).toMatch(/\.site-footer a\s*{[^}]*font-weight:\s*700/s);
   });
+
+  it('provides a visible focus state for the generated result card', () => {
+    const globalStyles = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
+
+    expect(globalStyles).toMatch(/\.result-card:focus\s*{[^}]*outline:\s*3px solid var\(--accent\)/s);
+    expect(globalStyles).toMatch(/\.result-card:focus\s*{[^}]*outline-offset:\s*4px/s);
+  });
 });

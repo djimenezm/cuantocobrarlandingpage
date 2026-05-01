@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { type CalculationResult } from '@/lib/calculator';
 import { formatCurrency } from '@/lib/format';
 
@@ -34,6 +34,7 @@ async function copyTextToClipboard(text: string) {
 }
 
 export default function ResultCard({ result, hasIVA }: ResultCardProps) {
+  const resultCardRef = useRef<HTMLElement>(null);
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
   const pricingBuffer = Math.max(0, result.recommendedLandingPrice - result.minimumLandingPrice);
   const landingSummary = [
@@ -65,8 +66,12 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
     }
   }
 
+  useEffect(() => {
+    resultCardRef.current?.focus();
+  }, []);
+
   return (
-    <section className="result-card" aria-live="polite">
+    <section ref={resultCardRef} className="result-card" tabIndex={-1} aria-live="polite">
       <h3>Tu precio recomendado para esta landing page</h3>
 
       <p className="result-lead">
