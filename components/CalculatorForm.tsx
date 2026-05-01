@@ -1,9 +1,16 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import { track } from '@vercel/analytics';
-import ResultCard from '@/components/ResultCard';
+import dynamic from 'next/dynamic';
+import { useMemo, useRef, useState } from 'react';
 import { calculateLandingPageQuote } from '@/lib/calculator';
+
+const ResultCard = dynamic(() => import('@/components/ResultCard'), {
+  loading: () => (
+    <p className="form-note" role="status">
+      Preparando el resumen del presupuesto...
+    </p>
+  ),
+});
 
 type FieldName =
   | 'targetMonthlyNet'
@@ -193,7 +200,7 @@ export default function CalculatorForm() {
   const [profitMarginPercent, setProfitMarginPercent] = useState('10');
   const [hasIVA, setHasIVA] = useState(true);
   const [submitted, setSubmitted] = useState(false);
-  const [hasTrackedConversion, setHasTrackedConversion] = useState(false);
+  const hasTrackedConversion = useRef(false);
 
   const validationErrors = useMemo(
     () =>
@@ -277,12 +284,16 @@ export default function CalculatorForm() {
           event.preventDefault();
           setSubmitted(true);
 
-          if (!hasValidationErrors && !hasTrackedConversion) {
-            track('landing_page_quote_calculated', {
-              hasIVA: hasIVA ? 'yes' : 'no',
-              includesCopywriting: includeCopywriting ? 'yes' : 'no',
-            });
-            setHasTrackedConversion(true);
+          if (!hasValidationErrors && !hasTrackedConversion.current) {
+            hasTrackedConversion.current = true;
+            void import('@vercel/analytics')
+              .then(({ track }) => {
+                track('landing_page_quote_calculated', {
+                  hasIVA: hasIVA ? 'yes' : 'no',
+                  includesCopywriting: includeCopywriting ? 'yes' : 'no',
+                });
+              })
+              .catch(() => undefined);
           }
         }}
         className="calculator-form"

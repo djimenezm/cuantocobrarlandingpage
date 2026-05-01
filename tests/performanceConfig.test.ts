@@ -30,4 +30,12 @@ describe('performance config', () => {
     expect(globalStyles).toMatch(/\.lead\s*{[^}]*line-height:\s*1\.55/s);
     expect(globalStyles).toMatch(/\.lead\s*{[^}]*max-width:\s*48ch/s);
   });
+
+  it('keeps submit-only code out of the initial calculator bundle', () => {
+    const calculatorForm = readFileSync(join(process.cwd(), 'components/CalculatorForm.tsx'), 'utf8');
+
+    expect(calculatorForm).toContain("dynamic(() => import('@/components/ResultCard')");
+    expect(calculatorForm).not.toContain("import ResultCard from '@/components/ResultCard'");
+    expect(calculatorForm).not.toContain("import { track } from '@vercel/analytics'");
+  });
 });

@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import CalculatorForm from '@/components/CalculatorForm';
@@ -64,15 +64,17 @@ describe('CalculatorForm', () => {
 
     await user.click(screen.getByRole('button', { name: /calcular precio de la landing/i }));
 
-    const resultCardHeading = screen.getByRole('heading', {
+    const resultCardHeading = await screen.findByRole('heading', {
       name: /tu precio recomendado para esta landing page/i,
     });
     const resultCard = resultCardHeading.closest('section');
 
     expect(resultCard).not.toBeNull();
-    expect(track).toHaveBeenCalledWith('landing_page_quote_calculated', {
-      hasIVA: 'yes',
-      includesCopywriting: 'yes',
+    await waitFor(() => {
+      expect(track).toHaveBeenCalledWith('landing_page_quote_calculated', {
+        hasIVA: 'yes',
+        includesCopywriting: 'yes',
+      });
     });
     expect(resultCardHeading).toBeInTheDocument();
     expect(within(resultCard!).getByText(/referencia base por hora/i)).toBeInTheDocument();
@@ -96,7 +98,7 @@ describe('CalculatorForm', () => {
     render(<CalculatorForm />);
 
     await user.click(screen.getByRole('button', { name: /calcular precio de la landing/i }));
-    await user.click(screen.getByRole('button', { name: /copiar resumen/i }));
+    await user.click(await screen.findByRole('button', { name: /copiar resumen/i }));
 
     expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Precio recomendado'));
     expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Alcance estimado'));
@@ -130,6 +132,8 @@ describe('CalculatorForm', () => {
     await user.click(submitButton);
     await user.click(submitButton);
 
-    expect(track).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      expect(track).toHaveBeenCalledTimes(1);
+    });
   });
 });
