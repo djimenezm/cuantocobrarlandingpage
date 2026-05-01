@@ -9,9 +9,11 @@ export default function Footer() {
           <p>
             Copyright {new Date().getFullYear()} {siteConfig.name}
           </p>
-          <p>
-            Titular: {siteConfig.ownerName} - Contacto:{' '}
-            <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
+          <p>Titular: {siteConfig.ownerName}</p>
+          <p className="footer-contact-row">
+            <a className="footer-contact-link" href={`mailto:${siteConfig.contactEmail}`}>
+              Contacto: {siteConfig.contactEmail}
+            </a>
           </p>
           <p className="footer-note">
             Herramienta orientativa para cobrar una landing page. No constituye asesoramiento fiscal
