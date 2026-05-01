@@ -4,6 +4,9 @@ import { siteConfig } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Política de privacidad',
   description: `Información general sobre privacidad y tratamiento de datos en ${siteConfig.name}.`,
+  alternates: {
+    canonical: '/privacidad',
+  },
 };
 
 export default function PrivacidadPage() {
