@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const strictTransportSecurity = 'max-age=63072000; includeSubDomains; preload';
 const crossOriginOpenerPolicy = 'same-origin';
+const referrerPolicy = 'strict-origin-when-cross-origin';
+const xContentTypeOptions = 'nosniff';
 const xFrameOptions = 'DENY';
+const permissionsPolicy = 'camera=(), microphone=(), geolocation=(), payment=()';
 
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
@@ -13,7 +16,7 @@ export function proxy(request: NextRequest) {
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
-    connect-src 'self';
+    connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-insights.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self' https://formsubmit.co;
@@ -38,7 +41,10 @@ export function proxy(request: NextRequest) {
   response.headers.set('Content-Security-Policy', contentSecurityPolicy);
   response.headers.set('Strict-Transport-Security', strictTransportSecurity);
   response.headers.set('Cross-Origin-Opener-Policy', crossOriginOpenerPolicy);
+  response.headers.set('Referrer-Policy', referrerPolicy);
+  response.headers.set('X-Content-Type-Options', xContentTypeOptions);
   response.headers.set('X-Frame-Options', xFrameOptions);
+  response.headers.set('Permissions-Policy', permissionsPolicy);
   return response;
 }
 

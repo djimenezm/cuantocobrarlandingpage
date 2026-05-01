@@ -80,6 +80,12 @@ describe('performance config', () => {
 
     expect(proxyFile).toContain('Cross-Origin-Opener-Policy');
     expect(proxyFile).toContain("const crossOriginOpenerPolicy = 'same-origin'");
+    expect(proxyFile).toContain('Referrer-Policy');
+    expect(proxyFile).toContain("const referrerPolicy = 'strict-origin-when-cross-origin'");
+    expect(proxyFile).toContain('X-Content-Type-Options');
+    expect(proxyFile).toContain("const xContentTypeOptions = 'nosniff'");
+    expect(proxyFile).toContain('Permissions-Policy');
+    expect(proxyFile).toContain('camera=(), microphone=(), geolocation=(), payment=()');
   });
 
   it('prevents the site from being embedded in frames', () => {
