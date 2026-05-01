@@ -80,4 +80,12 @@ describe('performance config', () => {
     expect(proxyFile).toContain('Cross-Origin-Opener-Policy');
     expect(proxyFile).toContain("const crossOriginOpenerPolicy = 'same-origin'");
   });
+
+  it('prevents the site from being embedded in frames', () => {
+    const proxyFile = readFileSync(join(process.cwd(), 'proxy.ts'), 'utf8');
+
+    expect(proxyFile).toContain("frame-ancestors 'none'");
+    expect(proxyFile).toContain('X-Frame-Options');
+    expect(proxyFile).toContain("const xFrameOptions = 'DENY'");
+  });
 });
