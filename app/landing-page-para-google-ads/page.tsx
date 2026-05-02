@@ -88,7 +88,7 @@ export default function LandingPageParaGoogleAdsPage() {
       name: siteConfig.name,
     },
     datePublished: '2026-04-27',
-    dateModified: '2026-04-27',
+    dateModified: '2026-05-02',
   };
 
   const breadcrumbSchema = {
@@ -161,6 +161,9 @@ export default function LandingPageParaGoogleAdsPage() {
             <div className="guide-cta">
               <Link href="/#calculadora" className="primary-button">
                 Calcular precio
+              </Link>
+              <Link href="/cuanto-cobrar-landing-page-google-ads" className="primary-button">
+                Cuanto cobrar
               </Link>
               <Link href="/landing-page-para-captar-leads" className="primary-button">
                 Ver captacion de leads
@@ -314,6 +317,13 @@ export default function LandingPageParaGoogleAdsPage() {
             <Link href="/landing-page-para-captar-leads">landing page para captar leads</Link>. Para
             delimitar entregables, te ayudara ver{' '}
             <Link href="/que-incluye-una-landing-page">que incluye una landing page</Link>.
+          </p>
+          <p>
+            Si ya estas en fase de presupuesto, la guia sobre{' '}
+            <Link href="/cuanto-cobrar-landing-page-google-ads">
+              cuanto cobrar una landing page para Google Ads
+            </Link>{' '}
+            baja la pieza a horas, medicion, revisiones, margen e IVA aparte.
           </p>
           <div className="guide-cta">
             <Link href="/#calculadora" className="primary-button">

@@ -25,6 +25,7 @@ export default function Footer() {
           <Link href="/estructura-landing-page-que-convierte">Estructura</Link>
           <Link href="/landing-page-para-captar-leads">Captar leads</Link>
           <Link href="/landing-page-para-google-ads">Google Ads</Link>
+          <Link href="/cuanto-cobrar-landing-page-google-ads">Precio Ads</Link>
           <Link href="/precio-landing-page-freelance">Guía de precios</Link>
           <Link href="/que-incluye-una-landing-page">Que incluye</Link>
           <Link href="/landing-page-vs-pagina-web">Landing vs web</Link>

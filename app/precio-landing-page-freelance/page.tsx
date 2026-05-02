@@ -210,6 +210,13 @@ export default function PrecioLandingPageFreelancePage() {
             mantenimiento posterior. Así proteges tu trabajo sin convertir cada presupuesto en una
             negociación a ciegas.
           </p>
+          <p>
+            Si la landing va a recibir trafico de pago, revisa tambien{' '}
+            <Link href="/cuanto-cobrar-landing-page-google-ads">
+              cuanto cobrar una landing page para Google Ads
+            </Link>{' '}
+            antes de cerrar el precio, porque tracking, eventos y pruebas pueden cambiar el alcance.
+          </p>
           <div className="guide-cta">
             <Link href="/#calculadora" className="primary-button">
               Usar la calculadora gratis
