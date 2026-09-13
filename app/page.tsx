@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
+import AdSlot from '@/components/AdSlot';
 import CalculatorForm from '@/components/CalculatorForm';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -100,6 +101,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <AdSlot placement="primary" />
+
       <section className="quote-next-band">
         <div className="container quote-next-panel">
           <div>
@@ -112,6 +115,8 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      <AdSlot placement="secondary" />
 
       <Footer />
     </main>

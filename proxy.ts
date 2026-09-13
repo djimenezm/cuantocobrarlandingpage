@@ -14,13 +14,14 @@ export function proxy(request: NextRequest) {
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https: http: 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' blob: data: https://*.googlesyndication.com https://*.doubleclick.net;
     font-src 'self';
-    connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-insights.com;
+    connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-insights.com https://*.googlesyndication.com https://*.doubleclick.net;
     object-src 'none';
     base-uri 'self';
     form-action 'self' https://formsubmit.co;
     frame-ancestors 'none';
+    frame-src https://*.googlesyndication.com https://*.doubleclick.net;
     trusted-types default nextjs nextjs#bundler;
     require-trusted-types-for 'script';
     upgrade-insecure-requests;

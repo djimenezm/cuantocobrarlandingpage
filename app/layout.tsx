@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { Analytics } from '@vercel/analytics/next';
+import AdSenseScript from '@/components/AdSenseScript';
 import { fontVariables } from '@/lib/fonts';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 import './globals.css';
@@ -28,7 +29,9 @@ const trustedTypesPolicyScript = `
 
         if (
           url.origin === window.location.origin ||
-          url.origin === 'https://va.vercel-scripts.com'
+          url.origin === 'https://va.vercel-scripts.com' ||
+          url.hostname.endsWith('.googlesyndication.com') ||
+          url.hostname.endsWith('.doubleclick.net')
         ) {
           return url.href;
         }
@@ -129,6 +132,7 @@ export default async function RootLayout({
       </head>
       <body>
         {children}
+        <AdSenseScript nonce={nonce} />
         <Analytics />
       </body>
     </html>
