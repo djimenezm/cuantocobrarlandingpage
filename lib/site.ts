@@ -21,8 +21,8 @@ export const siteConfig = {
   ownerName: 'Equipo de Cuánto Cobrar Landing Page',
   contactEmail: 'hola@cuantocobrarlandingpage.es',
   country: 'España',
-  themeColor: '#145da0',
-  backgroundColor: '#f6f8fb',
+  themeColor: '#07110e',
+  backgroundColor: '#fbfaf5',
 } as const;
 
 export function getSiteUrl() {

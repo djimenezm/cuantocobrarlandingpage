@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { Analytics } from '@vercel/analytics/next';
+import { fontVariables } from '@/lib/fonts';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 import './globals.css';
 
@@ -122,7 +123,7 @@ export default async function RootLayout({
   const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
-    <html lang="es" data-scroll-behavior="smooth">
+    <html lang="es" data-scroll-behavior="smooth" className={fontVariables}>
       <head>
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: trustedTypesPolicyScript }} />
       </head>

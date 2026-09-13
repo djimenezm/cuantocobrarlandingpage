@@ -1,16 +1,8 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { useMemo, useRef, useState } from 'react';
+import ResultCard from '@/components/ResultCard';
 import { calculateLandingPageQuote } from '@/lib/calculator';
-
-const ResultCard = dynamic(() => import('@/components/ResultCard'), {
-  loading: () => (
-    <p className="form-note" role="status">
-      Preparando el resumen del presupuesto...
-    </p>
-  ),
-});
 
 type FieldName =
   | 'targetMonthlyNet'
@@ -273,8 +265,7 @@ export default function CalculatorForm() {
     <div className="calculator-card" id="calculadora">
       <h2>Calculadora</h2>
       <p className="card-intro" id="calculator-intro">
-        Convierte tu objetivo mensual en un precio de landing page más defendible usando secciones,
-        integraciones, revisiones, copy, buffer y una reserva fiscal orientativa.
+        Define tus números y el alcance. El resultado aparece al calcular, sin registro.
       </p>
 
       <form

@@ -1,10 +1,16 @@
-import Script from 'next/script';
+import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import CalculatorForm from '@/components/CalculatorForm';
-import FAQ, { faqItems } from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { siteConfig } from '@/lib/site';
+
+const outcomeItems = [
+  'Precio mínimo defendible',
+  'Precio recomendado',
+  'Margen e IVA separados',
+] as const;
 
 export default function HomePage() {
   const webAppSchema = {
@@ -23,254 +29,90 @@ export default function HomePage() {
       priceCurrency: 'EUR',
     },
     featureList: [
-      'Calculadora para saber cuánto cobrar una landing page',
-      'Referencia base por hora a partir de tu objetivo mensual',
-      'Secciones, integraciones y revisiones',
-      'IVA aparte y margen configurable',
+      'Precio mínimo defendible para una landing page',
+      'Precio recomendado según alcance y margen',
+      'IVA separado del precio del proyecto',
     ],
   };
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
-  };
-
   return (
-    <main>
+    <main id="contenido-principal" className="quote-landing">
       <Script
         id="webapp-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
       />
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
 
       <Header />
 
-      <section className="hero">
-        <div className="container hero-grid">
-          <div>
-            <span className="eyebrow">Cuánto Cobrar Landing Page</span>
-            <h1>Calculadora para saber cuánto cobrar una landing page</h1>
-            <p className="lead">
-              Calcula un precio defendible para una landing page con secciones, revisiones, costes,
-              margen e IVA aparte.
-            </p>
-            <div className="hero-badges" aria-label="Ventajas principales">
-              <span className="hero-badge">Sin registro</span>
-              <span className="hero-badge">Pensada para proyectos cerrados</span>
-              <span className="hero-badge">IVA siempre aparte</span>
-            </div>
-            <ul className="hero-points">
-              <li>Convierte una intuición difusa en una cifra más defendible para el cliente.</li>
-              <li>Incluye secciones, integraciones, revisiones, copy y buffer de contingencia.</li>
-              <li>Útil para landing pages de captación, ventas, lanzamientos o lead generation.</li>
-            </ul>
-            <p className="hero-cta-note">
-              Si ya presupuestas por proyecto, úsala para comprobar si tu precio de landing page te
-              deja realmente el margen que buscas.
-            </p>
+      <section className="quote-hero" aria-labelledby="quote-hero-title">
+        <Image
+          src="/images/landing-page-quote-hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="quote-hero-image"
+        />
+        <div className="quote-hero-scrim" />
+        <div className="container quote-hero-content">
+          <span className="quote-hero-kicker">Calculadora para freelance y estudios</span>
+          <h1 id="quote-hero-title">Cuánto cobrar por una landing page, sin adivinar.</h1>
+          <p>
+            Define el alcance y descubre el precio que protege tus horas, tus costes y tu margen.
+          </p>
+
+          <div className="quote-hero-actions">
+            <a href="#calculadora" className="primary-button">
+              Calcular mi precio
+            </a>
+            <a href="#como-funciona" className="quote-ghost-button">
+              Ver qué obtengo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="quote-calculator-band" aria-labelledby="quote-calculator-heading">
+        <div className="container quote-calculator-shell">
+          <div className="quote-calculator-copy">
+            <span className="eyebrow">Calcula antes de presupuestar</span>
+            <h2 id="quote-calculator-heading">El alcance cambia. Tu precio también.</h2>
+            <p>Ajusta proyecto, costes y margen. Obtendrás una cifra lista para defender.</p>
           </div>
 
           <CalculatorForm />
         </div>
       </section>
 
-      <section className="section">
-        <div className="container feature-grid" aria-label="Puntos clave de la herramienta">
-          <article className="feature-card">
-            <h2>Qué resuelve</h2>
-            <p>
-              Parte de tu objetivo mensual, tus costes fijos y tus horas facturables para sacar una
-              referencia por hora. Después la convierte en un precio de landing page con alcance,
-              integraciones, revisiones, copy y margen.
-            </p>
-          </article>
-
-          <article className="feature-card">
-            <h2>Cuándo te aporta más valor</h2>
-            <p>
-              Cuando vendes proyectos cerrados y quieres validar si tu propuesta está alineada con
-              el trabajo real, el tiempo no vendible y el suelo económico de tu actividad.
-            </p>
-          </article>
-
-          <article className="feature-card">
-            <h2>Dónde poner el filtro final</h2>
-            <p>
-              En proyectos más grandes, funnels complejos, integraciones especiales o encajes
-              contractuales finos. La herramienta está pensada para orientar tu precio, no para
-              sustituir una revisión profesional.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section className="section" id="como-funciona">
-        <div className="container text-block">
-          <h2>Cómo funciona la calculadora</h2>
-          <p>
-            Primero estima cuánto necesitas facturar al mes para sostener tu objetivo neto y tus
-            costes fijos. Esa cifra se reparte entre tus horas facturables reales para obtener una
-            referencia base por hora.
-          </p>
-          <p>
-            Después esa referencia se lleva a una landing page concreta: introduces número de
-            secciones, integraciones, revisiones, si incluyes copywriting, los costes directos y el
-            margen extra que quieres defender. Con eso obtienes un precio mínimo defendible, un
-            precio recomendado y, si aplica, el total con IVA aparte.
-          </p>
-          <div className="disclaimer-box">
-            <strong>Idea clave:</strong> cobrar una landing page no debería depender solo de lo que
-            te parece razonable o de lo que cobra otra persona. Debería salir de tu suelo económico
-            y del alcance real del proyecto.
+      <section
+        className="quote-mini-strip"
+        id="como-funciona"
+        aria-label="Resultado de la calculadora"
+      >
+        <div className="container quote-mini-strip-inner">
+          <strong>Obtienes solo lo necesario:</strong>
+          <div>
+            {outcomeItems.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section alt">
-        <div className="container conversion-grid">
-          <div className="conversion-copy">
-            <h2>No uses el precio como techo: úsalo como suelo defendible</h2>
-            <p>
-              La herramienta te da una cifra para no presupuestar solo por intuición o por presión
-              del contexto. Si tu propuesta actual queda muy por debajo, probablemente te falte
-              margen, tiempo o protección frente a cambios.
-            </p>
-            <p>
-              La idea no es fijar un precio exacto al céntimo, sino ayudarte a llegar a una cifra
-              que puedas defender con más criterio delante de un cliente.
-            </p>
+      <section className="quote-next-band">
+        <div className="container quote-next-panel">
+          <div>
+            <span className="eyebrow">Después del cálculo</span>
+            <h2>Convierte la cifra en un presupuesto que se entienda.</h2>
+            <p>Usa el ejemplo para explicar alcance, revisiones y condiciones sin dar rodeos.</p>
           </div>
-
-          <div className="conversion-steps" aria-label="Cómo aprovechar mejor el resultado">
-            <article className="conversion-step">
-              <h3>1. Contrasta</h3>
-              <p>Compara el resultado con tu propuesta actual y detecta si te deja margen real.</p>
-            </article>
-
-            <article className="conversion-step">
-              <h3>2. Ajusta</h3>
-              <p>Prueba cambios en alcance, integraciones o margen para encontrar tu mínimo razonable.</p>
-            </article>
-
-            <article className="conversion-step">
-              <h3>3. Presupuesta mejor</h3>
-              <p>Usa el total recomendado como base para una propuesta cerrada más defendible.</p>
-            </article>
-          </div>
+          <Link href="/ejemplo-presupuesto-landing-page" className="primary-button">
+            Ver ejemplo de presupuesto
+          </Link>
         </div>
       </section>
 
-      <section className="section alt">
-        <div className="container">
-          <div className="lead-card">
-            <div className="lead-card-copy">
-              <span className="eyebrow">Recurso recomendado</span>
-              <h2>Si quieres una plantilla real para presupuestar mejor, usa este kit</h2>
-              <p>
-                En vez de duplicar captaciones aquí, te llevo al recurso que ya funciona y ya
-                entrega material real: el kit de presupuesto freelance de Cuánto Presupuestar.
-              </p>
-            </div>
-            <div className="lead-form">
-              <div className="disclaimer-box">
-                <strong>Qué incluye:</strong> plantilla de presupuesto, estructura de propuesta
-                comercial y checklist para revisar una oferta antes de enviarla.
-              </div>
-              <div className="guide-cta">
-                <a
-                  href="/salida/kit-presupuesto"
-                  className="primary-button"
-                >
-                  Abrir el kit
-                </a>
-                <a
-                  href="/salida/kit-presupuesto-texto"
-                  className="primary-button"
-                >
-                  Descargar versión en texto
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container text-block">
-          <span className="eyebrow">Guía práctica</span>
-          <h2>Antes de enviar una propuesta, revisa cómo defender el precio</h2>
-          <p>
-            La calculadora te da una cifra orientativa, pero una landing page también se defiende
-            explicando alcance, revisiones, copy, integraciones y soporte posterior. He preparado
-            una guía específica para convertir esos factores en una propuesta más clara.
-          </p>
-          <div className="guide-cta">
-            <Link href="/ejemplo-presupuesto-landing-page" className="primary-button">
-              Ver ejemplo de presupuesto
-            </Link>
-            <Link href="/estructura-landing-page-que-convierte" className="primary-button">
-              Ver estructura
-            </Link>
-            <Link href="/landing-page-para-captar-leads" className="primary-button">
-              Captar leads
-            </Link>
-            <Link href="/landing-page-para-google-ads" className="primary-button">
-              Google Ads
-            </Link>
-            <Link href="/cuanto-cobrar-landing-page-google-ads" className="primary-button">
-              Precio Google Ads
-            </Link>
-            <Link href="/precio-landing-page-freelance" className="primary-button">
-              Leer guía de precios
-            </Link>
-            <Link href="/que-incluye-una-landing-page" className="primary-button">
-              Ver que incluye
-            </Link>
-            <Link href="/landing-page-vs-pagina-web" className="primary-button">
-              Comparar landing vs web
-            </Link>
-            <Link href="/#calculadora" className="primary-button">
-              Volver a calcular
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section alt">
-        <div className="container text-block">
-          <span className="eyebrow">Otra herramienta</span>
-          <h2>Si tu servicio no es solo una landing, prueba también Cuánto Presupuestar</h2>
-          <p>
-            Esta herramienta te ayuda a aterrizar el precio de una landing page concreta. Si quieres
-            calcular presupuestos cerrados de proyectos más amplios, también puedes usar{' '}
-            <a href="https://www.cuantopresupuestar.es">Cuánto Presupuestar</a>.
-          </p>
-          <p>
-            Y si después del lanzamiento vas a vender soporte continuo, te puede encajar también{' '}
-            <a href="https://www.mantenimientowebmensual.es">Mantenimiento Web Mensual</a> para
-            transformar ese trabajo recurrente en una cuota defendible.
-          </p>
-          <p>
-            Si quieres moverte entre todas las calculadoras del ecosistema, las tienes reunidas en{' '}
-            <a href="https://www.paneldeherramientas.es">Panel de Herramientas</a>.
-          </p>
-        </div>
-      </section>
-
-      <FAQ />
       <Footer />
     </main>
   );

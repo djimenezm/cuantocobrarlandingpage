@@ -31,12 +31,12 @@ describe('performance config', () => {
     expect(globalStyles).toMatch(/\.lead\s*{[^}]*max-width:\s*48ch/s);
   });
 
-  it('keeps submit-only code out of the initial calculator bundle', () => {
+  it('keeps the essential result UI reliable while deferring analytics', () => {
     const calculatorForm = readFileSync(join(process.cwd(), 'components/CalculatorForm.tsx'), 'utf8');
 
-    expect(calculatorForm).toContain("dynamic(() => import('@/components/ResultCard')");
-    expect(calculatorForm).not.toContain("import ResultCard from '@/components/ResultCard'");
+    expect(calculatorForm).toContain("import ResultCard from '@/components/ResultCard'");
     expect(calculatorForm).not.toContain("import { track } from '@vercel/analytics'");
+    expect(calculatorForm).toContain("void import('@vercel/analytics')");
   });
 
   it('does not rely on color alone for footer links', () => {
