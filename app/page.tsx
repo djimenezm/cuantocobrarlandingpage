@@ -103,6 +103,30 @@ export default function HomePage() {
 
       <AdSlot placement="primary" />
 
+      <section className="quote-method-band" aria-labelledby="quote-method-heading">
+        <div className="container quote-method-grid">
+          <div>
+            <span className="eyebrow">Cómo se calcula</span>
+            <h2 id="quote-method-heading">El alcance de la landing determina el precio.</h2>
+          </div>
+          <div className="quote-method-detail">
+            <p>
+              Estimamos tiempo de descubrimiento, secciones, integraciones, textos, revisiones y
+              puesta en marcha. Esa carga de trabajo se combina con tu tarifa, costes directos y
+              margen.
+            </p>
+            <p>
+              El IVA se añade aparte. Ajusta la estimación al alcance pactado: una integración o
+              una ronda de cambios puede alterar el presupuesto.
+            </p>
+            <nav aria-label="Profundiza en el presupuesto de la landing page">
+              <a href="/que-incluye-una-landing-page">Qué incluir en la landing</a>
+              <a href="/precio-landing-page-freelance">Cómo explicar el precio</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
       <section className="quote-next-band">
         <div className="container quote-next-panel">
           <div>

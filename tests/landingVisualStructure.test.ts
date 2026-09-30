@@ -1,10 +1,11 @@
+import { readStyles } from './readStyles';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 describe('focused calculator landing', () => {
   it('uses the photographic hero and the compact calculator-first structure', () => {
     const page = readFileSync(join(process.cwd(), 'app/page.tsx'), 'utf8');
-    const styles = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
+    const styles = readStyles();
 
     expect(page).toContain('className="quote-landing"');
     expect(page).toContain('src="/images/landing-page-quote-hero.webp"');

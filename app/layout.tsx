@@ -7,67 +7,12 @@ import { getSiteUrl, siteConfig } from '@/lib/site';
 import './globals.css';
 
 const siteUrl = getSiteUrl();
-const trustedTypesPolicyScript = `
-(() => {
-  if (!window.trustedTypes) return;
-
-  const blockedHtmlPattern = /<script\\b|<iframe\\b|<object\\b|<embed\\b|\\son\\w+\\s*=|javascript:/i;
-
-  try {
-    window.trustedTypes.createPolicy('default', {
-      createHTML(value) {
-        const html = String(value);
-
-        if (blockedHtmlPattern.test(html)) {
-          throw new TypeError('Blocked unsafe HTML by Trusted Types policy');
-        }
-
-        return html;
-      },
-      createScriptURL(value) {
-        const url = new URL(String(value), window.location.origin);
-
-        if (
-          url.origin === window.location.origin ||
-          url.origin === 'https://va.vercel-scripts.com' ||
-          url.hostname.endsWith('.googlesyndication.com') ||
-          url.hostname.endsWith('.doubleclick.net')
-        ) {
-          return url.href;
-        }
-
-        throw new TypeError('Blocked unsafe script URL by Trusted Types policy');
-      },
-      createScript(value) {
-        const script = String(value).trim();
-
-        if (script.startsWith('{') || script.startsWith('[')) {
-          const data = JSON.parse(script);
-          const items = Array.isArray(data) ? data : [data];
-          const isSchemaOrgJson = items.every((item) => (
-            item &&
-            typeof item === 'object' &&
-            item['@context'] === 'https://schema.org'
-          ));
-
-          if (isSchemaOrgJson) {
-            return script;
-          }
-        }
-
-        throw new TypeError('Inline scripts must use a nonce');
-      },
-    });
-  } catch (error) {
-    if (!String(error).includes('already exists')) throw error;
-  }
-})();
-`;
+const homeTitle = 'Cuánto cobrar por una landing page | Calculadora';
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: `${siteConfig.name} | ${siteConfig.title}`,
+    default: homeTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -86,7 +31,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     siteName: siteConfig.name,
     url: '/',
-    title: `${siteConfig.name} | ${siteConfig.title}`,
+    title: homeTitle,
     description: siteConfig.description,
     images: [
       {
@@ -99,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} | ${siteConfig.title}`,
+    title: homeTitle,
     description: siteConfig.description,
     images: ['/opengraph-image'],
   },
@@ -127,9 +72,7 @@ export default async function RootLayout({
 
   return (
     <html lang="es" data-scroll-behavior="smooth" className={fontVariables}>
-      <head>
-        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: trustedTypesPolicyScript }} />
-      </head>
+      <head />
       <body>
         {children}
         <AdSenseScript nonce={nonce} />

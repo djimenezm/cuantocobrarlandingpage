@@ -1,60 +1,28 @@
-# Cuanto Cobrar Landing Page
+# Cuánto Cobrar por una Landing Page
 
-MVP en Next.js para calcular cuanto cobrar por una landing page a partir de un objetivo mensual, unos costes fijos, tus horas facturables y el alcance real del proyecto: secciones, integraciones, copywriting, revisiones, costes directos, buffer de contingencia y una reserva fiscal orientativa.
+Calculadora para estimar el precio de una landing según alcance, horas, costes y margen. Incluye guías para convertir la cifra en un presupuesto concreto.
 
-## Requisitos
+## Empezar
 
-- Node.js 20.9 o superior
-- npm 10 o superior
-
-## Arranque en local
+Requiere Node.js 20.9 o superior y npm 10 o superior.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Despues abre:
+La aplicación local se abre en <http://localhost:3004/>.
+
+## Comprobar cambios
 
 ```bash
-http://localhost:3004
+npm run lint
+npm test
+npm run build
 ```
 
-## Variable de entorno
+## Documentación
 
-Para produccion, configura:
+- [Estructura, configuración y revisión local](docs/desarrollo.md)
 
-```bash
-NEXT_PUBLIC_SITE_URL=https://www.cuantocobrarlandingpage.es
-```
-
-## Estructura
-
-```text
-landing-page/
-  app/
-    aviso-legal/page.tsx
-    cookies/page.tsx
-    privacidad/page.tsx
-    globals.css
-    layout.tsx
-    page.tsx
-  components/
-    CalculatorForm.tsx
-    FAQ.tsx
-    Footer.tsx
-    Header.tsx
-    ResultCard.tsx
-  lib/
-    calculator.ts
-    format.ts
-    site.ts
-  public/
-  .env.example
-  .gitignore
-  next-env.d.ts
-  next.config.ts
-  package.json
-  README.md
-  tsconfig.json
-```
+Los anuncios no se activan por defecto. Consulta la guía de desarrollo antes de cambiar su configuración.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { calculateLandingPageQuote } from '@/lib/calculator';
+import { assessLandingOffer, calculateLandingPageQuote } from '@/lib/calculator';
 
 describe('calculateLandingPageQuote', () => {
   it('calculates a landing page quote from the monthly target and project inputs', () => {
@@ -94,5 +94,44 @@ describe('calculateLandingPageQuote', () => {
         effectiveHourlyRate: 0,
       }),
     );
+  });
+});
+
+describe('assessLandingOffer', () => {
+  const quote = calculateLandingPageQuote({
+    targetMonthlyNet: 2000,
+    monthlyFixedCosts: 350,
+    billableHoursPerMonth: 80,
+    sections: 6,
+    integrationsCount: 2,
+    includeCopywriting: true,
+    revisionRounds: 2,
+    directProjectCosts: 50,
+    contingencyBufferPercent: 15,
+    taxReservePercent: 20,
+    profitMarginPercent: 10,
+    hasIVA: true,
+  });
+
+  it('shows the shortfall and hours to remove when the client budget is low', () => {
+    const assessment = assessLandingOffer(quote, 800);
+
+    expect(assessment.gapToFloor).toBe(-147.22);
+    expect(assessment.hoursToTrim).toBeGreaterThan(4);
+    expect(assessment.directCostsUncovered).toBe(false);
+  });
+
+  it('flags a budget below direct project costs', () => {
+    const assessment = assessLandingOffer(quote, 30);
+
+    expect(assessment.directCostsUncovered).toBe(true);
+    expect(assessment.hoursToTrim).toBe(quote.bufferedProjectHours);
+  });
+
+  it('compares a higher budget with the recommended quote', () => {
+    const assessment = assessLandingOffer(quote, 1100);
+
+    expect(assessment.gapToRecommended).toBe(58.06);
+    expect(assessment.hoursToTrim).toBe(0);
   });
 });

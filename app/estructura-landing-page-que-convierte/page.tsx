@@ -8,23 +8,23 @@ import { getSiteUrl, siteConfig } from '@/lib/site';
 const route = '/estructura-landing-page-que-convierte';
 const title = 'Estructura de una landing page que convierte: secciones y orden';
 const description =
-  'Guia practica para definir la estructura de una landing page que convierte: hero, problema, beneficios, prueba social, oferta, formulario, FAQ, CTA, revisiones y extras.';
+  'Guía práctica para definir la estructura de una landing page que convierte: hero, problema, beneficios, prueba social, oferta, formulario, FAQ, CTA, revisiones y extras.';
 
 const faqItems = [
   {
-    question: 'Cual es la estructura basica de una landing page?',
+    question: '¿Cuál es la estructura básica de una landing page?',
     answer:
-      'Una estructura habitual incluye hero con propuesta de valor, problema, beneficios, prueba social, como funciona, oferta o entregable, formulario o CTA, FAQ y cierre. El orden puede cambiar segun objetivo y trafico.',
+      'Una estructura habitual incluye hero con propuesta de valor, problema, beneficios, prueba social, cómo funciona, oferta o entregable, formulario o CTA, FAQ y cierre. El orden puede cambiar según objetivo y tráfico.',
   },
   {
-    question: 'Cuantas secciones debe tener una landing page?',
+    question: '¿Cuántas secciones debe tener una landing page?',
     answer:
-      'No hay un numero unico. Una landing sencilla puede funcionar con 5 o 6 secciones. Una oferta mas cara, fria o compleja puede necesitar mas contexto, prueba social, objeciones y detalle.',
+      'No hay un número único. Una landing sencilla puede funcionar con 5 o 6 secciones. Una oferta más cara, fría o compleja puede necesitar más contexto, prueba social, objeciones y detalle.',
   },
   {
-    question: 'La estructura afecta al precio de una landing?',
+    question: '¿La estructura afecta al precio de una landing?',
     answer:
-      'Si. Mas secciones implican mas copy, diseno, maquetacion, revisiones y pruebas. Por eso conviene definir estructura antes de cerrar precio.',
+      'Sí. Más secciones implican más copy, diseño, maquetación, revisiones y pruebas. Por eso conviene definir estructura antes de cerrar precio.',
   },
 ] as const;
 
@@ -141,14 +141,14 @@ export default function EstructuraLandingPageQueConviertePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="eyebrow">Estructura y conversion</span>
+            <span className="eyebrow">Estructura y conversión</span>
             <h1>Estructura de una landing page que convierte: secciones y orden</h1>
             <p className="lead">
               Una landing que convierte no se improvisa juntando bloques bonitos. Necesita una
-              secuencia clara: captar atencion, explicar el valor, resolver objeciones, demostrar
-              confianza y llevar al usuario hacia una accion concreta.
+              secuencia clara: captar atención, explicar el valor, resolver objeciones, demostrar
+              confianza y llevar al usuario hacia una acción concreta.
             </p>
-            <div className="hero-badges" aria-label="Que cubre esta guia">
+            <div className="hero-badges" aria-label="Qué cubre esta guía">
               <span className="hero-badge">Secciones clave</span>
               <span className="hero-badge">CTA y formularios</span>
               <span className="hero-badge">Prueba social</span>
@@ -158,18 +158,18 @@ export default function EstructuraLandingPageQueConviertePage() {
                 Calcular precio
               </Link>
               <Link href="/que-incluye-una-landing-page" className="primary-button">
-                Ver que incluye
+                Ver qué incluye
               </Link>
             </div>
           </div>
 
           <aside className="feature-card article-summary">
-            <h2>Resumen rapido</h2>
+            <h2>Resumen rápido</h2>
             <ul className="article-list">
-              <li>La estructura debe responder al objetivo de conversion.</li>
-              <li>Mas secciones implican mas copy, diseno, maquetacion y revision.</li>
+              <li>La estructura debe responder al objetivo de conversión.</li>
+              <li>Más secciones implican más copy, diseño, maquetación y revisión.</li>
               <li>El formulario y el CTA deben estar pensados desde el inicio.</li>
-              <li>La prueba social reduce friccion y ayuda a justificar la oferta.</li>
+              <li>La prueba social reduce fricción y ayuda a justificar la oferta.</li>
             </ul>
           </aside>
         </div>
@@ -177,19 +177,19 @@ export default function EstructuraLandingPageQueConviertePage() {
 
       <section className="section">
         <div className="container text-block">
-          <h2>Antes de pensar en diseno, define la accion principal</h2>
+          <h2>Antes de pensar en diseño, define la acción principal</h2>
           <p>
             Una landing puede buscar una llamada, una solicitud de presupuesto, una descarga, una
-            compra o una reserva. La estructura cambia segun esa accion. Si no hay una accion
-            principal clara, es facil acabar con una pagina informativa que no convierte.
+            compra o una reserva. La estructura cambia según esa acción. Si no hay una acción
+            principal clara, es fácil acabar con una página informativa que no convierte.
           </p>
           <p>
             La pregunta inicial no es cuantas secciones quieres, sino que necesita entender el
             usuario antes de dar el siguiente paso.
           </p>
           <div className="disclaimer-box">
-            <strong>Idea clave:</strong> una landing no es una web pequena. Es una pagina con una
-            secuencia pensada para que una persona tome una decision concreta.
+            <strong>Idea clave:</strong> una landing no es una web pequeña. Es una página con una
+            secuencia pensada para que una persona tome una decisión concreta.
           </div>
         </div>
       </section>
@@ -199,23 +199,23 @@ export default function EstructuraLandingPageQueConviertePage() {
           <article className="feature-card">
             <h2>Hero</h2>
             <p>
-              Debe explicar que ofreces, para quien es y que resultado promete. Si el hero no se
-              entiende rapido, el resto de la landing trabaja cuesta arriba.
+              Debe explicar qué ofreces, para quién es y qué resultado promete. Si el hero no se
+              entiende rápido, el resto de la landing trabaja cuesta arriba.
             </p>
           </article>
 
           <article className="feature-card">
             <h2>Problema y beneficios</h2>
             <p>
-              Conecta con la situacion del usuario y traduce caracteristicas en beneficios claros.
-              No basta con listar servicios: hay que explicar por que importan.
+              Conecta con la situación del usuario y traduce características en beneficios claros.
+              No basta con listar servicios: hay que explicar por qué importan.
             </p>
           </article>
 
           <article className="feature-card">
             <h2>CTA y formulario</h2>
             <p>
-              La llamada a la accion debe estar alineada con el nivel de compromiso. Pedir una
+              La llamada a la acción debe estar alineada con el nivel de compromiso. Pedir una
               llamada no es lo mismo que pedir un email o una compra directa.
             </p>
           </article>
@@ -227,29 +227,29 @@ export default function EstructuraLandingPageQueConviertePage() {
           <div className="text-block">
             <h2>Orden recomendado para una landing page</h2>
             <ol className="article-list article-list-ordered">
-              <li>Hero con promesa clara, publico objetivo y CTA principal.</li>
-              <li>Contexto del problema o situacion que quiere resolver el usuario.</li>
+              <li>Hero con promesa clara, público objetivo y CTA principal.</li>
+              <li>Contexto del problema o situación que quiere resolver el usuario.</li>
               <li>Beneficios principales explicados con lenguaje concreto.</li>
-              <li>Como funciona el proceso o que pasos vienen despues.</li>
+              <li>Cómo funciona el proceso o qué pasos vienen después.</li>
               <li>Prueba social, casos, datos, logos, testimonios o ejemplos.</li>
-              <li>Oferta, entregable, servicio o paquete con limites claros.</li>
-              <li>Formulario, calendario, boton de contacto o accion principal.</li>
+              <li>Oferta, entregable, servicio o paquete con límites claros.</li>
+              <li>Formulario, calendario, botón de contacto o acción principal.</li>
               <li>FAQ para resolver objeciones antes del cierre final.</li>
             </ol>
             <p>
-              Este orden es una base, no una regla rigida. Una landing para trafico frio suele
-              necesitar mas contexto que una landing para usuarios que ya conocen la marca.
+              Este orden es una base, no una regla rígida. Una landing para tráfico frío suele
+              necesitar más contexto que una landing para usuarios que ya conocen la marca.
             </p>
           </div>
 
           <aside className="feature-card article-summary">
             <h2>Preguntas que debe responder</h2>
             <ul className="article-list">
-              <li>Que es esto?</li>
-              <li>Es para mi?</li>
-              <li>Que gano?</li>
-              <li>Por que deberia confiar?</li>
-              <li>Que tengo que hacer ahora?</li>
+              <li>¿Qué es esto?</li>
+              <li>¿Es para mí?</li>
+              <li>¿Qué gano?</li>
+              <li>¿Por qué debería confiar?</li>
+              <li>¿Qué tengo que hacer ahora?</li>
             </ul>
           </aside>
         </div>
@@ -257,26 +257,26 @@ export default function EstructuraLandingPageQueConviertePage() {
 
       <section className="section alt">
         <div className="container text-block">
-          <h2>Como cambia el precio segun la estructura</h2>
+          <h2>Cómo cambia el precio según la estructura</h2>
           <p>
             Una landing de cinco secciones con textos entregados por el cliente no tiene el mismo
             esfuerzo que una landing con copy completo, prueba social, integraciones, eventos,
-            formulario avanzado y varias rondas de revision.
+            formulario avanzado y varias rondas de revisión.
           </p>
           <div className="feature-grid" aria-label="Factores que afectan al precio">
             <article className="feature-card">
-              <h3>Mas secciones</h3>
-              <p>Mas estrategia, wireframe, diseno, maquetacion, contenido y pruebas responsive.</p>
+              <h3>Más secciones</h3>
+              <p>Más estrategia, wireframe, diseño, maquetación, contenido y pruebas responsive.</p>
             </article>
 
             <article className="feature-card">
-              <h3>Mas conversion</h3>
-              <p>Mas trabajo de copy, objeciones, CTA, formularios, medicion y seguimiento.</p>
+              <h3>Más conversión</h3>
+              <p>Más trabajo de copy, objeciones, CTA, formularios, medición y seguimiento.</p>
             </article>
 
             <article className="feature-card">
-              <h3>Mas integraciones</h3>
-              <p>Mas riesgo tecnico, configuracion, validaciones, automatizaciones y QA.</p>
+              <h3>Más integraciones</h3>
+              <p>Más riesgo técnico, configuración, validaciones, automatizaciones y QA.</p>
             </article>
           </div>
         </div>
@@ -286,16 +286,16 @@ export default function EstructuraLandingPageQueConviertePage() {
         <div className="container text-block">
           <h2>Errores comunes al estructurar una landing</h2>
           <ol className="article-list article-list-ordered">
-            <li>Meter demasiados objetivos en una sola pagina.</li>
-            <li>Empezar por el diseno sin definir mensaje ni accion principal.</li>
-            <li>Poner formularios largos para usuarios que aun no confian.</li>
+            <li>Meter demasiados objetivos en una sola página.</li>
+            <li>Empezar por el diseño sin definir mensaje ni acción principal.</li>
+            <li>Poner formularios largos para usuarios que aún no confían.</li>
             <li>No incluir prueba social, ejemplos o razones para creer.</li>
-            <li>Esconder el CTA o cambiarlo en cada seccion.</li>
-            <li>No aclarar que pasa despues de enviar el formulario.</li>
+            <li>Esconder el CTA o cambiarlo en cada sección.</li>
+            <li>No aclarar qué pasa después de enviar el formulario.</li>
           </ol>
           <p>
-            Si lo que necesitas es delimitar el alcance completo del servicio, revisa tambien{' '}
-            <Link href="/que-incluye-una-landing-page">que incluye una landing page</Link>. Si ya
+            Si lo que necesitas es delimitar el alcance completo del servicio, revisa también{' '}
+            <Link href="/que-incluye-una-landing-page">qué incluye una landing page</Link>. Si ya
             tienes claro el alcance, baja la estructura a precio con la calculadora.
           </p>
           <div className="guide-cta">

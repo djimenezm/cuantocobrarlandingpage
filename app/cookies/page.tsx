@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import LegalShell from '@/components/LegalShell';
 import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function CookiesPage() {
   return (
-    <main className="legal-page container">
+    <LegalShell>
       <h1>Política de cookies</h1>
       <div className="legal-card">
         <p>
@@ -42,11 +43,11 @@ export default function CookiesPage() {
       <section className="legal-section">
         <h2>Cambios futuros</h2>
         <p>
-          Si más adelante se incorporan herramientas de analítica, publicidad, afiliación o
-          servicios de terceros que instalen cookies no esenciales, esta política se actualizará
-          para reflejarlo con más detalle.
+          La infraestructura para mostrar publicidad de Google AdSense permanece desactivada. Antes
+          de activarla se deberá configurar una plataforma de consentimiento admitida por Google y
+          actualizar esta política con los proveedores, finalidades y opciones disponibles.
         </p>
       </section>
-    </main>
+    </LegalShell>
   );
 }

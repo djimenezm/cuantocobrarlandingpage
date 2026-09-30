@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { formatCurrency } from '@/lib/format';
+import { landingExampleInputs, landingExampleQuotes } from '@/lib/landingExamples';
 import { siteConfig } from '@/lib/site';
 
 const title = 'Precio landing page freelance: cuánto cobrar';
@@ -131,30 +133,49 @@ export default function PrecioLandingPageFreelancePage() {
       </section>
 
       <section className="section">
+        <div className="container text-block">
+          <h2>Tres alcances con la misma tarifa de partida</h2>
+          <p>
+            Estos no son precios de mercado. Son resultados de la calculadora para una persona con
+            {' '}{formatCurrency(landingExampleInputs.basic.targetMonthlyNet)} de objetivo neto,
+            {' '}{formatCurrency(landingExampleInputs.basic.monthlyFixedCosts)} de costes fijos,
+            {' '}{landingExampleInputs.basic.billableHoursPerMonth} horas facturables y un
+            {' '}{landingExampleInputs.basic.profitMarginPercent}% de margen. Los importes son sin IVA.
+          </p>
+        </div>
         <div className="container feature-grid" aria-label="Rangos orientativos">
           <article className="feature-card">
             <h2>Landing básica</h2>
             <p>
-              Una página corta, con pocas secciones y contenido ya preparado, suele requerir menos
-              trabajo de estrategia. Aun así, incluye preparación, maquetación, responsive, pruebas
-              y ajustes finales.
+              {landingExampleInputs.basic.sections} secciones, textos aportados por el cliente,
+              {' '}{landingExampleInputs.basic.integrationsCount} integración y
+              {' '}{landingExampleInputs.basic.revisionRounds} ronda de revisión. Incluye preparación,
+              maquetación responsive y pruebas.
             </p>
+            <p className="scenario-price">{formatCurrency(landingExampleQuotes.basic.recommendedLandingPrice)} sin IVA</p>
           </article>
 
           <article className="feature-card">
             <h2>Landing de captación</h2>
             <p>
-              Si incluye formulario, propuesta de valor, estructura persuasiva, tracking y varias
-              rondas de cambios, ya no es solo una página: es una pieza comercial completa.
+              {landingExampleInputs.capture.sections} secciones con textos breves,
+              {' '}{landingExampleInputs.capture.integrationsCount} integraciones y
+              {' '}{landingExampleInputs.capture.revisionRounds} rondas de revisión. El{' '}
+              <Link href="/ejemplo-presupuesto-landing-page">ejemplo de presupuesto</Link> detalla
+              {' '}este caso.
             </p>
+            <p className="scenario-price">{formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)} sin IVA</p>
           </article>
 
           <article className="feature-card">
             <h2>Landing de venta</h2>
             <p>
-              Cuando hay lanzamiento, urgencia, copy comercial, integraciones, pagos o medición más
-              fina, el precio debe cubrir riesgo, responsabilidad y margen de revisión.
+              {landingExampleInputs.expanded.sections} secciones con textos breves,
+              {' '}{landingExampleInputs.expanded.integrationsCount} integraciones y
+              {' '}{landingExampleInputs.expanded.revisionRounds} rondas. Urgencias, campañas y
+              estrategia adicional se presupuestan aparte.
             </p>
+            <p className="scenario-price">{formatCurrency(landingExampleQuotes.expanded.recommendedLandingPrice)} sin IVA</p>
           </article>
         </div>
       </section>
@@ -183,7 +204,7 @@ export default function PrecioLandingPageFreelancePage() {
           </div>
 
           <aside className="feature-card article-summary">
-            <h2>Checklist antes de enviar precio</h2>
+            <h2>Lista de comprobación antes de enviar precio</h2>
             <ul className="article-list">
               <li>Número de secciones y variantes responsive.</li>
               <li>Quién aporta textos, imágenes y propuesta de valor.</li>
@@ -211,9 +232,9 @@ export default function PrecioLandingPageFreelancePage() {
             negociación a ciegas.
           </p>
           <p>
-            Si la landing va a recibir trafico de pago, revisa tambien{' '}
+            Si la landing va a recibir tráfico de pago, revisa también{' '}
             <Link href="/cuanto-cobrar-landing-page-google-ads">
-              cuanto cobrar una landing page para Google Ads
+              cuánto cobrar una landing page para Google Ads
             </Link>{' '}
             antes de cerrar el precio, porque tracking, eventos y pruebas pueden cambiar el alcance.
           </p>

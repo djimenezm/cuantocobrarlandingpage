@@ -6,30 +6,30 @@ import Header from '@/components/Header';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 
 const route = '/landing-page-para-google-ads';
-const title = 'Landing page para Google Ads: estructura, precio y conversion';
+const title = 'Landing page para Google Ads: estructura, precio y conversión';
 const description =
-  'Guia para crear y presupuestar una landing page para Google Ads: mensaje, CTA, formulario, velocidad, tracking, conversiones y alcance del proyecto.';
+  'Guía para crear y presupuestar una landing page para Google Ads: mensaje, CTA, formulario, velocidad, tracking, conversiones y alcance del proyecto.';
 
 const faqItems = [
   {
-    question: 'Que debe tener una landing page para Google Ads?',
+    question: '¿Qué debe tener una landing page para Google Ads?',
     answer:
-      'Debe tener una promesa alineada con el anuncio, CTA claro, contenido relevante para la busqueda, formulario o accion principal, velocidad de carga, version movil cuidada y medicion de conversiones.',
+      'Debe tener una promesa alineada con el anuncio, CTA claro, contenido relevante para la búsqueda, formulario o acción principal, velocidad de carga, versión móvil cuidada y medición de conversiones.',
   },
   {
-    question: 'Cuanto cuesta una landing page para Google Ads?',
+    question: '¿Cuánto cuesta una landing page para Google Ads?',
     answer:
-      'Depende del alcance: numero de secciones, copy, diseno, desarrollo, formularios, integraciones, tracking, variantes y revisiones. Si la landing depende de anuncios de pago, conviene presupuestar tambien QA y medicion.',
+      'Depende del alcance: número de secciones, copy, diseño, desarrollo, formularios, integraciones, tracking, variantes y revisiones. Si la landing depende de anuncios de pago, conviene presupuestar también QA y medición.',
   },
   {
-    question: 'Es distinta a una landing para captar leads?',
+    question: '¿Es distinta a una landing para captar leads?',
     answer:
-      'Puede compartir estructura, pero en Google Ads pesa mas la coherencia entre palabra clave, anuncio, mensaje de la landing, velocidad, calidad movil y evento de conversion.',
+      'Puede compartir estructura, pero en Google Ads pesa más la coherencia entre palabra clave, anuncio, mensaje de la landing, velocidad, calidad móvil y evento de conversión.',
   },
   {
-    question: 'Debo incluir configuracion de Google Ads en el precio?',
+    question: '¿Debo incluir configuración de Google Ads en el precio?',
     answer:
-      'Solo si forma parte del alcance. Si no gestionas campanas, deja claro que entregas la landing y la medicion basica, pero no la optimizacion de anuncios.',
+      'Solo si forma parte del alcance. Si no gestionas campañas, deja claro que entregas la landing y la medición básica, pero no la optimización de anuncios.',
   },
 ] as const;
 
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     'landing page para google ads',
     'landing page anuncios google',
     'precio landing page google ads',
-    'pagina de aterrizaje google ads',
-    'landing page para campanas de pago',
+    'página de aterrizaje google ads',
+    'landing page para campañas de pago',
   ],
   openGraph: {
     title: `${title} | ${siteConfig.name}`,
@@ -147,14 +147,14 @@ export default function LandingPageParaGoogleAdsPage() {
         <div className="container hero-grid">
           <div>
             <span className="eyebrow">Google Ads</span>
-            <h1>Landing page para Google Ads: estructura, precio y conversion</h1>
+            <h1>Landing page para Google Ads: estructura, precio y conversión</h1>
             <p className="lead">
-              Si vas a enviar trafico de pago a una landing, cada clic desperdiciado cuesta dinero.
-              La pagina debe responder exactamente a la busqueda, cargar rapido, explicar la oferta
-              sin rodeos y medir la conversion que importa.
+              Si vas a enviar tráfico de pago a una landing, cada clic desperdiciado cuesta dinero.
+              La página debe responder exactamente a la búsqueda, cargar rápido, explicar la oferta
+              sin rodeos y medir la conversión que importa.
             </p>
-            <div className="hero-badges" aria-label="Que cubre esta guia">
-              <span className="hero-badge">Trafico de pago</span>
+            <div className="hero-badges" aria-label="Qué cubre esta guía">
+              <span className="hero-badge">Tráfico de pago</span>
               <span className="hero-badge">Conversiones</span>
               <span className="hero-badge">Tracking</span>
             </div>
@@ -163,21 +163,21 @@ export default function LandingPageParaGoogleAdsPage() {
                 Calcular precio
               </Link>
               <Link href="/cuanto-cobrar-landing-page-google-ads" className="primary-button">
-                Cuanto cobrar
+                Cuánto cobrar
               </Link>
               <Link href="/landing-page-para-captar-leads" className="primary-button">
-                Ver captacion de leads
+                Ver captación de leads
               </Link>
             </div>
           </div>
 
           <aside className="feature-card article-summary">
-            <h2>Resumen rapido</h2>
+            <h2>Resumen rápido</h2>
             <ul className="article-list">
-              <li>La landing debe coincidir con la intencion del anuncio.</li>
-              <li>Velocidad, movil y claridad afectan al coste de oportunidad.</li>
-              <li>El precio debe incluir tracking y pruebas si la campana depende de conversion.</li>
-              <li>No mezcles gestion de anuncios con construccion de landing si no esta pactado.</li>
+              <li>La landing debe coincidir con la intención del anuncio.</li>
+              <li>Velocidad, móvil y claridad afectan al coste de oportunidad.</li>
+              <li>El precio debe incluir tracking y pruebas si la campaña depende de conversión.</li>
+              <li>No mezcles gestión de anuncios con construcción de landing si no está pactado.</li>
             </ul>
           </aside>
         </div>
@@ -185,20 +185,20 @@ export default function LandingPageParaGoogleAdsPage() {
 
       <section className="section">
         <div className="container text-block">
-          <h2>Por que una landing para Google Ads exige mas precision</h2>
+          <h2>Por qué una landing para Google Ads exige más precisión</h2>
           <p>
-            En una landing organica puedes permitirte explicar mas contexto. En una landing para
-            Google Ads, el usuario llega con una intencion concreta y el anunciante paga por esa
-            visita. Si la pagina no confirma rapido que esta en el sitio correcto, el clic se pierde.
+            En una landing orgánica puedes permitirte explicar más contexto. En una landing para
+            Google Ads, el usuario llega con una intención concreta y el anunciante paga por esa
+            visita. Si la página no confirma rápido que está en el sitio correcto, el clic se pierde.
           </p>
           <p>
-            Por eso el trabajo no es solo disenar una pagina bonita. Hay que conectar palabra clave,
+            Por eso el trabajo no es solo diseñar una página bonita. Hay que conectar palabra clave,
             anuncio, titular, CTA, formulario, objeciones, prueba de confianza y evento de
-            conversion. Esa coordinacion tambien debe aparecer en el presupuesto.
+            conversión. Esa coordinación también debe aparecer en el presupuesto.
           </p>
           <div className="disclaimer-box">
-            <strong>Idea clave:</strong> una landing para Google Ads no se mide solo por estetica;
-            se mide por claridad, velocidad, relevancia y capacidad de convertir trafico pagado.
+            <strong>Idea clave:</strong> una landing para Google Ads no se mide solo por estética;
+            se mide por claridad, velocidad, relevancia y capacidad de convertir tráfico pagado.
           </div>
         </div>
       </section>
@@ -209,22 +209,22 @@ export default function LandingPageParaGoogleAdsPage() {
             <h2>Mensaje alineado</h2>
             <p>
               El titular debe continuar la promesa del anuncio. Si el anuncio habla de presupuesto,
-              consulta, demo o servicio local, la landing no puede abrir con un mensaje generico.
+              consulta, demo o servicio local, la landing no puede abrir con un mensaje genérico.
             </p>
           </article>
 
           <article className="feature-card">
-            <h2>Conversion medible</h2>
+            <h2>Conversión medible</h2>
             <p>
               Formulario, llamada, WhatsApp, descarga o reserva deben tener evento claro. Sin
-              medicion, no hay forma de saber que anuncios traen oportunidades reales.
+              medición, no hay forma de saber qué anuncios traen oportunidades reales.
             </p>
           </article>
 
           <article className="feature-card">
             <h2>Alcance cerrado</h2>
             <p>
-              Define si incluyes copy, diseno, implementacion, eventos, pagina de gracias,
+              Define si incluyes copy, diseño, implementación, eventos, página de gracias,
               integraciones, variantes y soporte tras publicar.
             </p>
           </article>
@@ -237,30 +237,30 @@ export default function LandingPageParaGoogleAdsPage() {
             <h2>Estructura recomendada para anuncios de pago</h2>
             <ol className="article-list article-list-ordered">
               <li>Titular que repite o mejora la promesa principal del anuncio.</li>
-              <li>Subtitulo con beneficio, publico objetivo y siguiente paso.</li>
+              <li>Subtitulo con beneficio, público objetivo y siguiente paso.</li>
               <li>CTA visible arriba del todo y repetido en puntos clave.</li>
-              <li>Beneficios concretos vinculados a la intencion de busqueda.</li>
-              <li>Prueba de confianza: casos, datos, garantias, logos o testimonios.</li>
-              <li>Formulario o accion principal con friccion proporcional al valor ofrecido.</li>
+              <li>Beneficios concretos vinculados a la intención de búsqueda.</li>
+              <li>Prueba de confianza: casos, datos, garantías, logos o testimonios.</li>
+              <li>Formulario o acción principal con fricción proporcional al valor ofrecido.</li>
               <li>FAQ para resolver objeciones antes de pagar otro clic.</li>
-              <li>Pagina de gracias o confirmacion con evento de conversion.</li>
+              <li>Página de gracias o confirmación con evento de conversión.</li>
             </ol>
             <p>
-              Si el trafico viene de campanas distintas, puede tener sentido crear variantes por
-              servicio, zona, tipo de cliente o nivel de intencion. No siempre hace falta una landing
-              por palabra clave, pero si una sola pagina habla demasiado generico, la conversion se
+              Si el tráfico viene de campañas distintas, puede tener sentido crear variantes por
+              servicio, zona, tipo de cliente o nivel de intención. No siempre hace falta una landing
+              por palabra clave, pero si una sola página habla demasiado genérico, la conversión se
               diluye.
             </p>
           </div>
 
           <aside className="feature-card article-summary">
-            <h2>Checklist tecnico</h2>
+            <h2>Lista de comprobación técnica</h2>
             <ul className="article-list">
-              <li>Carga rapida en movil.</li>
+              <li>Carga rápida en móvil.</li>
               <li>Formulario probado de extremo a extremo.</li>
-              <li>Evento de conversion configurado.</li>
-              <li>Pagina de gracias o mensaje posterior claro.</li>
-              <li>Politica de privacidad enlazada junto al formulario.</li>
+              <li>Evento de conversión configurado.</li>
+              <li>Página de gracias o mensaje posterior claro.</li>
+              <li>Política de privacidad enlazada junto al formulario.</li>
               <li>UTM o fuente de lead conservada si hay CRM.</li>
             </ul>
           </aside>
@@ -269,32 +269,32 @@ export default function LandingPageParaGoogleAdsPage() {
 
       <section className="section alt">
         <div className="container text-block">
-          <h2>Como afecta al precio de una landing para Google Ads</h2>
+          <h2>Cómo afecta al precio de una landing para Google Ads</h2>
           <p>
             El precio sube cuando la landing no solo presenta una oferta, sino que debe soportar
-            trafico de pago, conversiones medibles y decisiones comerciales. Una pagina sin tracking
-            puede parecer mas barata, pero deja al cliente sin datos para optimizar.
+            tráfico de pago, conversiones medibles y decisiones comerciales. Una página sin tracking
+            puede parecer más barata, pero deja al cliente sin datos para optimizar.
           </p>
           <div className="feature-grid" aria-label="Factores que cambian el precio">
             <article className="feature-card">
-              <h3>Mas estrategia</h3>
+              <h3>Más estrategia</h3>
               <p>
-                Revisar intencion de busqueda, oferta, CTA y objeciones requiere trabajo antes de
-                disenar.
+                Revisar intención de búsqueda, oferta, CTA y objeciones requiere trabajo antes de
+                diseñar.
               </p>
             </article>
 
             <article className="feature-card">
-              <h3>Mas medicion</h3>
+              <h3>Más medición</h3>
               <p>
-                Conversiones, eventos, formularios, pagina de gracias y pruebas elevan el alcance.
+                Conversiones, eventos, formularios, página de gracias y pruebas elevan el alcance.
               </p>
             </article>
 
             <article className="feature-card">
-              <h3>Mas variantes</h3>
+              <h3>Más variantes</h3>
               <p>
-                Si hay campanas por servicio, publico o zona, cada variante exige adaptacion y QA.
+                Si hay campañas por servicio, público o zona, cada variante exige adaptación y QA.
               </p>
             </article>
           </div>
@@ -305,25 +305,25 @@ export default function LandingPageParaGoogleAdsPage() {
         <div className="container text-block">
           <h2>Errores comunes al presupuestarla</h2>
           <ol className="article-list article-list-ordered">
-            <li>Cobrar solo una pagina cuando en realidad hay estrategia, copy y medicion.</li>
-            <li>No aclarar si el cliente aporta textos, imagenes y propuesta de valor.</li>
-            <li>Prometer conversiones sin controlar trafico, oferta ni campanas.</li>
-            <li>No incluir pruebas del formulario, del evento y de la version movil.</li>
-            <li>Mezclar landing, campanas y mantenimiento sin separar partidas.</li>
-            <li>No dejar margen para ajustes despues de ver los primeros datos.</li>
+            <li>Cobrar solo una página cuando en realidad hay estrategia, copy y medición.</li>
+            <li>No aclarar si el cliente aporta textos, imágenes y propuesta de valor.</li>
+            <li>Prometer conversiones sin controlar tráfico, oferta ni campañas.</li>
+            <li>No incluir pruebas del formulario, del evento y de la versión móvil.</li>
+            <li>Mezclar landing, campañas y mantenimiento sin separar partidas.</li>
+            <li>No dejar margen para ajustes después de ver los primeros datos.</li>
           </ol>
           <p>
-            Si el objetivo principal es conseguir contactos, revisa tambien la guia de{' '}
+            Si el objetivo principal es conseguir contactos, revisa también la guía de{' '}
             <Link href="/landing-page-para-captar-leads">landing page para captar leads</Link>. Para
-            delimitar entregables, te ayudara ver{' '}
-            <Link href="/que-incluye-una-landing-page">que incluye una landing page</Link>.
+            delimitar entregables, te ayudará ver{' '}
+            <Link href="/que-incluye-una-landing-page">qué incluye una landing page</Link>.
           </p>
           <p>
-            Si ya estas en fase de presupuesto, la guia sobre{' '}
+            Si ya estás en fase de presupuesto, la guía sobre{' '}
             <Link href="/cuanto-cobrar-landing-page-google-ads">
-              cuanto cobrar una landing page para Google Ads
+              cuánto cobrar una landing page para Google Ads
             </Link>{' '}
-            baja la pieza a horas, medicion, revisiones, margen e IVA aparte.
+            baja la pieza a horas, medición, revisiones, margen e IVA aparte.
           </p>
           <div className="guide-cta">
             <Link href="/#calculadora" className="primary-button">

@@ -6,25 +6,25 @@ import Header from '@/components/Header';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 
 const route = '/que-incluye-una-landing-page';
-const title = 'Que incluye una landing page y que conviene cobrar aparte';
+const title = 'Qué incluye una landing page y qué conviene cobrar aparte';
 const description =
-  'Guia practica para definir que incluye una landing page: secciones, copy, diseno, desarrollo, responsive, formularios, integraciones, revisiones, medicion y extras.';
+  'Guía práctica para definir qué incluye una landing page: secciones, copy, diseño, desarrollo, responsive, formularios, integraciones, revisiones, medición y extras.';
 
 const faqItems = [
   {
-    question: 'Que incluye normalmente una landing page?',
+    question: '¿Qué incluye normalmente una landing page?',
     answer:
-      'Suele incluir estructura de secciones, diseno responsive, maquetacion, formulario o llamada a la accion, ajustes basicos, pruebas y una o varias rondas de revision. El copy, integraciones avanzadas y medicion pueden ir incluidos o presupuestarse aparte.',
+      'Suele incluir estructura de secciones, diseño responsive, maquetación, formulario o llamada a la acción, ajustes básicos, pruebas y una o varias rondas de revisión. El copy, integraciones avanzadas y medición pueden ir incluidos o presupuestarse aparte.',
   },
   {
-    question: 'El copywriting debe entrar en el precio de una landing?',
+    question: '¿El copywriting debe entrar en el precio de una landing?',
     answer:
       'Depende del servicio. Si el cliente entrega textos finales, el precio puede ser menor. Si tienes que definir mensaje, propuesta de valor y textos comerciales, conviene presupuestarlo como parte importante del proyecto.',
   },
   {
-    question: 'Que tareas deberian cobrarse aparte en una landing page?',
+    question: '¿Qué tareas deberían cobrarse aparte en una landing page?',
     answer:
-      'Nuevas secciones, integraciones no previstas, copy completo, estrategia, fotografias, campanas, urgencias, revisiones extra, variantes para tests y mantenimiento posterior suelen cobrarse aparte.',
+      'Nuevas secciones, integraciones no previstas, copy completo, estrategia, fotografías, campañas, urgencias, revisiones extra, variantes para tests y mantenimiento posterior suelen cobrarse aparte.',
   },
 ] as const;
 
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     canonical: route,
   },
   keywords: [
-    'que incluye una landing page',
+    'qué incluye una landing page',
     'que debe tener una landing page',
     'servicio landing page freelance',
     'presupuesto landing page alcance',
@@ -133,11 +133,11 @@ export default function QueIncluyeUnaLandingPage() {
         <div className="container hero-grid">
           <div>
             <span className="eyebrow">Alcance de proyecto</span>
-            <h1>Que incluye una landing page y que conviene cobrar aparte</h1>
+            <h1>Qué incluye una landing page y qué conviene cobrar aparte</h1>
             <p className="lead">
-              Una landing page no es solo una pagina bonita. Puede incluir estrategia, estructura,
-              copy, diseno, desarrollo, formularios, integraciones, medicion, revisiones y soporte
-              posterior. Si no separas bien cada bloque, es facil presupuestarla demasiado barata.
+              Una landing page no es solo una página bonita. Puede incluir estrategia, estructura,
+              copy, diseño, desarrollo, formularios, integraciones, medición, revisiones y soporte
+              posterior. Si no separas bien cada bloque, es fácil presupuestarla demasiado barata.
             </p>
             <div className="guide-cta">
               <Link href="/#calculadora" className="primary-button">
@@ -150,10 +150,10 @@ export default function QueIncluyeUnaLandingPage() {
           </div>
 
           <aside className="feature-card article-summary">
-            <h2>Resumen rapido</h2>
+            <h2>Resumen rápido</h2>
             <ul className="article-list">
-              <li>Define secciones, copy, diseno, desarrollo, integraciones y revisiones.</li>
-              <li>No mezcles estrategia, campanas o mantenimiento dentro del precio basico.</li>
+              <li>Define secciones, copy, diseño, desarrollo, integraciones y revisiones.</li>
+              <li>No mezcles estrategia, campañas o mantenimiento dentro del precio básico.</li>
               <li>Separa el IVA y los costes directos de tu ingreso real.</li>
               <li>Si hay cambios de alcance, deben presupuestarse antes de hacerlos.</li>
             </ul>
@@ -166,24 +166,24 @@ export default function QueIncluyeUnaLandingPage() {
           <article className="feature-card">
             <h2>Estructura y secciones</h2>
             <p>
-              Hero, beneficios, prueba social, proceso, FAQ, llamada a la accion y formulario. El
-              numero de secciones cambia mucho el tiempo de diseno, maquetacion y revision.
+              Hero, beneficios, prueba social, proceso, FAQ, llamada a la acción y formulario. El
+              número de secciones cambia mucho el tiempo de diseño, maquetación y revisión.
             </p>
           </article>
 
           <article className="feature-card">
-            <h2>Diseno y desarrollo</h2>
+            <h2>Diseño y desarrollo</h2>
             <p>
-              Incluye composicion visual, responsive, maquetacion, ajustes en movil, pruebas
-              basicas y publicacion en el entorno acordado.
+              Incluye composición visual, responsive, maquetación, ajustes en móvil, pruebas
+              básicas y publicación en el entorno acordado.
             </p>
           </article>
 
           <article className="feature-card">
-            <h2>Conversion y medicion</h2>
+            <h2>Conversión y medición</h2>
             <p>
-              Formularios, eventos, pixels, analitica, CRM o email marketing pueden convertir una
-              landing simple en un proyecto con mas responsabilidad.
+              Formularios, eventos, píxeles, analítica, CRM o email marketing pueden convertir una
+              landing simple en un proyecto con más responsabilidad.
             </p>
           </article>
         </div>
@@ -192,31 +192,31 @@ export default function QueIncluyeUnaLandingPage() {
       <section className="section alt">
         <div className="container article-layout">
           <div className="text-block">
-            <h2>Que puede entrar en un precio base</h2>
+            <h2>Qué puede entrar en un precio base</h2>
             <p>
-              El precio base deberia cubrir lo que puedes estimar con bastante seguridad. Si
+              El precio base debería cubrir lo que puedes estimar con bastante seguridad. Si
               vendes una landing sencilla, puedes definir un paquete cerrado con secciones,
               entregables y revisiones limitadas.
             </p>
             <ol className="article-list article-list-ordered">
-              <li>Brief inicial y definicion del objetivo principal.</li>
-              <li>Estructura de secciones acordada antes de disenar.</li>
-              <li>Diseno responsive y maquetacion de la landing.</li>
-              <li>Formulario o llamada a la accion sencilla.</li>
-              <li>Optimizacion basica para movil y pruebas visuales.</li>
-              <li>Una o dos rondas de revision claramente definidas.</li>
-              <li>Publicacion en el entorno pactado si no requiere migraciones complejas.</li>
+              <li>Brief inicial y definición del objetivo principal.</li>
+              <li>Estructura de secciones acordada antes de diseñar.</li>
+              <li>Diseño responsive y maquetación de la landing.</li>
+              <li>Formulario o llamada a la acción sencilla.</li>
+              <li>Optimización básica para móvil y pruebas visuales.</li>
+              <li>Una o dos rondas de revisión claramente definidas.</li>
+              <li>Publicación en el entorno pactado si no requiere migraciones complejas.</li>
             </ol>
           </div>
 
           <aside className="feature-card article-summary">
             <h2>Conviene concretar</h2>
             <ul className="article-list">
-              <li>Quien entrega textos e imagenes.</li>
-              <li>Cuantas secciones entran.</li>
-              <li>Que integraciones incluye.</li>
-              <li>Cuantas revisiones hay.</li>
-              <li>Que pasa despues de publicar.</li>
+              <li>Quién entrega textos e imágenes.</li>
+              <li>Cuántas secciones entran.</li>
+              <li>Qué integraciones incluye.</li>
+              <li>Cuántas revisiones hay.</li>
+              <li>Qué pasa después de publicar.</li>
             </ul>
           </aside>
         </div>
@@ -224,17 +224,17 @@ export default function QueIncluyeUnaLandingPage() {
 
       <section className="section">
         <div className="container text-block">
-          <h2>Que deberia cobrarse aparte</h2>
+          <h2>Qué debería cobrarse aparte</h2>
           <p>
-            Lo que cambia el alcance, anade riesgo o requiere pensar mas alla de la pagina deberia
-            quedar fuera del precio base. No es solo una cuestion de dinero: tambien evita que el
+            Lo que cambia el alcance, añade riesgo o requiere pensar más allá de la página debería
+            quedar fuera del precio base. No es solo una cuestión de dinero: también evita que el
             cliente espere trabajo ilimitado por una cifra cerrada.
           </p>
           <div className="feature-grid" aria-label="Extras habituales">
             <article className="feature-card">
               <h3>Copy y estrategia</h3>
               <p>
-                Mensaje, propuesta de valor, textos comerciales, investigacion, tono y arquitectura
+                Mensaje, propuesta de valor, textos comerciales, investigación, tono y arquitectura
                 persuasiva.
               </p>
             </article>
@@ -242,7 +242,7 @@ export default function QueIncluyeUnaLandingPage() {
             <article className="feature-card">
               <h3>Integraciones</h3>
               <p>
-                CRM, automatizaciones, pagos, calendario, email marketing, pixels o eventos
+                CRM, automatizaciones, pagos, calendario, email marketing, píxeles o eventos
                 avanzados.
               </p>
             </article>
@@ -250,7 +250,7 @@ export default function QueIncluyeUnaLandingPage() {
             <article className="feature-card">
               <h3>Trabajo posterior</h3>
               <p>
-                Tests, nuevas variantes, cambios por campana, mantenimiento, soporte o reporting
+                Tests, nuevas variantes, cambios por campaña, mantenimiento, soporte o reporting
                 mensual.
               </p>
             </article>
@@ -260,23 +260,23 @@ export default function QueIncluyeUnaLandingPage() {
 
       <section className="section alt">
         <div className="container text-block">
-          <h2>Como llevar el alcance a precio</h2>
+          <h2>Cómo llevar el alcance a precio</h2>
           <p>
-            Una vez sepas que incluye la landing, calcula horas por seccion, copy, integraciones,
-            revisiones, costes directos y margen. Despues separa el precio profesional del IVA y
+            Una vez sepas qué incluye la landing, calcula horas por sección, copy, integraciones,
+            revisiones, costes directos y margen. Después separa el precio profesional del IVA y
             deja por escrito que nuevas secciones o cambios de alcance se presupuestan aparte.
           </p>
           <p>
-            Si el cliente todavia duda entre landing y web completa, revisa tambien la guia de{' '}
-            <Link href="/landing-page-vs-pagina-web">landing page vs pagina web</Link>. Si ya tienes
-            claro que es una landing, usa la calculadora para bajar ese alcance a una cifra.
+            Si el cliente todavía duda entre landing y web completa, revisa también la guía de{' '}
+            <Link href="/landing-page-vs-pagina-web">landing page vs. página web</Link>. Si ya tienes
+            claro qué es una landing, usa la calculadora para bajar ese alcance a una cifra.
           </p>
           <div className="guide-cta">
             <Link href="/#calculadora" className="primary-button">
               Calcular mi landing
             </Link>
             <Link href="/precio-landing-page-freelance" className="primary-button">
-              Leer guia de precio
+              Leer guía de precio
             </Link>
           </div>
         </div>
@@ -284,13 +284,13 @@ export default function QueIncluyeUnaLandingPage() {
 
       <section className="section">
         <div className="container text-block">
-          <h2>Texto util para incluir en una propuesta</h2>
+          <h2>Texto útil para incluir en una propuesta</h2>
           <div className="disclaimer-box">
             <p>
-              El presupuesto incluye el diseno y desarrollo de una landing page con hasta seis
-              secciones, formulario de contacto, adaptacion responsive y dos rondas de revision.
+              El presupuesto incluye el diseño y desarrollo de una landing page con hasta seis
+              secciones, formulario de contacto, adaptación responsive y dos rondas de revisión.
               No incluye copywriting completo, nuevas secciones, integraciones no previstas,
-              campanas, mantenimiento posterior ni variantes para test A/B.
+              campañas, mantenimiento posterior ni variantes para test A/B.
             </p>
           </div>
           <p>
@@ -311,7 +311,7 @@ export default function QueIncluyeUnaLandingPage() {
       <section className="section alt" id="faq-que-incluye-landing">
         <div className="container text-block">
           <span className="eyebrow">Preguntas frecuentes</span>
-          <h2>Dudas habituales sobre que incluye una landing page</h2>
+          <h2>Dudas habituales sobre qué incluye una landing page</h2>
           {faqItems.map((item) => (
             <article className="disclaimer-box" key={item.question}>
               <h3>{item.question}</h3>

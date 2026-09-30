@@ -22,8 +22,6 @@ export function proxy(request: NextRequest) {
     form-action 'self' https://formsubmit.co;
     frame-ancestors 'none';
     frame-src https://*.googlesyndication.com https://*.doubleclick.net;
-    trusted-types default nextjs nextjs#bundler;
-    require-trusted-types-for 'script';
     upgrade-insecure-requests;
   `
     .replace(/\s{2,}/g, ' ')

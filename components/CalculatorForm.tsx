@@ -1,198 +1,62 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import type { ClipboardEvent } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ResultCard from '@/components/ResultCard';
 import { calculateLandingPageQuote } from '@/lib/calculator';
+import {
+  DEFAULT_FORM_VALUES,
+  type FieldName,
+  getNormalizedPastedValue,
+  normalizeFieldValue,
+  validateForm,
+} from '@/lib/calculatorForm';
+import { parseSpanishNumber as parseNumericValue } from '@/lib/spanishNumber';
 
-type FieldName =
-  | 'targetMonthlyNet'
-  | 'monthlyFixedCosts'
-  | 'billableHoursPerMonth'
-  | 'sections'
-  | 'integrationsCount'
-  | 'revisionRounds'
-  | 'directProjectCosts'
-  | 'contingencyBufferPercent'
-  | 'taxReservePercent'
-  | 'profitMarginPercent';
+function handleNumericPaste(
+  event: ClipboardEvent<HTMLInputElement>,
+  field: FieldName,
+  setValue: (value: string) => void,
+) {
+  const normalizedValue = getNormalizedPastedValue(field, event.clipboardData.getData('text'));
 
-type FormErrors = Partial<Record<FieldName, string>>;
-
-function parseNumericValue(value: string) {
-  const normalizedValue = value.replace(',', '.').trim();
-
-  if (normalizedValue === '') {
-    return Number.NaN;
+  if (normalizedValue === null) {
+    return;
   }
 
-  return Number(normalizedValue);
-}
-
-function formatNormalizedNumber(value: number, maximumFractionDigits = 2) {
-  return value.toLocaleString('en-US', {
-    useGrouping: false,
-    maximumFractionDigits,
-  });
-}
-
-function normalizeFieldValue(field: FieldName, value: string) {
-  const parsedValue = parseNumericValue(value);
-
-  if (!Number.isFinite(parsedValue)) {
-    return value.trim() === '' ? '' : value;
-  }
-
-  switch (field) {
-    case 'targetMonthlyNet':
-    case 'monthlyFixedCosts':
-    case 'directProjectCosts':
-      return formatNormalizedNumber(Math.max(0, parsedValue));
-    case 'billableHoursPerMonth':
-    case 'sections':
-    case 'integrationsCount':
-    case 'revisionRounds':
-      return formatNormalizedNumber(Math.max(0, Math.round(parsedValue)), 0);
-    case 'contingencyBufferPercent':
-    case 'taxReservePercent':
-    case 'profitMarginPercent':
-      return formatNormalizedNumber(Math.min(100, Math.max(0, parsedValue)), 1);
-  }
-}
-
-function getFieldError(field: FieldName, value: string) {
-  const parsedValue = parseNumericValue(value);
-
-  if (value.trim() === '') {
-    switch (field) {
-      case 'targetMonthlyNet':
-        return 'Indica tu objetivo mensual.';
-      case 'monthlyFixedCosts':
-        return 'Indica tus costes fijos mensuales.';
-      case 'billableHoursPerMonth':
-        return 'Indica tus horas facturables al mes.';
-      case 'sections':
-        return 'Indica cuántas secciones tendrá la landing.';
-      case 'integrationsCount':
-        return 'Indica cuántas integraciones incluye.';
-      case 'revisionRounds':
-        return 'Indica las rondas de revisión previstas.';
-      case 'directProjectCosts':
-        return 'Indica los costes directos del proyecto.';
-      case 'contingencyBufferPercent':
-        return 'Indica un buffer de contingencia.';
-      case 'taxReservePercent':
-        return 'Indica una reserva fiscal orientativa.';
-      case 'profitMarginPercent':
-        return 'Indica el margen extra del proyecto.';
-    }
-  }
-
-  if (!Number.isFinite(parsedValue)) {
-    switch (field) {
-      case 'billableHoursPerMonth':
-      case 'sections':
-      case 'integrationsCount':
-      case 'revisionRounds':
-        return 'Introduce un número válido.';
-      case 'contingencyBufferPercent':
-      case 'taxReservePercent':
-      case 'profitMarginPercent':
-        return 'Introduce un porcentaje válido.';
-      default:
-        return 'Introduce un importe válido.';
-    }
-  }
-
-  if (field === 'targetMonthlyNet' && parsedValue <= 0) {
-    return 'El objetivo mensual debe ser mayor que 0.';
-  }
-
-  if (field === 'billableHoursPerMonth' && parsedValue <= 0) {
-    return 'Las horas facturables deben ser mayores que 0.';
-  }
-
-  if (field === 'billableHoursPerMonth' && !Number.isInteger(parsedValue)) {
-    return 'Las horas facturables deben ser un número entero.';
-  }
-
-  if (field === 'sections' && parsedValue <= 0) {
-    return 'Las secciones deben ser mayores que 0.';
-  }
-
-  if (field === 'integrationsCount' && parsedValue < 0) {
-    return 'Las integraciones no pueden ser negativas.';
-  }
-
-  if (field === 'revisionRounds' && parsedValue < 0) {
-    return 'Las revisiones no pueden ser negativas.';
-  }
-
-  if (
-    (field === 'contingencyBufferPercent' ||
-      field === 'taxReservePercent' ||
-      field === 'profitMarginPercent') &&
-    parsedValue > 100
-  ) {
-    return 'El porcentaje debe ser como máximo 100.';
-  }
-
-  if (parsedValue < 0) {
-    switch (field) {
-      case 'targetMonthlyNet':
-        return 'El objetivo mensual no puede ser negativo.';
-      case 'monthlyFixedCosts':
-        return 'Los costes fijos no pueden ser negativos.';
-      case 'billableHoursPerMonth':
-        return 'Las horas facturables no pueden ser negativas.';
-      case 'sections':
-        return 'Las secciones no pueden ser negativas.';
-      case 'integrationsCount':
-        return 'Las integraciones no pueden ser negativas.';
-      case 'revisionRounds':
-        return 'Las revisiones no pueden ser negativas.';
-      case 'directProjectCosts':
-        return 'Los costes directos no pueden ser negativos.';
-      case 'contingencyBufferPercent':
-        return 'El buffer no puede ser negativo.';
-      case 'taxReservePercent':
-        return 'La reserva fiscal no puede ser negativa.';
-      case 'profitMarginPercent':
-        return 'El margen no puede ser negativo.';
-    }
-  }
-
-  return '';
-}
-
-function validateForm(values: Record<FieldName, string>): FormErrors {
-  const nextErrors: FormErrors = {};
-
-  (Object.keys(values) as FieldName[]).forEach((field) => {
-    const error = getFieldError(field, values[field]);
-
-    if (error) {
-      nextErrors[field] = error;
-    }
-  });
-
-  return nextErrors;
+  event.preventDefault();
+  setValue(normalizedValue);
 }
 
 export default function CalculatorForm() {
-  const [targetMonthlyNet, setTargetMonthlyNet] = useState('2000');
-  const [monthlyFixedCosts, setMonthlyFixedCosts] = useState('350');
-  const [billableHoursPerMonth, setBillableHoursPerMonth] = useState('80');
-  const [sections, setSections] = useState('6');
-  const [integrationsCount, setIntegrationsCount] = useState('2');
-  const [includeCopywriting, setIncludeCopywriting] = useState(true);
-  const [revisionRounds, setRevisionRounds] = useState('2');
-  const [directProjectCosts, setDirectProjectCosts] = useState('50');
-  const [contingencyBufferPercent, setContingencyBufferPercent] = useState('15');
-  const [taxReservePercent, setTaxReservePercent] = useState('20');
-  const [profitMarginPercent, setProfitMarginPercent] = useState('10');
-  const [hasIVA, setHasIVA] = useState(true);
+  const [targetMonthlyNet, setTargetMonthlyNet] = useState(DEFAULT_FORM_VALUES.targetMonthlyNet);
+  const [monthlyFixedCosts, setMonthlyFixedCosts] = useState(DEFAULT_FORM_VALUES.monthlyFixedCosts);
+  const [billableHoursPerMonth, setBillableHoursPerMonth] = useState(
+    DEFAULT_FORM_VALUES.billableHoursPerMonth,
+  );
+  const [sections, setSections] = useState(DEFAULT_FORM_VALUES.sections);
+  const [integrationsCount, setIntegrationsCount] = useState(DEFAULT_FORM_VALUES.integrationsCount);
+  const [includeCopywriting, setIncludeCopywriting] = useState(DEFAULT_FORM_VALUES.includeCopywriting);
+  const [revisionRounds, setRevisionRounds] = useState(DEFAULT_FORM_VALUES.revisionRounds);
+  const [directProjectCosts, setDirectProjectCosts] = useState(DEFAULT_FORM_VALUES.directProjectCosts);
+  const [contingencyBufferPercent, setContingencyBufferPercent] = useState(
+    DEFAULT_FORM_VALUES.contingencyBufferPercent,
+  );
+  const [taxReservePercent, setTaxReservePercent] = useState(DEFAULT_FORM_VALUES.taxReservePercent);
+  const [profitMarginPercent, setProfitMarginPercent] = useState(
+    DEFAULT_FORM_VALUES.profitMarginPercent,
+  );
+  const [hasIVA, setHasIVA] = useState(DEFAULT_FORM_VALUES.hasIVA);
   const [submitted, setSubmitted] = useState(false);
+  const [invalidSubmissionCount, setInvalidSubmissionCount] = useState(0);
+  const formRef = useRef<HTMLFormElement | null>(null);
   const hasTrackedConversion = useRef(false);
+
+  useEffect(() => {
+    if (invalidSubmissionCount > 0) {
+      formRef.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]')?.focus();
+    }
+  }, [invalidSubmissionCount]);
 
   const validationErrors = useMemo(
     () =>
@@ -269,11 +133,16 @@ export default function CalculatorForm() {
       </p>
 
       <form
+        ref={formRef}
         noValidate
         aria-describedby="calculator-intro"
         onSubmit={(event) => {
           event.preventDefault();
           setSubmitted(true);
+
+          if (hasValidationErrors) {
+            setInvalidSubmissionCount((count) => count + 1);
+          }
 
           if (!hasValidationErrors && !hasTrackedConversion.current) {
             hasTrackedConversion.current = true;
@@ -297,6 +166,9 @@ export default function CalculatorForm() {
             step="0.01"
             value={targetMonthlyNet}
             onChange={(event) => setTargetMonthlyNet(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'targetMonthlyNet', setTargetMonthlyNet)
+            }
             onBlur={(event) =>
               setTargetMonthlyNet(normalizeFieldValue('targetMonthlyNet', event.target.value))
             }
@@ -322,6 +194,9 @@ export default function CalculatorForm() {
             step="0.01"
             value={monthlyFixedCosts}
             onChange={(event) => setMonthlyFixedCosts(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'monthlyFixedCosts', setMonthlyFixedCosts)
+            }
             onBlur={(event) =>
               setMonthlyFixedCosts(normalizeFieldValue('monthlyFixedCosts', event.target.value))
             }
@@ -347,6 +222,9 @@ export default function CalculatorForm() {
             step="1"
             value={billableHoursPerMonth}
             onChange={(event) => setBillableHoursPerMonth(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'billableHoursPerMonth', setBillableHoursPerMonth)
+            }
             onBlur={(event) =>
               setBillableHoursPerMonth(
                 normalizeFieldValue('billableHoursPerMonth', event.target.value),
@@ -370,6 +248,7 @@ export default function CalculatorForm() {
             step="1"
             value={sections}
             onChange={(event) => setSections(event.target.value)}
+            onPaste={(event) => handleNumericPaste(event, 'sections', setSections)}
             onBlur={(event) => setSections(normalizeFieldValue('sections', event.target.value))}
             aria-invalid={submitted && Boolean(validationErrors.sections)}
             aria-describedby={
@@ -394,6 +273,9 @@ export default function CalculatorForm() {
             step="1"
             value={integrationsCount}
             onChange={(event) => setIntegrationsCount(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'integrationsCount', setIntegrationsCount)
+            }
             onBlur={(event) =>
               setIntegrationsCount(normalizeFieldValue('integrationsCount', event.target.value))
             }
@@ -444,6 +326,9 @@ export default function CalculatorForm() {
             step="1"
             value={revisionRounds}
             onChange={(event) => setRevisionRounds(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'revisionRounds', setRevisionRounds)
+            }
             onBlur={(event) =>
               setRevisionRounds(normalizeFieldValue('revisionRounds', event.target.value))
             }
@@ -467,6 +352,9 @@ export default function CalculatorForm() {
             step="0.01"
             value={directProjectCosts}
             onChange={(event) => setDirectProjectCosts(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'directProjectCosts', setDirectProjectCosts)
+            }
             onBlur={(event) =>
               setDirectProjectCosts(normalizeFieldValue('directProjectCosts', event.target.value))
             }
@@ -497,6 +385,13 @@ export default function CalculatorForm() {
             step="0.5"
             value={contingencyBufferPercent}
             onChange={(event) => setContingencyBufferPercent(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(
+                event,
+                'contingencyBufferPercent',
+                setContingencyBufferPercent,
+              )
+            }
             onBlur={(event) =>
               setContingencyBufferPercent(
                 normalizeFieldValue('contingencyBufferPercent', event.target.value),
@@ -525,10 +420,13 @@ export default function CalculatorForm() {
           <input
             type="number"
             min="0"
-            max="100"
+            max="99"
             step="0.5"
             value={taxReservePercent}
             onChange={(event) => setTaxReservePercent(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'taxReservePercent', setTaxReservePercent)
+            }
             onBlur={(event) =>
               setTaxReservePercent(normalizeFieldValue('taxReservePercent', event.target.value))
             }
@@ -559,6 +457,9 @@ export default function CalculatorForm() {
             step="0.5"
             value={profitMarginPercent}
             onChange={(event) => setProfitMarginPercent(event.target.value)}
+            onPaste={(event) =>
+              handleNumericPaste(event, 'profitMarginPercent', setProfitMarginPercent)
+            }
             onBlur={(event) =>
               setProfitMarginPercent(normalizeFieldValue('profitMarginPercent', event.target.value))
             }

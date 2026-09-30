@@ -43,12 +43,38 @@ export type CalculationResult = {
   effectiveHourlyRate: number;
 };
 
+export type LandingOfferAssessment = {
+  offeredPrice: number;
+  gapToFloor: number;
+  gapToRecommended: number;
+  hoursToTrim: number;
+  directCostsUncovered: boolean;
+};
+
 function roundToTwo(value: number) {
   return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
 function safeNumber(value: number, fallback = 0) {
   return Number.isFinite(value) ? value : fallback;
+}
+
+export function assessLandingOffer(
+  result: CalculationResult,
+  offeredPrice: number,
+): LandingOfferAssessment {
+  const price = Math.max(0, safeNumber(offeredPrice));
+  const affordableHours = result.baseHourlyRate > 0
+    ? Math.max(0, (price - result.directProjectCosts) / result.baseHourlyRate)
+    : result.bufferedProjectHours;
+
+  return {
+    offeredPrice: roundToTwo(price),
+    gapToFloor: roundToTwo(price - result.minimumLandingPrice),
+    gapToRecommended: roundToTwo(price - result.recommendedLandingPrice),
+    hoursToTrim: roundToTwo(Math.max(0, result.bufferedProjectHours - affordableHours)),
+    directCostsUncovered: price < result.directProjectCosts,
+  };
 }
 
 export function calculateLandingPageQuote({

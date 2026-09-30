@@ -1,3 +1,4 @@
+import { readStyles } from './readStyles';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import nextConfig from '@/next.config';
@@ -21,7 +22,7 @@ describe('performance config', () => {
 
   it('keeps the homepage lead compact for mobile LCP', () => {
     const homePage = readFileSync(join(process.cwd(), 'app/page.tsx'), 'utf8');
-    const globalStyles = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
+    const globalStyles = readStyles();
     const leadMatch = homePage.match(/<p className="lead">([\s\S]*?)<\/p>/);
     const leadText = leadMatch?.[1].replace(/\s+/g, ' ').trim() ?? '';
 
@@ -40,14 +41,14 @@ describe('performance config', () => {
   });
 
   it('does not rely on color alone for footer links', () => {
-    const globalStyles = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
+    const globalStyles = readStyles();
 
     expect(globalStyles).toMatch(/\.site-footer a\s*{[^}]*text-decoration:\s*underline/s);
     expect(globalStyles).toMatch(/\.site-footer a\s*{[^}]*font-weight:\s*700/s);
   });
 
   it('provides a visible focus state for the generated result card', () => {
-    const globalStyles = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
+    const globalStyles = readStyles();
 
     expect(globalStyles).toMatch(/\.result-card:focus\s*{[^}]*outline:\s*3px solid var\(--accent\)/s);
     expect(globalStyles).toMatch(/\.result-card:focus\s*{[^}]*outline-offset:\s*4px/s);
@@ -63,7 +64,7 @@ describe('performance config', () => {
     expect(proxyFile).toContain("style-src 'self' 'unsafe-inline'");
     expect(proxyFile).toContain("object-src 'none'");
     expect(proxyFile).toContain("frame-ancestors 'none'");
-    expect(proxyFile).toContain('trusted-types default nextjs nextjs#bundler');
+    expect(proxyFile).not.toContain("require-trusted-types-for 'script'");
     expect(layoutFile).toContain("export const dynamic = 'force-dynamic'");
     expect(layoutFile).toContain("(await headers()).get('x-nonce')");
   });
@@ -96,14 +97,11 @@ describe('performance config', () => {
     expect(proxyFile).toContain("const xFrameOptions = 'DENY'");
   });
 
-  it('requires Trusted Types for script sinks', () => {
+  it('keeps Trusted Types disabled until Next supports the policy end to end', () => {
     const proxyFile = readFileSync(join(process.cwd(), 'proxy.ts'), 'utf8');
     const layoutFile = readFileSync(join(process.cwd(), 'app/layout.tsx'), 'utf8');
 
-    expect(proxyFile).toContain("require-trusted-types-for 'script'");
-    expect(layoutFile).toContain("window.trustedTypes.createPolicy('default'");
-    expect(layoutFile).toContain('blockedHtmlPattern');
-    expect(layoutFile).toContain('Blocked unsafe script URL by Trusted Types policy');
-    expect(layoutFile).toContain("item['@context'] === 'https://schema.org'");
+    expect(proxyFile).not.toContain("require-trusted-types-for 'script'");
+    expect(layoutFile).not.toContain("window.trustedTypes.createPolicy('default'");
   });
 });

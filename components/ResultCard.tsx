@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { type CalculationResult } from '@/lib/calculator';
-import { formatCurrency } from '@/lib/format';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { assessLandingOffer, type CalculationResult } from '@/lib/calculator';
+import { formatCurrency, formatNumber } from '@/lib/format';
+import { parseSpanishNumber } from '@/lib/spanishNumber';
 
 type ResultCardProps = {
   result: CalculationResult;
@@ -35,7 +36,18 @@ async function copyTextToClipboard(text: string) {
 
 export default function ResultCard({ result, hasIVA }: ResultCardProps) {
   const resultCardRef = useRef<HTMLElement>(null);
+  const lastTrackedPrice = useRef<number | null>(null);
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
+  const [clientPrice, setClientPrice] = useState('');
+  const parsedClientPrice = parseSpanishNumber(clientPrice);
+  const hasClientPrice = clientPrice.trim() !== '';
+  const clientPriceIsValid = Number.isFinite(parsedClientPrice) && parsedClientPrice >= 0;
+  const offerAssessment = hasClientPrice && clientPriceIsValid
+    ? assessLandingOffer(result, parsedClientPrice)
+    : null;
+  const hoursToTrim = offerAssessment?.hoursToTrim.toLocaleString('es-ES', {
+    maximumFractionDigits: 2,
+  });
   const pricingBuffer = Math.max(0, result.recommendedLandingPrice - result.minimumLandingPrice);
   const landingSummary = [
     'Resumen de landing page',
@@ -46,15 +58,44 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
       : 'IVA: no añadido en esta simulación',
     `Alcance estimado: ${result.sections} secciones, ${result.integrationsCount} integraciones y ${result.revisionRounds} rondas de revisión`,
     `Copywriting: ${result.includeCopywriting ? 'incluido' : 'lo aporta el cliente'}`,
-    `Horas base estimadas: ${result.estimatedProjectHours} h`,
-    `Horas con buffer: ${result.bufferedProjectHours} h`,
-    `Buffer de contingencia: ${result.contingencyBufferPercent}%`,
+    `Horas base estimadas: ${formatNumber(result.estimatedProjectHours, 2)} h`,
+    `Horas con buffer: ${formatNumber(result.bufferedProjectHours, 2)} h`,
+    `Buffer de contingencia: ${formatNumber(result.contingencyBufferPercent, 2)}%`,
     `Referencia base: ${formatCurrency(result.baseHourlyRate)}/h`,
     `Tarifa efectiva del proyecto: ${formatCurrency(result.effectiveHourlyRate)}/h`,
     `Costes directos: ${formatCurrency(result.directProjectCosts)}`,
     `Colchón de negociación: ${formatCurrency(pricingBuffer)}`,
+    ...(offerAssessment
+      ? [
+          `Precio propuesto por el cliente: ${formatCurrency(offerAssessment.offeredPrice)} sin IVA`,
+          `Diferencia frente al mínimo: ${formatCurrency(offerAssessment.gapToFloor)}`,
+        ]
+      : []),
     'Nota: si el cliente pide bajar precio, conviene ajustar alcance, revisiones o integraciones antes de bajar del mínimo defendible.',
   ].join('\n');
+
+  const trackOfferComparison = useCallback(() => {
+    if (!offerAssessment || lastTrackedPrice.current === parsedClientPrice) return;
+
+    lastTrackedPrice.current = parsedClientPrice;
+    const outcome = offerAssessment.directCostsUncovered
+      ? 'below_costs'
+      : offerAssessment.gapToFloor < 0
+        ? 'below_floor'
+        : offerAssessment.gapToRecommended < 0
+          ? 'below_recommended'
+          : 'meets_recommended';
+    void import('@vercel/analytics')
+      .then(({ track }) => track('landing_offer_compared', { outcome }))
+      .catch(() => undefined);
+  }, [offerAssessment, parsedClientPrice]);
+
+  useEffect(() => {
+    if (!offerAssessment || lastTrackedPrice.current === parsedClientPrice) return;
+
+    const timeout = window.setTimeout(trackOfferComparison, 800);
+    return () => window.clearTimeout(timeout);
+  }, [offerAssessment, parsedClientPrice, trackOfferComparison]);
 
   async function handleCopySummary() {
     try {
@@ -90,7 +131,7 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
 
         <div className="result-item">
           <span>Horas estimadas con buffer</span>
-          <strong>{result.bufferedProjectHours} h</strong>
+          <strong>{formatNumber(result.bufferedProjectHours, 2)} h</strong>
         </div>
 
         <div className="result-item">
@@ -117,6 +158,53 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
           <span>Total final con IVA</span>
           <strong>{formatCurrency(result.totalWithVAT)}</strong>
         </div>
+      </div>
+
+      <div className="price-check">
+        <label htmlFor="landing-client-price">¿Qué presupuesto tiene el cliente? (sin IVA)</label>
+        <input
+          id="landing-client-price"
+          type="text"
+          inputMode="decimal"
+          autoComplete="off"
+          value={clientPrice}
+          onChange={(event) => setClientPrice(event.target.value)}
+          onBlur={trackOfferComparison}
+          aria-invalid={hasClientPrice && !clientPriceIsValid}
+          aria-describedby={
+            hasClientPrice && !clientPriceIsValid ? 'landing-client-price-error' : undefined
+          }
+          placeholder="Ej. 900"
+        />
+        {hasClientPrice && !clientPriceIsValid && (
+          <p id="landing-client-price-error" className="field-error" role="alert">
+            Escribe un importe válido de 0 o más.
+          </p>
+        )}
+        {offerAssessment && (
+          <p className="price-check-result" role="status">
+            {offerAssessment.directCostsUncovered ? (
+              <>Ese presupuesto ni siquiera cubre los costes directos de la landing.</>
+            ) : offerAssessment.gapToFloor < 0 ? (
+              <>
+                Faltan <strong>{formatCurrency(-offerAssessment.gapToFloor)}</strong> para cubrir
+                tu mínimo. Tendrías que recortar aproximadamente <strong>{hoursToTrim} h</strong>{' '}
+                del alcance con buffer: revisa secciones, integraciones, copy o revisiones.
+              </>
+            ) : offerAssessment.gapToRecommended < 0 ? (
+              <>
+                Cubre tu mínimo, pero queda a{' '}
+                <strong>{formatCurrency(-offerAssessment.gapToRecommended)}</strong> del margen
+                que habías previsto.
+              </>
+            ) : (
+              <>
+                Cubre tu mínimo y el margen previsto. Supera tu recomendación en{' '}
+                <strong>{formatCurrency(offerAssessment.gapToRecommended)}</strong>.
+              </>
+            )}
+          </p>
+        )}
       </div>
 
       <div className="result-next-step">
@@ -158,23 +246,23 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
       <p className="result-summary">
         Para sostener un objetivo mensual de <strong>{formatCurrency(result.targetMonthlyNet)}</strong>
         , con unos costes fijos de <strong>{formatCurrency(result.monthlyFixedCosts)}</strong> y{' '}
-        <strong>{result.billableHoursPerMonth}</strong> horas facturables al mes, tu referencia
+        <strong>{formatNumber(result.billableHoursPerMonth, 2)}</strong> horas facturables al mes, tu referencia
         mensual se sitúa en <strong>{formatCurrency(result.monthlyRevenueTarget)}</strong> antes de
         repartirla entre proyectos.
       </p>
 
       <p className="result-summary">
-        En esta landing page hemos estimado <strong>{result.estimatedProjectHours} horas base</strong>{' '}
+        En esta landing page hemos estimado <strong>{formatNumber(result.estimatedProjectHours, 2)} horas base</strong>{' '}
         entre discovery, secciones, integraciones, revisiones y QA. Con un buffer del{' '}
-        <strong>{result.contingencyBufferPercent}%</strong>, la estimacion sube a{' '}
-        <strong>{result.bufferedProjectHours} horas</strong> razonables para presupuestar sin
+        <strong>{formatNumber(result.contingencyBufferPercent, 2)}%</strong>, la estimación sube a{' '}
+        <strong>{formatNumber(result.bufferedProjectHours, 2)} horas</strong> razonables para presupuestar sin
         improvisar.
       </p>
 
       <p className="result-summary">
         Además, has dejado una reserva fiscal orientativa del{' '}
-        <strong>{result.taxReservePercent}%</strong> y un margen extra del{' '}
-        <strong>{result.profitMarginPercent}%</strong>. Eso sitúa el proyecto en una referencia
+        <strong>{formatNumber(result.taxReservePercent, 2)}%</strong> y un margen extra del{' '}
+        <strong>{formatNumber(result.profitMarginPercent, 2)}%</strong>. Eso sitúa el proyecto en una referencia
         efectiva de <strong>{formatCurrency(result.effectiveHourlyRate)}/h</strong> sobre las horas
         ya amortiguadas por buffer, con un colchón adicional de{' '}
         <strong>{formatCurrency(pricingBuffer)}</strong> frente al mínimo.

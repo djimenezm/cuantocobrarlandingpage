@@ -8,23 +8,23 @@ import { getSiteUrl, siteConfig } from '@/lib/site';
 const route = '/landing-page-para-captar-leads';
 const title = 'Landing page para captar leads: estructura, formulario y precio';
 const description =
-  'Guia practica para crear y presupuestar una landing page para captar leads: oferta, CTA, formulario, lead magnet, integraciones, seguimiento y precio.';
+  'Guía práctica para crear y presupuestar una landing page para captar leads: oferta, CTA, formulario, lead magnet, integraciones, seguimiento y precio.';
 
 const faqItems = [
   {
-    question: 'Que debe tener una landing page para captar leads?',
+    question: '¿Qué debe tener una landing page para captar leads?',
     answer:
-      'Debe tener una promesa clara, beneficio principal, prueba de confianza, CTA visible, formulario adecuado al nivel de compromiso, mensaje posterior al envio y seguimiento del lead.',
+      'Debe tener una promesa clara, beneficio principal, prueba de confianza, CTA visible, formulario adecuado al nivel de compromiso, mensaje posterior al envío y seguimiento del lead.',
   },
   {
-    question: 'Cuanto cuesta una landing page para captar leads?',
+    question: '¿Cuánto cuesta una landing page para captar leads?',
     answer:
-      'Depende del numero de secciones, copy, diseno, formulario, integraciones, automatizaciones y revisiones. Una landing de captacion suele costar mas si incluye estrategia, medicion y automatizaciones.',
+      'Depende del número de secciones, copy, diseño, formulario, integraciones, automatizaciones y revisiones. Una landing de captación suele costar más si incluye estrategia, medición y automatizaciones.',
   },
   {
-    question: 'Es mejor pedir pocos datos en el formulario?',
+    question: '¿Es mejor pedir pocos datos en el formulario?',
     answer:
-      'En general, cuantos menos datos pides, menor friccion. Pero si el lead requiere cualificacion, puede tener sentido pedir mas informacion siempre que el valor percibido lo justifique.',
+      'En general, cuantos menos datos pides, menor fricción. Pero si el lead requiere cualificación, puede tener sentido pedir más información siempre que el valor percibido lo justifique.',
   },
 ] as const;
 
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
   },
   keywords: [
     'landing page para captar leads',
-    'landing page captacion leads',
+    'landing page captación leads',
     'landing page con formulario',
-    'pagina de captacion de leads',
-    'precio landing page captacion',
+    'página de captación de leads',
+    'precio landing page captación',
   ],
   openGraph: {
     title: `${title} | ${siteConfig.name}`,
@@ -141,14 +141,14 @@ export default function LandingPageParaCaptarLeadsPage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="eyebrow">Captacion de leads</span>
+            <span className="eyebrow">Captación de leads</span>
             <h1>Landing page para captar leads: estructura, formulario y precio</h1>
             <p className="lead">
-              Una landing de captacion no se mide por lo bonita que queda, sino por si convierte
-              trafico en contactos utiles. Para presupuestarla bien necesitas definir oferta,
-              formulario, integraciones, seguimiento y que pasa despues de cada envio.
+              Una landing de captación no se mide por lo bonita que queda, sino por si convierte
+              tráfico en contactos útiles. Para presupuestarla bien necesitas definir oferta,
+              formulario, integraciones, seguimiento y qué pasa después de cada envío.
             </p>
-            <div className="hero-badges" aria-label="Que cubre esta guia">
+            <div className="hero-badges" aria-label="Qué cubre esta guía">
               <span className="hero-badge">Formulario</span>
               <span className="hero-badge">Lead magnet</span>
               <span className="hero-badge">Seguimiento</span>
@@ -164,10 +164,10 @@ export default function LandingPageParaCaptarLeadsPage() {
           </div>
 
           <aside className="feature-card article-summary">
-            <h2>Resumen rapido</h2>
+            <h2>Resumen rápido</h2>
             <ul className="article-list">
               <li>La oferta debe justificar que el usuario deje sus datos.</li>
-              <li>El formulario debe pedir lo minimo necesario para cualificar.</li>
+              <li>El formulario debe pedir lo mínimo necesario para cualificar.</li>
               <li>Las integraciones y automatizaciones afectan al precio.</li>
               <li>Sin seguimiento, una landing solo recoge contactos; no crea oportunidades.</li>
             </ul>
@@ -177,19 +177,19 @@ export default function LandingPageParaCaptarLeadsPage() {
 
       <section className="section">
         <div className="container text-block">
-          <h2>Que significa captar leads con una landing</h2>
+          <h2>Qué significa captar leads con una landing</h2>
           <p>
-            Captar leads no es poner un formulario al final de una pagina y esperar. Es construir
+            Captar leads no es poner un formulario al final de una página y esperar. Es construir
             una secuencia: atraer a la persona adecuada, explicar una promesa clara, reducir dudas,
-            pedir una accion razonable y entregar una respuesta inmediata.
+            pedir una acción razonable y entregar una respuesta inmediata.
           </p>
           <p>
-            Por eso una landing de captacion suele requerir mas criterio que una pagina informativa.
-            Necesita mensaje, conversion, medicion y un minimo proceso posterior.
+            Por eso una landing de captación suele requerir más criterio que una página informativa.
+            Necesita mensaje, conversión, medición y un mínimo proceso posterior.
           </p>
           <div className="disclaimer-box">
-            <strong>Idea clave:</strong> una landing de captacion vale mas cuando incluye el camino
-            completo: visita, formulario, confirmacion, entrega y seguimiento.
+            <strong>Idea clave:</strong> una landing de captación vale más cuando incluye el camino
+            completo: visita, formulario, confirmación, entrega y seguimiento.
           </div>
         </div>
       </section>
@@ -199,7 +199,7 @@ export default function LandingPageParaCaptarLeadsPage() {
           <article className="feature-card">
             <h2>Oferta o incentivo</h2>
             <p>
-              Puede ser una consulta, presupuesto, demo, checklist, guia, calculadora o recurso
+              Puede ser una consulta, presupuesto, demo, lista de comprobación, guía, calculadora o recurso
               descargable. Lo importante es que tenga valor suficiente para pedir datos.
             </p>
           </article>
@@ -207,15 +207,15 @@ export default function LandingPageParaCaptarLeadsPage() {
           <article className="feature-card">
             <h2>Formulario</h2>
             <p>
-              Debe equilibrar conversion y cualificacion. Pedir solo email aumenta volumen; pedir
-              mas datos puede filtrar mejor, pero tambien frena envios.
+              Debe equilibrar conversión y cualificación. Pedir solo email aumenta volumen; pedir
+              más datos puede filtrar mejor, pero también frena envíos.
             </p>
           </article>
 
           <article className="feature-card">
             <h2>Seguimiento</h2>
             <p>
-              Despues del envio puede haber email automatico, redireccion, aviso interno, CRM,
+              Después del envío puede haber email automático, redirección, aviso interno, CRM,
               etiqueta de origen o evento de analytics.
             </p>
           </article>
@@ -227,18 +227,18 @@ export default function LandingPageParaCaptarLeadsPage() {
           <div className="text-block">
             <h2>Estructura recomendada para captar leads</h2>
             <ol className="article-list article-list-ordered">
-              <li>Hero con promesa, publico objetivo y CTA principal.</li>
-              <li>Problema o deseo que conecta con la busqueda del usuario.</li>
+              <li>Hero con promesa, público objetivo y CTA principal.</li>
+              <li>Problema o deseo que conecta con la búsqueda del usuario.</li>
               <li>Beneficios concretos del recurso, servicio o siguiente paso.</li>
               <li>Prueba de confianza: ejemplos, datos, casos, logos o autoridad.</li>
               <li>Formulario con campos justificados y mensaje de privacidad claro.</li>
-              <li>Confirmacion de que ocurrira despues del envio.</li>
+              <li>Confirmación de que ocurrirá después del envío.</li>
               <li>FAQ para resolver objeciones antes de dejar datos.</li>
               <li>CTA final para recuperar usuarios que han llegado hasta el cierre.</li>
             </ol>
             <p>
-              La estructura puede ser corta si el trafico ya viene caliente. Si el usuario llega
-              desde busqueda fria o anuncios, normalmente necesita mas contexto y mas confianza.
+              La estructura puede ser corta si el tráfico ya viene caliente. Si el usuario llega
+              desde búsqueda fría o anuncios, normalmente necesita más contexto y más confianza.
             </p>
           </div>
 
@@ -247,7 +247,7 @@ export default function LandingPageParaCaptarLeadsPage() {
             <ul className="article-list">
               <li>Email para recurso descargable.</li>
               <li>Nombre y email para newsletter o consulta simple.</li>
-              <li>Telefono solo si el siguiente paso es llamada.</li>
+              <li>Teléfono solo si el siguiente paso es llamada.</li>
               <li>Presupuesto, web o necesidad si necesitas cualificar.</li>
             </ul>
           </aside>
@@ -256,27 +256,27 @@ export default function LandingPageParaCaptarLeadsPage() {
 
       <section className="section alt">
         <div className="container text-block">
-          <h2>Como afecta al precio de una landing page</h2>
+          <h2>Cómo afecta al precio de una landing page</h2>
           <p>
-            Una landing para captar leads puede parecer sencilla, pero el precio cambia mucho segun
-            el nivel de estrategia, copy, integraciones y automatizacion. Un formulario basico no
-            cuesta lo mismo que una captacion conectada a CRM, email de bienvenida, evento de
-            conversion y pagina de gracias.
+            Una landing para captar leads puede parecer sencilla, pero el precio cambia mucho según
+            el nivel de estrategia, copy, integraciones y automatización. Un formulario básico no
+            cuesta lo mismo que una captación conectada a CRM, email de bienvenida, evento de
+            conversión y página de gracias.
           </p>
           <div className="feature-grid" aria-label="Factores de precio">
             <article className="feature-card">
-              <h3>Mas copy y oferta</h3>
+              <h3>Más copy y oferta</h3>
               <p>Definir promesa, beneficios, objeciones, CTA y mensaje posterior lleva tiempo.</p>
             </article>
 
             <article className="feature-card">
-              <h3>Mas integraciones</h3>
+              <h3>Más integraciones</h3>
               <p>Formularios, email marketing, CRM, automatizaciones y tracking suman alcance.</p>
             </article>
 
             <article className="feature-card">
-              <h3>Mas revision</h3>
-              <p>Pruebas responsive, validacion de formularios, entregas y QA protegen conversion.</p>
+              <h3>Más revisión</h3>
+              <p>Pruebas responsive, validación de formularios, entregas y QA protegen conversión.</p>
             </article>
           </div>
         </div>
@@ -284,18 +284,18 @@ export default function LandingPageParaCaptarLeadsPage() {
 
       <section className="section">
         <div className="container text-block">
-          <h2>Errores comunes en landings de captacion</h2>
+          <h2>Errores comunes en landings de captación</h2>
           <ol className="article-list article-list-ordered">
             <li>Pedir demasiados datos para una oferta poco concreta.</li>
-            <li>No explicar que recibira el usuario despues de enviar el formulario.</li>
-            <li>No tener pagina de gracias, email de confirmacion o aviso interno.</li>
-            <li>Usar el mismo CTA para trafico frio y usuarios que ya conocen la marca.</li>
+            <li>No explicar qué recibirá el usuario después de enviar el formulario.</li>
+            <li>No tener página de gracias, email de confirmación o aviso interno.</li>
+            <li>Usar el mismo CTA para tráfico frío y usuarios que ya conocen la marca.</li>
             <li>No medir conversiones ni diferenciar origen del lead.</li>
-            <li>No dejar claro si la captacion incluye copy, formulario o integraciones.</li>
+            <li>No dejar claro si la captación incluye copy, formulario o integraciones.</li>
           </ol>
           <p>
             Para delimitar mejor el alcance, revisa{' '}
-            <Link href="/que-incluye-una-landing-page">que incluye una landing page</Link>. Si
+            <Link href="/que-incluye-una-landing-page">qué incluye una landing page</Link>. Si
             quieres bajar ese alcance a euros, usa la calculadora o mira el{' '}
             <Link href="/ejemplo-presupuesto-landing-page">ejemplo de presupuesto</Link>.
           </p>
@@ -304,7 +304,7 @@ export default function LandingPageParaCaptarLeadsPage() {
               Calcular mi landing
             </Link>
             <Link href="/precio-landing-page-freelance" className="primary-button">
-              Ver guia de precios
+              Ver guía de precios
             </Link>
           </div>
         </div>

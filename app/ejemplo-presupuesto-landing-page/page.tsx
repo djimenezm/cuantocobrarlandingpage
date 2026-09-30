@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { formatCurrency, formatNumber } from '@/lib/format';
+import { landingExampleInputs, landingExampleQuotes } from '@/lib/landingExamples';
 import { siteConfig } from '@/lib/site';
 
 const route = '/ejemplo-presupuesto-landing-page';
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     'ejemplo presupuesto landing page',
     'presupuesto landing page ejemplo',
     'modelo presupuesto landing page',
-    'presupuesto pagina de aterrizaje',
+    'presupuesto página de aterrizaje',
     'propuesta landing page freelance',
   ],
   openGraph: {
@@ -176,6 +178,28 @@ export default function EjemploPresupuestoLandingPage() {
             <strong>Idea clave:</strong> una buena propuesta no arregla un precio mal calculado,
             pero sí ayuda a defender una cifra que ya tiene sentido.
           </div>
+          <h3>Ejemplo calculado: landing de captación</h3>
+          <p>
+            Partimos de {formatCurrency(landingExampleInputs.capture.targetMonthlyNet)} netos
+            {' '}deseados al mes, {formatCurrency(landingExampleInputs.capture.monthlyFixedCosts)}
+            {' '}de costes fijos y {landingExampleInputs.capture.billableHoursPerMonth} horas
+            {' '}facturables. El encargo incluye {landingExampleInputs.capture.sections} secciones,
+            {' '}{landingExampleInputs.capture.integrationsCount} integraciones, textos breves y
+            {' '}{landingExampleInputs.capture.revisionRounds} rondas de revisión.
+          </p>
+          <dl className="worked-example">
+            <div><dt>Tarifa interna por hora</dt><dd>{formatCurrency(landingExampleQuotes.capture.baseHourlyRate)}</dd></div>
+            <div><dt>Horas estimadas con reserva del {landingExampleInputs.capture.contingencyBufferPercent}%</dt><dd>{formatNumber(landingExampleQuotes.capture.bufferedProjectHours)} h</dd></div>
+            <div><dt>Costes directos del encargo</dt><dd>{formatCurrency(landingExampleInputs.capture.directProjectCosts)}</dd></div>
+            <div><dt>Precio mínimo calculado</dt><dd>{formatCurrency(landingExampleQuotes.capture.minimumLandingPrice)}</dd></div>
+            <div><dt>Precio recomendado con margen del {landingExampleInputs.capture.profitMarginPercent}%</dt><dd>{formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)}</dd></div>
+            <div><dt>IVA orientativo aparte</dt><dd>{formatCurrency(landingExampleQuotes.capture.vatAmount)}</dd></div>
+          </dl>
+          <p>
+            El {landingExampleInputs.capture.taxReservePercent}% de reserva fiscal es una hipótesis
+            para calcular la tarifa, no un impuesto fijo para todos. El precio presupuestado se
+            muestra sin IVA; adapta horas y alcance a tu proyecto real.
+          </p>
         </div>
       </section>
 
@@ -199,11 +223,11 @@ export default function EjemploPresupuestoLandingPage() {
             <h2>Bloque de ejemplo</h2>
             <p>
               Presupuesto para landing page de captación con hasta seis secciones, diseño
-              responsive, formulario conectado a email, configuración básica de medición y dos
-              rondas de revisión.
+              responsive, textos breves, formulario conectado a email, configuración básica de
+              medición y dos rondas de revisión.
             </p>
             <p>
-              No incluye campañas, redacción completa de textos largos, fotografías, nuevas
+              No incluye campañas, investigación o redacción extensa, fotografías, nuevas
               integraciones no previstas ni mantenimiento posterior a la publicación.
             </p>
           </aside>
@@ -243,8 +267,9 @@ export default function EjemploPresupuestoLandingPage() {
           <h2>Texto de ejemplo para presentar el precio</h2>
           <div className="disclaimer-box">
             <p>
-              El precio de la landing page es de 950 EUR + IVA. Incluye el alcance descrito en esta
-              propuesta, dos rondas de revisión y publicación en el entorno acordado. Cualquier
+              El precio de la landing page es de {formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)}
+              {' '}más IVA, si corresponde. Incluye el alcance descrito en esta propuesta, dos
+              rondas de revisión y publicación en el entorno acordado. Cualquier
               nueva sección, integración o cambio de alcance se presupuestará aparte antes de
               realizarse.
             </p>
