@@ -122,6 +122,7 @@ export default function HomePage() {
             <nav aria-label="Profundiza en el presupuesto de la landing page">
               <a href="/que-incluye-una-landing-page">Qué incluir en la landing</a>
               <a href="/precio-landing-page-freelance">Cómo explicar el precio</a>
+              <a href="/landing-page-para-google-ads">Preparar una landing para Google Ads</a>
             </nav>
           </div>
         </div>

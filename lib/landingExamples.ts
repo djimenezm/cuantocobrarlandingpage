@@ -28,6 +28,16 @@ export const landingExampleInputs = {
     directProjectCosts: 50,
     contingencyBufferPercent: 15,
   },
+  ads: {
+    ...sharedInputs,
+    sections: 5,
+    integrationsCount: 2,
+    includeCopywriting: true,
+    revisionRounds: 2,
+    directProjectCosts: 80,
+    contingencyBufferPercent: 20,
+    profitMarginPercent: 15,
+  },
   expanded: {
     ...sharedInputs,
     sections: 8,
@@ -42,5 +52,6 @@ export const landingExampleInputs = {
 export const landingExampleQuotes = {
   basic: calculateLandingPageQuote(landingExampleInputs.basic),
   capture: calculateLandingPageQuote(landingExampleInputs.capture),
+  ads: calculateLandingPageQuote(landingExampleInputs.ads),
   expanded: calculateLandingPageQuote(landingExampleInputs.expanded),
 };

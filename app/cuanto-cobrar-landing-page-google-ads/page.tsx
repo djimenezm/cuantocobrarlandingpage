@@ -3,12 +3,14 @@ import Link from 'next/link';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { formatCurrency, formatNumber } from '@/lib/format';
+import { landingExampleInputs, landingExampleQuotes } from '@/lib/landingExamples';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 
 const route = '/cuanto-cobrar-landing-page-google-ads';
 const title = 'Cuánto cobrar una landing page para Google Ads';
 const description =
-  'Guía práctica para calcular cuánto cobrar por una landing page para Google Ads con estrategia, copy, tracking, conversiones, revisiones, margen e IVA aparte.';
+  'Ejemplo calculado de precio para una landing page de Google Ads: secciones, copy, integraciones, revisiones, margen e IVA separado.';
 
 const faqItems = [
   {
@@ -88,7 +90,7 @@ export default function CuantoCobrarLandingPageGoogleAdsPage() {
       name: siteConfig.name,
     },
     datePublished: '2026-05-02',
-    dateModified: '2026-05-02',
+    dateModified: '2026-10-02',
   };
 
   const breadcrumbSchema = {
@@ -258,6 +260,39 @@ export default function CuantoCobrarLandingPageGoogleAdsPage() {
               <li>Mantenimiento o soporte recurrente.</li>
             </ul>
           </aside>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="ejemplo-precio-google-ads">
+        <div className="container text-block">
+          <span className="eyebrow">Ejemplo calculado</span>
+          <h2 id="ejemplo-precio-google-ads">Un presupuesto para una landing de captación con anuncios</h2>
+          <p>
+            Supón {landingExampleInputs.ads.sections} secciones, textos incluidos, un formulario
+            conectado a CRM y una segunda integración para medir la conversión. El alcance contempla
+            {' '}{landingExampleInputs.ads.revisionRounds} rondas de revisión, pruebas básicas de
+            publicación y {formatCurrency(landingExampleInputs.ads.directProjectCosts)} de costes
+            directos. La gestión de campañas y las variantes quedan fuera.
+          </p>
+          <dl className="worked-example">
+            <div><dt>Tarifa interna por hora</dt><dd>{formatCurrency(landingExampleQuotes.ads.baseHourlyRate)}</dd></div>
+            <div><dt>Horas con reserva del {landingExampleInputs.ads.contingencyBufferPercent}%</dt><dd>{formatNumber(landingExampleQuotes.ads.bufferedProjectHours)} h</dd></div>
+            <div><dt>Costes directos</dt><dd>{formatCurrency(landingExampleInputs.ads.directProjectCosts)}</dd></div>
+            <div><dt>Mínimo calculado sin IVA</dt><dd>{formatCurrency(landingExampleQuotes.ads.minimumLandingPrice)}</dd></div>
+            <div><dt>Precio recomendado sin IVA</dt><dd>{formatCurrency(landingExampleQuotes.ads.recommendedLandingPrice)}</dd></div>
+            <div><dt>IVA orientativo aparte</dt><dd>{formatCurrency(landingExampleQuotes.ads.vatAmount)}</dd></div>
+          </dl>
+          <p>
+            El cálculo parte de {formatCurrency(landingExampleInputs.ads.targetMonthlyNet)} netos
+            deseados, {formatCurrency(landingExampleInputs.ads.monthlyFixedCosts)} de costes fijos,
+            {' '}{landingExampleInputs.ads.billableHoursPerMonth} horas facturables al mes y una
+            reserva fiscal hipotética del {landingExampleInputs.ads.taxReservePercent}%. El margen
+            aplicado es del {landingExampleInputs.ads.profitMarginPercent}%. No es un precio de
+            mercado ni una promesa de conversión: ajusta las horas al encargo real.
+          </p>
+          <div className="guide-cta">
+            <Link href="/#calculadora" className="primary-button">Calcular con mis datos</Link>
+          </div>
         </div>
       </section>
 

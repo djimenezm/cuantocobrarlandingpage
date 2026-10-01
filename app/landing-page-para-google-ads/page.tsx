@@ -88,7 +88,7 @@ export default function LandingPageParaGoogleAdsPage() {
       name: siteConfig.name,
     },
     datePublished: '2026-04-27',
-    dateModified: '2026-05-02',
+    dateModified: '2026-10-02',
   };
 
   const breadcrumbSchema = {
@@ -264,6 +264,35 @@ export default function LandingPageParaGoogleAdsPage() {
               <li>UTM o fuente de lead conservada si hay CRM.</li>
             </ul>
           </aside>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="ejemplo-mensaje-google-ads">
+        <div className="container text-block">
+          <span className="eyebrow">Ejemplo de recorrido</span>
+          <h2 id="ejemplo-mensaje-google-ads">De una búsqueda concreta a una solicitud medible</h2>
+          <p>
+            Imagina una campaña para solicitar presupuestos de reforma de baño en Madrid. El anuncio
+            promete una valoración inicial; la landing debería continuar con ese servicio, esa zona
+            y esa acción. Abrir con &quot;Construimos tus sueños&quot; obligaría a la persona a volver a
+            buscar qué se le ofrece.
+          </p>
+          <ol className="article-list article-list-ordered">
+            <li><strong>Anuncio:</strong> valoración inicial para reformar un baño en Madrid.</li>
+            <li><strong>Titular de la landing:</strong> solicita un presupuesto para reformar tu baño en Madrid.</li>
+            <li><strong>Acción:</strong> formulario breve con tipo de reforma, zona y contacto.</li>
+            <li><strong>Confirmación:</strong> página de gracias tras enviar el formulario; ahí se comprueba el evento de conversión.</li>
+          </ol>
+          <p>
+            Antes de publicar, prueba un envío real en móvil y verifica que el aviso llega al
+            destinatario correcto. Si necesitas distintas ofertas o zonas, presupuesta las
+            variantes como trabajo adicional. El ejemplo es ficticio y no implica una tasa de
+            conversión garantizada.
+          </p>
+          <p>
+            Para convertir este alcance en una cifra, consulta el{' '}
+            <Link href="/cuanto-cobrar-landing-page-google-ads">ejemplo de precio para Google Ads</Link>.
+          </p>
         </div>
       </section>
 
