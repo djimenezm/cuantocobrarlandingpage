@@ -1,8 +1,18 @@
 import sitemap from '@/app/sitemap';
 
 describe('sitemap', () => {
-  it('does not invent last modification dates', () => {
-    expect(sitemap().every((entry) => entry.lastModified === undefined)).toBe(true);
+  it('only reports documented substantive content updates', () => {
+    const updatedRoutes = Object.fromEntries(
+      sitemap()
+        .filter((entry) => entry.lastModified !== undefined)
+        .map((entry) => [new URL(entry.url).pathname, entry.lastModified]),
+    );
+
+    expect(updatedRoutes).toEqual({
+      '/': '2026-10-02',
+      '/cuanto-cobrar-landing-page-google-ads': '2026-10-02',
+      '/landing-page-para-google-ads': '2026-10-02',
+    });
   });
 
   it('includes the main indexable routes and excludes redirect-only pages', () => {
