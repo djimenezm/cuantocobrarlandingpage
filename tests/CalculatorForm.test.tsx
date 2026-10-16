@@ -127,7 +127,7 @@ describe('CalculatorForm', () => {
     render(<CalculatorForm />);
 
     const vatGroup = screen.getByRole('group', { name: /añadir iva al presupuesto/i });
-    await user.click(within(vatGroup).getByRole('radio', { name: 'No', exact: true }));
+    await user.click(within(vatGroup).getByRole('radio', { name: /^No$/ }));
     await user.click(screen.getByRole('button', { name: /calcular precio de la landing/i }));
 
     expect(screen.getByText('Total sin IVA añadido')).toBeInTheDocument();
