@@ -449,7 +449,7 @@ export default function CalculatorForm() {
         </label>
 
         <label>
-          <span>Margen extra sobre el proyecto (%)</span>
+          <span>Recargo sobre el mínimo (%)</span>
           <input
             type="number"
             min="0"
@@ -467,9 +467,12 @@ export default function CalculatorForm() {
             aria-describedby={
               submitted && validationErrors.profitMarginPercent
                 ? 'profit-margin-percent-error'
-                : undefined
+                : 'profit-margin-hint'
             }
           />
+          <small className="field-hint" id="profit-margin-hint">
+            Un 20 % sobre un mínimo de 1.000 EUR añade 200 EUR. No equivale a un margen del 20 % sobre ventas.
+          </small>
           {submitted && validationErrors.profitMarginPercent && (
             <small className="field-error" id="profit-margin-percent-error" role="alert">
               {validationErrors.profitMarginPercent}
@@ -500,8 +503,9 @@ export default function CalculatorForm() {
         )}
 
         <p className="form-note">
-          La herramienta es orientativa: sirve para transformar una intuición difusa en un precio
-          más defendible, no para cerrar un encaje fiscal exacto.
+          Estimación orientativa para conexiones sencillas y textos breves, no un precio de mercado
+          ni un cálculo fiscal exacto.{' '}
+          <a href="/precio-landing-page-freelance#metodo">Consultar supuestos y fórmulas</a>.
         </p>
       </form>
 

@@ -66,7 +66,7 @@ export default function LandingPageVsPaginaWebPage() {
     inLanguage: 'es',
     author: {
       '@type': 'Organization',
-      name: siteConfig.ownerName,
+      name: siteConfig.name,
     },
     publisher: {
       '@type': 'Organization',

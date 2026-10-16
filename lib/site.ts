@@ -18,7 +18,7 @@ export const siteConfig = {
     'precio página de aterrizaje freelance',
   ],
   url: process.env.NODE_ENV === 'development' ? 'http://localhost:3004' : productionUrl,
-  ownerName: 'Equipo de Cuánto Cobrar Landing Page',
+  ownerName: 'Diego Antonio Jiménez Moreno',
   contactEmail: 'hola@cuantocobrarlandingpage.es',
   country: 'España',
   themeColor: '#07110e',

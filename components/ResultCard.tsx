@@ -62,16 +62,17 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
     `Horas con buffer: ${formatNumber(result.bufferedProjectHours, 2)} h`,
     `Buffer de contingencia: ${formatNumber(result.contingencyBufferPercent, 2)}%`,
     `Referencia base: ${formatCurrency(result.baseHourlyRate)}/h`,
-    `Tarifa efectiva del proyecto: ${formatCurrency(result.effectiveHourlyRate)}/h`,
+    `Precio por hora presupuestada, incluidos costes directos: ${formatCurrency(result.effectiveHourlyRate)}/h`,
     `Costes directos: ${formatCurrency(result.directProjectCosts)}`,
     `Colchón de negociación: ${formatCurrency(pricingBuffer)}`,
+    `Recargo sobre el mínimo: ${formatNumber(result.profitMarginPercent, 2)}%`,
     ...(offerAssessment
       ? [
           `Precio propuesto por el cliente: ${formatCurrency(offerAssessment.offeredPrice)} sin IVA`,
           `Diferencia frente al mínimo: ${formatCurrency(offerAssessment.gapToFloor)}`,
         ]
       : []),
-    'Nota: si el cliente pide bajar precio, conviene ajustar alcance, revisiones o integraciones antes de bajar del mínimo defendible.',
+    'Nota: el mínimo depende de los datos y supuestos del modelo; no garantiza rentabilidad. Ajusta el alcance antes de aceptar un precio inferior.',
   ].join('\n');
 
   const trackOfferComparison = useCallback(() => {
@@ -116,11 +117,10 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
       <h3>Tu precio recomendado para esta landing page</h3>
 
       <p className="result-lead">
-        Con esta simulación, una propuesta razonable quedaría en{' '}
-        <strong>{formatCurrency(result.recommendedLandingPrice)}</strong> sin IVA. Tu suelo para no
-        quedarte corto con este alcance estaría alrededor de{' '}
-        <strong>{formatCurrency(result.minimumLandingPrice)}</strong>, así que la diferencia entre
-        ambas cifras es el aire real que te das para negociar sin comerte el margen.
+        Con tus datos y los supuestos del modelo, el precio recomendado es{' '}
+        <strong>{formatCurrency(result.recommendedLandingPrice)}</strong> sin IVA y el mínimo estimado
+        es <strong>{formatCurrency(result.minimumLandingPrice)}</strong>. Estas cifras no garantizan
+        rentabilidad: comprueba que las horas y los costes cubren el encargo real.
       </p>
 
       <div className="result-grid">
@@ -155,7 +155,7 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
         </div>
 
         <div className="result-item result-item-full">
-          <span>Total final con IVA</span>
+          <span>{hasIVA ? 'Total final con IVA' : 'Total sin IVA añadido'}</span>
           <strong>{formatCurrency(result.totalWithVAT)}</strong>
         </div>
       </div>
@@ -261,10 +261,10 @@ export default function ResultCard({ result, hasIVA }: ResultCardProps) {
 
       <p className="result-summary">
         Además, has dejado una reserva fiscal orientativa del{' '}
-        <strong>{formatNumber(result.taxReservePercent, 2)}%</strong> y un margen extra del{' '}
-        <strong>{formatNumber(result.profitMarginPercent, 2)}%</strong>. Eso sitúa el proyecto en una referencia
-        efectiva de <strong>{formatCurrency(result.effectiveHourlyRate)}/h</strong> sobre las horas
-        ya amortiguadas por buffer, con un colchón adicional de{' '}
+        <strong>{formatNumber(result.taxReservePercent, 2)}%</strong> y un recargo sobre el mínimo del{' '}
+        <strong>{formatNumber(result.profitMarginPercent, 2)}%</strong>. El precio por hora presupuestada
+        es <strong>{formatCurrency(result.effectiveHourlyRate)}/h</strong>, incluidos los costes directos;
+        no es un ingreso neto por hora. El recargo añade{' '}
         <strong>{formatCurrency(pricingBuffer)}</strong> frente al mínimo.
         {hasIVA ? (
           <>

@@ -90,7 +90,7 @@ export default function CuantoCobrarLandingPageGoogleAdsPage() {
       name: siteConfig.name,
     },
     datePublished: '2026-05-02',
-    dateModified: '2026-10-02',
+    dateModified: '2026-10-16',
   };
 
   const breadcrumbSchema = {
@@ -286,9 +286,15 @@ export default function CuantoCobrarLandingPageGoogleAdsPage() {
             El cálculo parte de {formatCurrency(landingExampleInputs.ads.targetMonthlyNet)} netos
             deseados, {formatCurrency(landingExampleInputs.ads.monthlyFixedCosts)} de costes fijos,
             {' '}{landingExampleInputs.ads.billableHoursPerMonth} horas facturables al mes y una
-            reserva fiscal hipotética del {landingExampleInputs.ads.taxReservePercent}%. El margen
-            aplicado es del {landingExampleInputs.ads.profitMarginPercent}%. No es un precio de
+            reserva fiscal hipotética del {landingExampleInputs.ads.taxReservePercent}%. El recargo
+            sobre el mínimo es del {landingExampleInputs.ads.profitMarginPercent}%. No es un precio de
             mercado ni una promesa de conversión: ajusta las horas al encargo real.
+          </p>
+          <p>
+            Este ejemplo solo contempla conexiones sencillas. Un CRM a medida, una migración,
+            medición entre dominios o configuración avanzada de consentimiento necesitan su propio
+            desglose. El modelo no distingue su complejidad por el mero número de integraciones.
+            Consulta sus <Link href="/precio-landing-page-freelance#metodo">supuestos y límites</Link>.
           </p>
           <div className="guide-cta">
             <Link href="/#calculadora" className="primary-button">Calcular con mis datos</Link>
@@ -337,8 +343,8 @@ export default function CuantoCobrarLandingPageGoogleAdsPage() {
             <Link href="/#calculadora" className="primary-button">
               Ir a la calculadora
             </Link>
-            <Link href="/salida/kit-presupuesto" className="primary-button">
-              Abrir kit de presupuesto
+            <Link href="/ejemplo-presupuesto-landing-page#modelo-presupuesto" className="primary-button">
+              Ver propuesta para adaptar
             </Link>
           </div>
         </div>

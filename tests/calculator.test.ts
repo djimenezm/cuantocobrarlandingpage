@@ -32,7 +32,7 @@ describe('calculateLandingPageQuote', () => {
     expect(result.minimumLandingPrice).toBe(947.22);
     expect(result.recommendedLandingPrice).toBe(1041.94);
     expect(result.vatAmount).toBe(218.81);
-    expect(result.totalWithVAT).toBe(1260.74);
+    expect(result.totalWithVAT).toBe(1260.75);
     expect(result.effectiveHourlyRate).toBe(41.37);
   });
 

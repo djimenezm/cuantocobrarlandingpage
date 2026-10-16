@@ -66,7 +66,7 @@ export default function QueIncluyeUnaLandingPage() {
     inLanguage: 'es',
     author: {
       '@type': 'Organization',
-      name: siteConfig.ownerName,
+      name: siteConfig.name,
     },
     publisher: {
       '@type': 'Organization',
@@ -301,9 +301,9 @@ export default function QueIncluyeUnaLandingPage() {
             <Link href="/ejemplo-presupuesto-landing-page" className="primary-button">
               Ver ejemplo completo
             </Link>
-            <a href="/salida/kit-presupuesto" className="primary-button">
-              Abrir kit de presupuesto
-            </a>
+            <Link href="/ejemplo-presupuesto-landing-page#modelo-presupuesto" className="primary-button">
+              Ver propuesta para adaptar
+            </Link>
           </div>
         </div>
       </section>

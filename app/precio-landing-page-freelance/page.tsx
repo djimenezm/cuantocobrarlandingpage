@@ -3,7 +3,8 @@ import Link from 'next/link';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { formatCurrency } from '@/lib/format';
+import { LANDING_ESTIMATION } from '@/lib/calculator';
+import { formatCurrency, formatNumber } from '@/lib/format';
 import { landingExampleInputs, landingExampleQuotes } from '@/lib/landingExamples';
 import { siteConfig } from '@/lib/site';
 
@@ -60,9 +61,10 @@ export default function PrecioLandingPageFreelancePage() {
     headline: title,
     description,
     inLanguage: 'es',
+    dateModified: '2026-10-16',
     author: {
       '@type': 'Organization',
-      name: siteConfig.ownerName,
+      name: siteConfig.name,
     },
     publisher: {
       '@type': 'Organization',
@@ -114,9 +116,9 @@ export default function PrecioLandingPageFreelancePage() {
               <Link href="/#calculadora" className="primary-button">
                 Calcular mi precio
               </Link>
-              <Link href="/salida/kit-presupuesto" className="primary-button">
-                Abrir kit de presupuesto
-              </Link>
+              <a href="#metodo" className="primary-button">
+                Ver fórmulas y límites
+              </a>
             </div>
           </div>
 
@@ -140,7 +142,8 @@ export default function PrecioLandingPageFreelancePage() {
             {' '}{formatCurrency(landingExampleInputs.basic.targetMonthlyNet)} de objetivo neto,
             {' '}{formatCurrency(landingExampleInputs.basic.monthlyFixedCosts)} de costes fijos,
             {' '}{landingExampleInputs.basic.billableHoursPerMonth} horas facturables y un
-            {' '}{landingExampleInputs.basic.profitMarginPercent}% de margen. Los importes son sin IVA.
+            {' '}{landingExampleInputs.basic.profitMarginPercent}% de recargo sobre el mínimo.
+            Los importes son sin IVA.
           </p>
         </div>
         <div className="container feature-grid" aria-label="Rangos orientativos">
@@ -180,39 +183,76 @@ export default function PrecioLandingPageFreelancePage() {
         </div>
       </section>
 
-      <section className="section alt">
+      <section className="section alt" id="metodo" aria-labelledby="metodo-title">
         <div className="container article-layout">
           <div className="text-block">
-            <h2>La fórmula práctica para poner precio</h2>
+            <span className="eyebrow">Método del sitio · 16 de octubre de 2026</span>
+            <h2 id="metodo-title">De dónde sale cada cifra</h2>
             <p>
-              El error habitual es empezar por una cifra redonda: 300, 600, 1.000 o 1.500 EUR. Esa
-              cifra puede sonar bien, pero no dice nada sobre si el proyecto te deja margen real.
-              Una forma más sólida es construir el precio desde dentro.
+              La calculadora utiliza un modelo propio de estimación, no una encuesta de precios ni
+              horas medidas en encargos reales. Estos son sus supuestos de partida; comprueba si
+              describen tu trabajo antes de utilizar el resultado.
             </p>
+            <dl className="worked-example">
+              <div><dt>Preparación y definición del encargo</dt><dd>{formatNumber(LANDING_ESTIMATION.discoveryHours)} h</dd></div>
+              <div><dt>Diseño y maquetación por sección</dt><dd>{formatNumber(LANDING_ESTIMATION.hoursPerSection)} h</dd></div>
+              <div><dt>Conexión sencilla con un servicio externo</dt><dd>{formatNumber(LANDING_ESTIMATION.hoursPerIntegration, 2)} h por integración</dd></div>
+              <div><dt>Textos breves, si están incluidos</dt><dd>{formatNumber(LANDING_ESTIMATION.copyHoursPerSection, 2)} h por sección; mínimo {formatNumber(LANDING_ESTIMATION.minimumCopyHours)} h</dd></div>
+              <div><dt>Revisión del alcance aprobado</dt><dd>{formatNumber(LANDING_ESTIMATION.hoursPerRevision)} h por ronda</dd></div>
+              <div><dt>Pruebas y publicación</dt><dd>{formatNumber(LANDING_ESTIMATION.qaLaunchHours)} h</dd></div>
+            </dl>
+            <h3>Las operaciones, en orden</h3>
             <ol className="article-list article-list-ordered">
-              <li>Define tu objetivo mensual neto y tus costes fijos.</li>
-              <li>Calcula cuántas horas facturables tienes de verdad cada mes.</li>
-              <li>Convierte ese dato en una tarifa interna mínima por hora.</li>
-              <li>Estima horas de estrategia, diseño, desarrollo, pruebas y gestión.</li>
-              <li>Suma costes directos, margen de seguridad e impuestos aparte.</li>
+              <li><strong>Objetivo antes de reserva:</strong> neto deseado / (1 − reserva fiscal / 100).</li>
+              <li><strong>Tarifa interna:</strong> (objetivo antes de reserva + costes fijos mensuales) / horas facturables mensuales.</li>
+              <li><strong>Horas presupuestadas:</strong> suma de las tareas × (1 + contingencia / 100).</li>
+              <li><strong>Mínimo del modelo:</strong> horas presupuestadas × tarifa interna + costes directos del encargo.</li>
+              <li><strong>Recomendado:</strong> mínimo × (1 + recargo / 100). El IVA, si se selecciona, se añade después.</li>
             </ol>
             <div className="disclaimer-box">
-              <strong>Regla sana:</strong> si una landing page te exige pensar, escribir,
-              implementar, probar, coordinar y corregir, no la cobres como si solo fuera colocar
-              bloques en una página.
+              <strong>Recargo no es margen sobre ventas.</strong> Sobre un mínimo de 1.000 EUR,
+              un recargo del 20 % produce 1.200 EUR: los 200 EUR representan un 16,67 % del precio
+              final sin IVA. El campo de la calculadora aplica el primer criterio.
             </div>
+            <h3>Comprueba el ejemplo de captación</h3>
+            <p>
+              Con {formatCurrency(landingExampleInputs.capture.targetMonthlyNet)} de objetivo,
+              {' '}{landingExampleInputs.capture.taxReservePercent}% de reserva,
+              {' '}{formatCurrency(landingExampleInputs.capture.monthlyFixedCosts)} de costes y
+              {' '}{landingExampleInputs.capture.billableHoursPerMonth} horas mensuales, la tarifa
+              es {formatCurrency(landingExampleQuotes.capture.baseHourlyRate)}/h. Las tareas suman
+              {' '}{formatNumber(landingExampleQuotes.capture.estimatedProjectHours, 2)} h; con
+              {' '}{landingExampleInputs.capture.contingencyBufferPercent}% de contingencia quedan
+              {' '}{formatNumber(landingExampleQuotes.capture.bufferedProjectHours, 2)} h.
+            </p>
+            <p>
+              Al incorporar {formatCurrency(landingExampleInputs.capture.directProjectCosts)} de
+              costes directos, el mínimo es {formatCurrency(landingExampleQuotes.capture.minimumLandingPrice)}.
+              {' '}El recargo del {landingExampleInputs.capture.profitMarginPercent}% lo lleva a
+              {' '}{formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)} sin IVA.
+              Las operaciones internas conservan su precisión. El precio recomendado se redondea
+              a céntimos antes de calcular el IVA; el total suma esos dos importes mostrados.
+              Multiplicar la tarifa y las horas ya redondeadas puede dar unos céntimos de diferencia.
+            </p>
+            <Link href="/ejemplo-presupuesto-landing-page#modelo-presupuesto">
+              Ver cómo se presenta este cálculo al cliente
+            </Link>
           </div>
 
           <aside className="feature-card article-summary">
-            <h2>Lista de comprobación antes de enviar precio</h2>
+            <h2>Cuándo no basta este modelo</h2>
             <ul className="article-list">
-              <li>Número de secciones y variantes responsive.</li>
-              <li>Quién aporta textos, imágenes y propuesta de valor.</li>
-              <li>Formulario, email, CRM, calendario, pagos o automatizaciones.</li>
-              <li>Número de rondas de revisión incluidas.</li>
-              <li>Fecha límite y penalización por urgencia.</li>
-              <li>Mantenimiento o soporte tras publicar.</li>
+              <li>Una integración con API propia, pagos o datos sensibles no se puede asumir resuelta en {formatNumber(LANDING_ESTIMATION.hoursPerIntegration, 2)} h.</li>
+              <li>Investigación, identidad visual, textos extensos, traducciones y variantes requieren estimación propia.</li>
+              <li>Una ronda compleja puede exceder {formatNumber(LANDING_ESTIMATION.hoursPerRevision)} h. Acordar una lista de cambios evita revisiones abiertas.</li>
+              <li>La reserva fiscal no calcula tu IRPF real. El IVA del 21 % es una hipótesis del selector, no una comprobación de tu situación fiscal.</li>
+              <li>El mínimo solo cubre lo que hayas declarado y lo que estime el modelo. No garantiza rentabilidad ni conversiones.</li>
             </ul>
+            <p>
+              Si tus horas reales no encajan, prepara un desglose independiente antes de cerrar
+              precio. No aumentes secciones o integraciones ficticias para forzar un resultado.
+            </p>
+            <a href={`mailto:${siteConfig.contactEmail}`}>Comunicar una duda o un error del modelo</a>
           </aside>
         </div>
       </section>

@@ -5,6 +5,8 @@ import AdSlot from '@/components/AdSlot';
 import CalculatorForm from '@/components/CalculatorForm';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { formatCurrency } from '@/lib/format';
+import { landingExampleQuotes } from '@/lib/landingExamples';
 import { siteConfig } from '@/lib/site';
 
 const outcomeItems = [
@@ -113,7 +115,7 @@ export default function HomePage() {
             <p>
               Estimamos tiempo de descubrimiento, secciones, integraciones, textos, revisiones y
               puesta en marcha. Esa carga de trabajo se combina con tu tarifa, costes directos y
-              margen.
+              recargo sobre el mínimo. Son supuestos de partida, no tiempos medidos en proyectos reales.
             </p>
             <p>
               El IVA se añade aparte. Ajusta la estimación al alcance pactado: una integración o
@@ -122,6 +124,7 @@ export default function HomePage() {
             <nav aria-label="Profundiza en el presupuesto de la landing page">
               <a href="/que-incluye-una-landing-page">Qué incluir en la landing</a>
               <a href="/precio-landing-page-freelance">Cómo explicar el precio</a>
+              <a href="/precio-landing-page-freelance#metodo">Fórmulas y límites del cálculo</a>
               <a href="/landing-page-para-google-ads">Preparar una landing para Google Ads</a>
             </nav>
           </div>
@@ -133,7 +136,11 @@ export default function HomePage() {
           <div>
             <span className="eyebrow">Después del cálculo</span>
             <h2>Convierte la cifra en un presupuesto que se entienda.</h2>
-            <p>Usa el ejemplo para explicar alcance, revisiones y condiciones sin dar rodeos.</p>
+            <p>
+              Ejemplo ficticio: seis secciones, textos breves y dos integraciones por{' '}
+              {formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)} sin IVA.
+              Consulta el desglose y descarga la propuesta completa.
+            </p>
           </div>
           <Link href="/ejemplo-presupuesto-landing-page" className="primary-button">
             Ver ejemplo de presupuesto

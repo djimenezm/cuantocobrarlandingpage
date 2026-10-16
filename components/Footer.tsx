@@ -7,6 +7,7 @@ const footerGroups = [
     links: [
       { href: '/#calculadora', label: 'Calculadora' },
       { href: '/precio-landing-page-freelance', label: 'Guía de precios' },
+      { href: '/precio-landing-page-freelance#metodo', label: 'Método y limitaciones' },
       { href: '/cuanto-cobrar-landing-page-google-ads', label: 'Precio para Google Ads' },
     ],
   },

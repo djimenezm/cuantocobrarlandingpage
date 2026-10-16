@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { formatCurrency, formatNumber } from '@/lib/format';
 import { landingExampleInputs, landingExampleQuotes } from '@/lib/landingExamples';
+import { getLandingProposalText, landingProposalDownload } from '@/lib/landingProposal';
 import { siteConfig } from '@/lib/site';
 
 const route = '/ejemplo-presupuesto-landing-page';
@@ -65,9 +66,10 @@ export default function EjemploPresupuestoLandingPage() {
     headline: title,
     description,
     inLanguage: 'es',
+    dateModified: '2026-10-16',
     author: {
       '@type': 'Organization',
-      name: siteConfig.ownerName,
+      name: siteConfig.name,
     },
     publisher: {
       '@type': 'Organization',
@@ -142,9 +144,9 @@ export default function EjemploPresupuestoLandingPage() {
               <Link href="/#calculadora" className="primary-button">
                 Calcular mi precio
               </Link>
-              <Link href="/salida/kit-presupuesto" className="primary-button">
-                Abrir kit de presupuesto
-              </Link>
+              <a href="#modelo-presupuesto" className="primary-button">
+                Ver propuesta completa
+              </a>
             </div>
           </div>
 
@@ -192,13 +194,16 @@ export default function EjemploPresupuestoLandingPage() {
             <div><dt>Horas estimadas con reserva del {landingExampleInputs.capture.contingencyBufferPercent}%</dt><dd>{formatNumber(landingExampleQuotes.capture.bufferedProjectHours)} h</dd></div>
             <div><dt>Costes directos del encargo</dt><dd>{formatCurrency(landingExampleInputs.capture.directProjectCosts)}</dd></div>
             <div><dt>Precio mínimo calculado</dt><dd>{formatCurrency(landingExampleQuotes.capture.minimumLandingPrice)}</dd></div>
-            <div><dt>Precio recomendado con margen del {landingExampleInputs.capture.profitMarginPercent}%</dt><dd>{formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)}</dd></div>
+            <div><dt>Precio recomendado con recargo del {landingExampleInputs.capture.profitMarginPercent}%</dt><dd>{formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)}</dd></div>
             <div><dt>IVA orientativo aparte</dt><dd>{formatCurrency(landingExampleQuotes.capture.vatAmount)}</dd></div>
+            <div><dt>Total con IVA del ejemplo</dt><dd>{formatCurrency(landingExampleQuotes.capture.totalWithVAT)}</dd></div>
           </dl>
           <p>
             El {landingExampleInputs.capture.taxReservePercent}% de reserva fiscal es una hipótesis
             para calcular la tarifa, no un impuesto fijo para todos. El precio presupuestado se
-            muestra sin IVA; adapta horas y alcance a tu proyecto real.
+            muestra sin IVA; adapta horas y alcance a tu proyecto real. Los costes directos ya
+            están incorporados en el precio, no se suman otra vez. Consulta las{' '}
+            <Link href="/precio-landing-page-freelance#metodo">fórmulas y limitaciones del modelo</Link>.
           </p>
         </div>
       </section>
@@ -234,31 +239,19 @@ export default function EjemploPresupuestoLandingPage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container feature-grid" aria-label="Partes del presupuesto">
-          <article className="feature-card">
-            <h2>1. Alcance visible</h2>
-            <p>
-              Define cuántas secciones entran, qué pantallas o variantes móviles se entregan y qué
-              elementos no están incluidos para evitar ambigüedad.
-            </p>
-          </article>
-
-          <article className="feature-card">
-            <h2>2. Integraciones y medición</h2>
-            <p>
-              Un formulario simple no es lo mismo que conectar CRM, calendario, email marketing,
-              pagos o eventos de analítica. Déjalo separado.
-            </p>
-          </article>
-
-          <article className="feature-card">
-            <h2>3. Revisiones y extras</h2>
-            <p>
-              Aclara cuántas rondas entran, cuánto dura cada fase y cómo se presupuestan cambios de
-              alcance o nuevas secciones.
-            </p>
-          </article>
+      <section className="section" id="modelo-presupuesto" aria-labelledby="modelo-title">
+        <div className="container text-block">
+          <span className="eyebrow">Ejemplo ficticio · 16 de octubre de 2026</span>
+          <h2 id="modelo-title">La propuesta completa, lista para adaptar</h2>
+          <p>
+            Este es el mismo caso calculado arriba, con alcance, precio, exclusiones y criterios
+            de entrega. No es un encargo real ni una promesa de resultados. La descarga contiene
+            exactamente este texto, sin registro y sin salir de esta web.
+          </p>
+          <pre className="proposal-preview">{getLandingProposalText()}</pre>
+          <a href={landingProposalDownload} download className="primary-button">
+            Descargar este ejemplo en texto
+          </a>
         </div>
       </section>
 
@@ -283,9 +276,9 @@ export default function EjemploPresupuestoLandingPage() {
             <Link href="/precio-landing-page-freelance" className="primary-button">
               Ver guía de precios
             </Link>
-            <Link href="/salida/kit-presupuesto-texto" className="primary-button">
-              Descargar versión en texto
-            </Link>
+            <a href={landingProposalDownload} download className="primary-button">
+              Descargar este ejemplo en texto
+            </a>
           </div>
         </div>
       </section>

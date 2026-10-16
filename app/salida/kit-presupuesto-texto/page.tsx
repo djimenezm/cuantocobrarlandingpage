@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
-import TrackedRedirectPage from '@/components/TrackedRedirectPage';
-
-const destination =
-  'https://www.cuantopresupuestar.es/recursos/kit-presupuesto-freelance.txt?utm_source=cuantocobrarlandingpage&utm_medium=ecosystem-link&utm_campaign=kit-recomendado';
+import { redirect } from 'next/navigation';
+import { landingProposalDownload } from '@/lib/landingProposal';
 
 export const metadata: Metadata = {
   title: 'Descargando versión en texto',
-  description: 'Ruta interna para medir clics a la versión en texto del kit recomendado.',
+  description: 'Descarga del ejemplo de presupuesto de landing page en texto.',
   robots: {
     index: false,
     follow: false,
@@ -14,12 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function KitPresupuestoTextoRedirectPage() {
-  return (
-    <TrackedRedirectPage
-      destination={destination}
-      title="Abriendo la versión en texto"
-      description="Registro este clic dentro de la landing y te llevo a la descarga del kit en texto."
-      buttonLabel="Ir a la descarga"
-    />
-  );
+  redirect(landingProposalDownload);
 }

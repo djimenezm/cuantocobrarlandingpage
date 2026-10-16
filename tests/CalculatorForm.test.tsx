@@ -122,6 +122,21 @@ describe('CalculatorForm', () => {
     });
   });
 
+  it('does not label an untaxed simulation as including VAT', async () => {
+    const user = userEvent.setup();
+    render(<CalculatorForm />);
+
+    const vatGroup = screen.getByRole('group', { name: /añadir iva al presupuesto/i });
+    await user.click(within(vatGroup).getByRole('radio', { name: 'No', exact: true }));
+    await user.click(screen.getByRole('button', { name: /calcular precio de la landing/i }));
+
+    expect(screen.getByText('Total sin IVA añadido')).toBeInTheDocument();
+    expect(screen.queryByText('Total final con IVA')).not.toBeInTheDocument();
+    expect(screen.getByText(/IVA: no añadido en esta simulación/)).toBeInTheDocument();
+    expect(screen.getByRole('spinbutton', { name: /recargo sobre el mínimo/i }))
+      .toHaveAccessibleDescription(/No equivale a un margen del 20 % sobre ventas/);
+  });
+
   it('copies a concise landing page summary', async () => {
     const user = userEvent.setup();
     const writeText = vi.fn().mockResolvedValue(undefined);

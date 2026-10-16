@@ -18,8 +18,10 @@ const routes = [
 
 // Only substantive content updates belong here; deployments do not change these dates.
 const lastContentUpdates: Record<string, string> = {
-  '/': '2026-10-02',
-  '/cuanto-cobrar-landing-page-google-ads': '2026-10-02',
+  '/': '2026-10-16',
+  '/precio-landing-page-freelance': '2026-10-16',
+  '/ejemplo-presupuesto-landing-page': '2026-10-16',
+  '/cuanto-cobrar-landing-page-google-ads': '2026-10-16',
   '/landing-page-para-google-ads': '2026-10-02',
 };
 

@@ -51,6 +51,17 @@ export type LandingOfferAssessment = {
   directCostsUncovered: boolean;
 };
 
+// Editorial starting assumptions, not observed market averages or guaranteed delivery times.
+export const LANDING_ESTIMATION = {
+  discoveryHours: 2,
+  hoursPerSection: 1.4,
+  hoursPerIntegration: 1.25,
+  minimumCopyHours: 1.5,
+  copyHoursPerSection: 0.75,
+  hoursPerRevision: 1,
+  qaLaunchHours: 2.5,
+} as const;
+
 function roundToTwo(value: number) {
   return Math.round((value + Number.EPSILON) * 100) / 100;
 }
@@ -109,19 +120,22 @@ export function calculateLandingPageQuote({
   const monthlyRevenueTarget = preTaxIncomeTarget + safeMonthlyFixedCosts;
   const baseHourlyRate = monthlyRevenueTarget / safeBillableHoursPerMonth;
 
-  const discoveryHours = 2;
-  const sectionHours = safeSections * 1.4;
-  const integrationHours = safeIntegrationsCount * 1.25;
-  const copyHours = includeCopywriting ? Math.max(1.5, safeSections * 0.75) : 0;
-  const revisionHours = safeRevisionRounds * 1;
-  const qaLaunchHours = 2.5;
+  const discoveryHours = LANDING_ESTIMATION.discoveryHours;
+  const sectionHours = safeSections * LANDING_ESTIMATION.hoursPerSection;
+  const integrationHours = safeIntegrationsCount * LANDING_ESTIMATION.hoursPerIntegration;
+  const copyHours = includeCopywriting
+    ? Math.max(LANDING_ESTIMATION.minimumCopyHours, safeSections * LANDING_ESTIMATION.copyHoursPerSection)
+    : 0;
+  const revisionHours = safeRevisionRounds * LANDING_ESTIMATION.hoursPerRevision;
+  const qaLaunchHours = LANDING_ESTIMATION.qaLaunchHours;
   const estimatedProjectHours =
     discoveryHours + sectionHours + integrationHours + copyHours + revisionHours + qaLaunchHours;
   const bufferedProjectHours = estimatedProjectHours * (1 + safeContingencyBufferPercent / 100);
   const minimumLandingPrice = bufferedProjectHours * baseHourlyRate + safeDirectProjectCosts;
-  const recommendedLandingPrice = minimumLandingPrice * (1 + marginRate);
-  const vatAmount = hasIVA ? recommendedLandingPrice * 0.21 : 0;
-  const totalWithVAT = recommendedLandingPrice + vatAmount;
+  // Close the displayed monetary amounts before calculating VAT and the final total.
+  const recommendedLandingPrice = roundToTwo(minimumLandingPrice * (1 + marginRate));
+  const vatAmount = roundToTwo(hasIVA ? recommendedLandingPrice * 0.21 : 0);
+  const totalWithVAT = roundToTwo(recommendedLandingPrice + vatAmount);
   const effectiveHourlyRate = recommendedLandingPrice / bufferedProjectHours;
 
   return {

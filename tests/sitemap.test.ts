@@ -9,8 +9,10 @@ describe('sitemap', () => {
     );
 
     expect(updatedRoutes).toEqual({
-      '/': '2026-10-02',
-      '/cuanto-cobrar-landing-page-google-ads': '2026-10-02',
+      '/': '2026-10-16',
+      '/precio-landing-page-freelance': '2026-10-16',
+      '/ejemplo-presupuesto-landing-page': '2026-10-16',
+      '/cuanto-cobrar-landing-page-google-ads': '2026-10-16',
       '/landing-page-para-google-ads': '2026-10-02',
     });
   });
@@ -31,5 +33,6 @@ describe('sitemap', () => {
     expect(paths).toContain('/que-incluye-una-landing-page');
     expect(paths).not.toContain('/salida/kit-presupuesto');
     expect(paths).not.toContain('/salida/kit-presupuesto-texto');
+    expect(paths).not.toContain('/recursos/ejemplo-presupuesto-landing-page.txt');
   });
 });
