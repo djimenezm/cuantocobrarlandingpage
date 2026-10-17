@@ -21,6 +21,12 @@ Volver al [README](../README.md).
 
 Los espacios publicitarios están preparados, pero `lib/ads.ts` exige `NEXT_PUBLIC_ADSENSE_ENABLED=true` y consentimiento gestionado para mostrarlos. No actives esa variable hasta que AdSense apruebe el sitio.
 
+## Documentación de Monitor Calculadoras
+
+`app/monitor-calculadoras/` contiene la descripción pública y las políticas del monitor privado de AdSense. Su layout reutiliza la presentación legal, declara `noindex` y no añade rutas al sitemap comercial. No contiene un formulario OAuth, credenciales ni estados reales de la cuenta.
+
+Las consultas y la autorización inicial pertenecen al repositorio privado `calculadoras-backup-automation`, no a esta aplicación web. Mantén estas políticas alineadas con el permiso `adsense.readonly`, los proveedores y los plazos reales de conservación. Publicar la documentación no activa el seguimiento ni autoriza una cuenta de Google.
+
 ## Rastreo y respuesta del servidor
 
 - `vercel.json` sitúa las funciones en París (`cdg1`), cerca del público español.
