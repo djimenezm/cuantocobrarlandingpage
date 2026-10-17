@@ -29,9 +29,10 @@ export default function MonitorPage() {
           cualquier cambio mediante una segunda consulta independiente antes de avisar.
         </p>
         <p>
-          Las consultas preparadas para este monitor se ejecutan en GitHub Actions, sin
-          depender de que el ordenador personal permanezca encendido. Su funcionamiento
-          requiere completar la autorización de Google y verificar una consulta real.
+          GitHub Actions programa las consultas, conserva las referencias y envía por
+          correo los cambios confirmados mediante Brevo. No necesita que el ordenador
+          personal o la aplicación de escritorio estén encendidos. Su funcionamiento
+          requiere autorización válida de Google y disponibilidad de esos servicios.
         </p>
       </section>
 

@@ -31,6 +31,10 @@ describe('Monitor Calculadoras information pages', () => {
     expect(container).toHaveTextContent('token de renovación separado para cada servicio');
     expect(container).toHaveTextContent('última fecha de rastreo');
     expect(container).toHaveTextContent('No se consultan informes de búsquedas, tráfico ni datos de visitantes');
+    expect(container).toHaveTextContent('estado persistente y su historial de Git no caducan a los siete días');
+    expect(container).toHaveTextContent('No recibe tokens de Google ni claves OAuth');
+    expect(screen.getByRole('link', { name: 'Brevo' }))
+      .toHaveAttribute('href', 'https://www.brevo.com/legal/privacypolicy/');
     expect(screen.getByRole('link', { name: 'conexiones de tu Cuenta de Google' }))
       .toHaveAttribute('href', 'https://myaccount.google.com/connections');
     expect(screen.getByRole('link', { name: /Política de Datos del Usuario/ }))

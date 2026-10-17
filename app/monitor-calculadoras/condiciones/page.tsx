@@ -35,7 +35,8 @@ export default function MonitorTermsPage() {
           Un estado corresponde a la respuesta de la API en la fecha indicada, no a una
           garantía de permanencia. Un error de acceso, un archivo antiguo o una ejecución
           fallida no acreditan que el estado del sitio siga igual. La automatización debe
-          contrastar un posible cambio antes de notificarlo.
+          contrastar un posible cambio mediante otra consulta independiente antes de notificarlo.
+          No se envían resúmenes diarios ni avisos de cambios no confirmados.
         </p>
         <p>
           La aprobación, la indexación y sus plazos dependen exclusivamente de Google.
@@ -51,8 +52,11 @@ export default function MonitorTermsPage() {
         <h2>Disponibilidad y retirada</h2>
         <p>
           El funcionamiento depende de una autorización válida, de Google, de GitHub Actions
-          y del servicio de automatización. Puede interrumpirse por caducidad, revocación,
+          y de Brevo, pero no de que el ordenador personal esté encendido. Puede interrumpirse por caducidad, revocación,
           límites o fallos de esos servicios. No se garantiza una disponibilidad continua.
+          Los horarios programados pueden retrasarse y la aceptación de un correo por el
+          proveedor no garantiza su entrega. Si un envío interrumpido no puede comprobarse,
+          se conserva pendiente para revisión en lugar de reenviarlo sin control.
         </p>
         <p>
           El titular puede detener el seguimiento, retirar el acceso a Google y eliminar

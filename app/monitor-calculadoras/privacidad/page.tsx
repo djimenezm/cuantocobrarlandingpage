@@ -78,10 +78,27 @@ export default function MonitorPrivacyPage() {
             configurada de siete días en GitHub Actions.
           </li>
           <li>
-            Una automatización de Codex puede leer ese resultado y conservar la referencia
-            necesaria para comparar estados y notificar cambios al titular. No se envían
-            credenciales OAuth a la conversación. Los registros y avisos conservados en
-            cada servicio se gestionan también desde ese servicio.
+            Las referencias, las pruebas de consulta, los avisos pendientes y el último
+            recibo de aceptación del correo se conservan en una rama privada de GitHub.
+            Este estado persistente y su historial de Git no caducan a los siete días;
+            su conservación se gestiona en el repositorio y sus copias de seguridad.
+          </li>
+          <li>
+            Brevo envía únicamente al destinatario configurado por el titular los cambios
+            confirmados. Recibe su dirección de correo, el remitente y el contenido del
+            aviso, limitado a los sitios o guías cuyo estado ha cambiado. No recibe tokens
+            de Google ni claves OAuth. La dirección de destino se guarda como secreto;
+            los recibos técnicos de comprobación pueden conservar su huella SHA-256.
+          </li>
+          <li>
+            Para evitar duplicados tras una interrupción, el monitor puede consultar en
+            Brevo los eventos del aviso concreto, filtrados por destinatario y etiqueta.
+            La aceptación del envío no garantiza la entrega en la bandeja de entrada.
+          </li>
+          <li>
+            Codex se utiliza para preparar o revisar la configuración a petición del
+            titular. Las consultas periódicas y los correos se ejecutan en GitHub Actions,
+            sin depender del ordenador personal. No se envían credenciales OAuth a la conversación.
           </li>
         </ul>
         <p>
@@ -95,7 +112,8 @@ export default function MonitorPrivacyPage() {
           <a href="https://developers.google.com/terms/api-services-user-data-policy">
             Política de Datos del Usuario de los Servicios de las APIs de Google
           </a>, incluidas sus condiciones de uso limitado. Consulta también las políticas de{' '}
-          <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a>{' '}
+          <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a>,{' '}
+          <a href="https://www.brevo.com/legal/privacypolicy/">Brevo</a>{' '}
           y <a href="https://openai.com/policies/privacy-policy/">OpenAI</a> para el tratamiento
           que corresponde a esos proveedores.
         </p>
@@ -111,8 +129,9 @@ export default function MonitorPrivacyPage() {
         </p>
         <p>
           La revocación no elimina por sí sola los archivos de estado ya generados. El titular
-          puede eliminarlos, retirar los secretos en GitHub y borrar sus copias locales del
-          JSON. También puede gestionar los avisos y registros de la automatización en Codex.
+          puede eliminarlos, gestionar el estado persistente y su historial, retirar los
+          secretos en GitHub y borrar sus copias locales del JSON. También puede detener
+          la programación y gestionar los correos y registros conservados por Brevo.
           Para consultas o solicitudes sobre tus datos, escribe al correo del responsable.
         </p>
       </section>
