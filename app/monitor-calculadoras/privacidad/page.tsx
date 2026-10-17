@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: { absolute: 'Privacidad | Monitor Calculadoras' },
-  description: 'Permisos, datos consultados, conservación y revocación del acceso de Monitor Calculadoras a Google AdSense.',
+  description: 'Permisos de solo lectura, datos, conservación y revocación del acceso de Monitor Calculadoras a AdSense y Search Console.',
   alternates: { canonical: '/monitor-calculadoras/privacidad' },
 };
 
@@ -14,7 +14,7 @@ export default function MonitorPrivacyPage() {
       <h1>Privacidad del monitor</h1>
       <p>
         Esta política se aplica a Monitor Calculadoras, el seguimiento privado de aprobación
-        de sitios en AdSense. No sustituye la{' '}
+        de sitios en AdSense y de indexación de cuatro guías en Search Console. No sustituye la{' '}
         <Link href="/privacidad">política de privacidad de la calculadora</Link>.
       </p>
 
@@ -23,24 +23,37 @@ export default function MonitorPrivacyPage() {
         <p>
           El responsable es <strong>{siteConfig.ownerName}</strong>. Puedes contactar en{' '}
           <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>.
-          La finalidad del monitor es consultar estados de aprobación y avisar de cambios
-          al titular de los sitios, no analizar a los visitantes de las calculadoras.
+          La finalidad es consultar estados de aprobación e indexación y avisar al titular
+          de cambios confirmados, no analizar a los visitantes de las calculadoras.
         </p>
       </section>
 
       <section className="legal-section">
         <h2>Permiso de Google y datos consultados</h2>
         <p>
-          El titular autoriza directamente en Google el ámbito{' '}
-          <code>https://www.googleapis.com/auth/adsense.readonly</code>. Este permiso permite
-          consultar datos de AdSense, pero no modificarlos. El proceso de seguimiento
-          consulta el listado de sitios de la cuenta para localizar el dominio configurado;
+          Para AdSense, el titular autoriza directamente en Google el ámbito{' '}
+          <code>https://www.googleapis.com/auth/adsense.readonly</code>. Permite consultar
+          datos de AdSense, pero no modificarlos. El seguimiento consulta el listado de
+          sitios de la cuenta para localizar los cuatro dominios configurados;
           no solicita informes de ingresos ni datos de quienes usan las calculadoras.
         </p>
         <p>
-          El archivo de resultado conserva el dominio, el identificador de la cuenta, el
-          estado de aprobación, su etiqueta, la fecha y hora UTC de consulta, la fuente y
-          la versión del formato. No contiene contraseñas, tokens ni claves del cliente OAuth.
+          El archivo de AdSense conserva los dominios, el identificador de la cuenta, sus
+          estados de aprobación y etiquetas, la fecha y hora UTC, la fuente y la versión del formato.
+        </p>
+        <p>
+          Para Search Console se solicita por separado{' '}
+          <code>https://www.googleapis.com/auth/webmasters.readonly</code>. Se consulta el
+          listado de propiedades accesibles para seleccionar la propiedad correcta de cada
+          guía y se inspeccionan únicamente las cuatro URLs configuradas. No se consultan
+          informes de búsquedas, tráfico ni datos de visitantes; tampoco se modifican propiedades o sitemaps.
+        </p>
+        <p>
+          El archivo de Search Console conserva la URL de la guía, la propiedad consultada,
+          el veredicto y el texto de cobertura devueltos por Google, la clasificación de
+          indexación cuando puede verificarse, la última fecha de rastreo y la URL canónica
+          seleccionada por Google si están disponibles, además de la fecha y hora UTC,
+          fuente y versión. Ninguno de los archivos contiene contraseñas, tokens ni claves OAuth.
         </p>
       </section>
 
@@ -56,7 +69,7 @@ export default function MonitorPrivacyPage() {
             control del titular; el proceso no guarda un archivo local con el token de renovación.
           </li>
           <li>
-            El identificador y el secreto del cliente, junto con el token de renovación,
+            El identificador y el secreto del cliente, junto con un token de renovación separado para cada servicio,
             se guardan como secretos de GitHub Actions en un repositorio privado. Permiten
             ejecutar las consultas hasta su revocación, caducidad o retirada.
           </li>

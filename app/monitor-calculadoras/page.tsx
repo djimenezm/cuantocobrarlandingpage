@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Monitor Calculadoras | Seguimiento de AdSense' },
-  description: 'Monitor privado de los estados de aprobación de las calculadoras en Google AdSense, mediante acceso autorizado de solo lectura.',
+  title: { absolute: 'Monitor Calculadoras | AdSense y Search Console' },
+  description: 'Seguimiento privado de aprobación en AdSense e indexación de guías en Search Console, con acceso autorizado de solo lectura.',
   alternates: { canonical: '/monitor-calculadoras' },
 };
 
@@ -14,16 +14,19 @@ export default function MonitorPage() {
       <h1>Monitor Calculadoras</h1>
       <p>
         Herramienta privada de {siteConfig.ownerName} para consultar el estado de aprobación
-        de sus sitios en Google AdSense y avisarle cuando cambia.
+        de sus sitios en Google AdSense y la indexación de cuatro guías en Search Console.
+        Le avisa únicamente cuando confirma un cambio.
       </p>
 
       <section className="legal-section">
         <h2>Qué hace</h2>
         <p>
-          El proceso de consulta utiliza la API oficial de Google AdSense. Busca el sitio
-          configurado en la cuenta autorizada y genera un archivo con su estado y la fecha
-          de comprobación. La automatización compara ese resultado con el último estado
-          confirmado antes de avisar al titular.
+          El proceso utiliza las APIs oficiales de Google. En AdSense consulta los estados
+          de aprobación de los cuatro sitios configurados. En Search Console inspecciona
+          las cuatro URLs exactas de las guías y su versión registrada en el índice de Google,
+          no una prueba de la página publicada. Guarda los resultados y la fecha de consulta.
+          La automatización compara cada resultado con su última referencia y confirma
+          cualquier cambio mediante una segunda consulta independiente antes de avisar.
         </p>
         <p>
           Las consultas preparadas para este monitor se ejecutan en GitHub Actions, sin
@@ -35,9 +38,11 @@ export default function MonitorPage() {
       <section className="legal-section">
         <h2>Acceso de solo lectura</h2>
         <p>
-          El único permiso solicitado es <code>https://www.googleapis.com/auth/adsense.readonly</code>.
-          El monitor no activa anuncios, no cambia la configuración de los sitios y no
-          solicita revisiones. Tampoco acelera ni garantiza la aprobación de Google.
+          Cada seguimiento tiene su propia autorización de solo lectura:{' '}
+          <code>https://www.googleapis.com/auth/adsense.readonly</code> para AdSense y{' '}
+          <code>https://www.googleapis.com/auth/webmasters.readonly</code> para Search Console.
+          El monitor no activa anuncios, no cambia los sitios, no solicita revisiones ni
+          reenvía peticiones de indexación. Tampoco acelera ni garantiza las decisiones de Google.
         </p>
         <p>
           La autorización se completa directamente en Google por el titular de la cuenta.
@@ -60,7 +65,7 @@ export default function MonitorPage() {
         </p>
         <p>
           Monitor Calculadoras es una herramienta independiente. No es un producto de Google
-          ni forma parte de su equipo de revisión de AdSense.
+          ni forma parte de sus equipos de AdSense o Search Console.
         </p>
       </section>
     </>

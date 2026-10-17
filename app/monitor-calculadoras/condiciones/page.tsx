@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: { absolute: 'Condiciones de uso | Monitor Calculadoras' },
-  description: 'Alcance, límites y condiciones de uso del monitor privado de estados de aprobación de Google AdSense.',
+  description: 'Alcance y límites del seguimiento privado de aprobación en AdSense e indexación en Search Console.',
   alternates: { canonical: '/monitor-calculadoras/condiciones' },
 };
 
@@ -16,7 +16,7 @@ export default function MonitorTermsPage() {
         Monitor Calculadoras es una herramienta privada gestionada por{' '}
         <strong>{siteConfig.ownerName}</strong> para el seguimiento de sus propios sitios.
         Estas páginas describen la herramienta; no ofrecen un servicio público de conexión
-        de cuentas de AdSense.
+        de cuentas de AdSense o Search Console.
       </p>
 
       <section className="legal-section">
@@ -24,7 +24,7 @@ export default function MonitorTermsPage() {
         <p>
           Solo el titular o una persona autorizada puede completar el consentimiento de
           Google. El monitor solicita acceso de solo lectura y no obtiene permiso para
-          activar anuncios, cambiar sitios o reenviar solicitudes de revisión.
+          activar anuncios, cambiar sitios o reenviar solicitudes de revisión o indexación.
           Sus credenciales no deben compartirse ni incorporarse al código público.
         </p>
       </section>
@@ -38,9 +38,12 @@ export default function MonitorTermsPage() {
           contrastar un posible cambio antes de notificarlo.
         </p>
         <p>
-          La aprobación y los plazos de revisión dependen exclusivamente de Google.
-          Esta herramienta no acelera el proceso ni garantiza que un sitio pueda mostrar anuncios.
-          Los avisos complementan, pero no sustituyen, las comunicaciones y la consola de AdSense.
+          La aprobación, la indexación y sus plazos dependen exclusivamente de Google.
+          Esta herramienta no acelera el proceso ni garantiza anuncios o posicionamiento.
+          Que una URL pueda indexarse no demuestra que ya esté indexada. Los cambios de
+          motivo de exclusión, las fechas de rastreo y los fallos de acceso no son por sí
+          solos cambios de indexación. Los avisos complementan, pero no sustituyen, las
+          comunicaciones y consolas de AdSense y Search Console.
         </p>
       </section>
 
@@ -63,7 +66,7 @@ export default function MonitorTermsPage() {
         <p>
           Para consultas, escribe a{' '}
           <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>.
-          Monitor Calculadoras no pertenece a Google y no representa a su equipo de AdSense.
+          Monitor Calculadoras no pertenece a Google y no representa a sus equipos de AdSense o Search Console.
         </p>
       </section>
     </>

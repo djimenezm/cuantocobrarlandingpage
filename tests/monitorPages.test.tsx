@@ -16,6 +16,7 @@ describe('Monitor Calculadoras information pages', () => {
     expect(screen.getByRole('link', { name: 'condiciones de uso' }))
       .toHaveAttribute('href', '/monitor-calculadoras/condiciones');
     expect(screen.getByText('https://www.googleapis.com/auth/adsense.readonly')).toBeVisible();
+    expect(screen.getByText('https://www.googleapis.com/auth/webmasters.readonly')).toBeVisible();
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
     expect(document.querySelector('form, input, iframe')).toBeNull();
   });
@@ -27,6 +28,9 @@ describe('Monitor Calculadoras information pages', () => {
     expect(container).toHaveTextContent('repositorio privado');
     expect(container).toHaveTextContent('siete días');
     expect(container).toHaveTextContent('Codex');
+    expect(container).toHaveTextContent('token de renovación separado para cada servicio');
+    expect(container).toHaveTextContent('última fecha de rastreo');
+    expect(container).toHaveTextContent('No se consultan informes de búsquedas, tráfico ni datos de visitantes');
     expect(screen.getByRole('link', { name: 'conexiones de tu Cuenta de Google' }))
       .toHaveAttribute('href', 'https://myaccount.google.com/connections');
     expect(screen.getByRole('link', { name: /Política de Datos del Usuario/ }))
@@ -38,6 +42,7 @@ describe('Monitor Calculadoras information pages', () => {
 
     expect(container).toHaveTextContent('ejecución fallida no acreditan');
     expect(container).toHaveTextContent('no acelera el proceso ni garantiza');
+    expect(container).toHaveTextContent('Que una URL pueda indexarse no demuestra que ya esté indexada');
     expect(container).toHaveTextContent('retirar el acceso a Google');
   });
 
