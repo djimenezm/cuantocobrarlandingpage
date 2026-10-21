@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { LANDING_ESTIMATION } from '@/lib/calculator';
@@ -88,15 +87,15 @@ export default function PrecioLandingPageFreelancePage() {
 
   return (
     <main>
-      <Script
+      <script
         id="precio-landing-article-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }}
       />
-      <Script
+      <script
         id="precio-landing-faq-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
       />
 
       <Header />
