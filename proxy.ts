@@ -19,7 +19,7 @@ export function proxy(request: NextRequest) {
     connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-insights.com https://*.googlesyndication.com https://*.doubleclick.net;
     object-src 'none';
     base-uri 'self';
-    form-action 'self' https://formsubmit.co;
+    form-action 'self';
     frame-ancestors 'none';
     frame-src https://*.googlesyndication.com https://*.doubleclick.net;
     upgrade-insecure-requests;
