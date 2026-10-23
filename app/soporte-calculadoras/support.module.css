@@ -1,0 +1,34 @@
+.navigation {
+  display: flex;
+  max-width: 780px;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #d7e5de;
+  font-size: 0.95rem;
+}
+
+.content {
+  max-width: 780px;
+}
+
+.content ul {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0;
+  padding-left: 1.25rem;
+  color: #3a4b43;
+  line-height: 1.75;
+}
+
+.content code {
+  overflow-wrap: anywhere;
+  white-space: normal;
+  font-size: 0.9em;
+}
+
+.updated {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
