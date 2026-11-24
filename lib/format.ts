@@ -1,8 +1,9 @@
-export function formatCurrency(value: number) {
+export function formatCurrency(value: number, useGrouping?: Intl.NumberFormatOptions['useGrouping']) {
   return new Intl.NumberFormat('es-ES', {
     style: 'currency',
     currency: 'EUR',
     maximumFractionDigits: 2,
+    useGrouping,
   }).format(value);
 }
 

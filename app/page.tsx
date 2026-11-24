@@ -65,6 +65,12 @@ export default function HomePage() {
             Define el alcance y descubre el precio que protege tus horas, tus costes y tu margen.
           </p>
 
+          <p className="quote-hero-example">
+            Ejemplo orientativo de{' '}
+            <strong>{formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice, 'always')} sin IVA</strong>
+            {' '}por seis secciones, textos breves y dos integraciones.
+          </p>
+
           <div className="quote-hero-actions">
             <a href="#calculadora" className="primary-button">
               Calcular mi precio
@@ -137,9 +143,7 @@ export default function HomePage() {
             <span className="eyebrow">Después del cálculo</span>
             <h2>Convierte la cifra en un presupuesto que se entienda.</h2>
             <p>
-              Ejemplo ficticio: seis secciones, textos breves y dos integraciones por{' '}
-              {formatCurrency(landingExampleQuotes.capture.recommendedLandingPrice)} sin IVA.
-              Consulta el desglose y descarga la propuesta completa.
+              Consulta el desglose del presupuesto de ejemplo y descarga la propuesta completa.
             </p>
           </div>
           <Link href="/ejemplo-presupuesto-landing-page" className="primary-button">

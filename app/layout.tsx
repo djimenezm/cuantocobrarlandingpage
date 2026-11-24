@@ -7,7 +7,7 @@ import { getSiteUrl, siteConfig } from '@/lib/site';
 import './globals.css';
 
 const siteUrl = getSiteUrl();
-const homeTitle = 'Cuánto cobrar por una landing page | Calculadora';
+const homeTitle = 'Precio de una landing page | Calculadora para freelancers';
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
